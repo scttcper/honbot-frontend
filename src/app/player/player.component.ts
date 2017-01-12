@@ -9,7 +9,7 @@ import { Api } from '../api';
   styleUrls: ['./player.component.scss']
 })
 export class PlayerComponent implements OnInit {
-  matches: any[] = [];
+  matches: any[];
   nickname = '';
   error: any;
 

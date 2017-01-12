@@ -3,12 +3,12 @@
     <h1>Player: {{nickname}}</h1>
   </div>
 </div>
-<div class="row" *ngIf="!matches.length && !error">
+<div class="row" *ngIf="!matches && !error">
   <div class="col text-center">
     Loading..
   </div>
 </div>
-<div class="row" *ngIf="matches.length">
+<div class="row" *ngIf="matches">
   <div class="col text-center">
     <h4>Seasonal Matches: {{ matches.length }}</h4>
     <div *ngFor="let match of matches">
