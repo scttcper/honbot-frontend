@@ -1,0 +1,13 @@
+<div class="row text-center">
+  <div class="col">
+    <h1>Player: {{nickname}}</h1>
+  </div>
+</div>
+<div class="row" *ngIf="matches">
+  <div class="col text-center">
+    <h4>Seasonal Matches: {{ matches.length }}</h4>
+    <div *ngFor="let match of matches">
+      <pre>{{ match.match_id }} - {{ match.date | date:'short' }}</pre>
+    </div>
+  </div>
+</div>
