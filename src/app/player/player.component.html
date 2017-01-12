@@ -3,11 +3,19 @@
     <h1>Player: {{nickname}}</h1>
   </div>
 </div>
-<div class="row" *ngIf="matches">
+<div class="row" *ngIf="matches.length && !error">
+  Loading
+</div>
+<div class="row" *ngIf="matches.length">
   <div class="col text-center">
     <h4>Seasonal Matches: {{ matches.length }}</h4>
     <div *ngFor="let match of matches">
       <pre>{{ match.match_id }} - {{ match.date | date:'short' }}</pre>
     </div>
+  </div>
+</div>
+<div class="row" *ngIf="error">
+  <div class="col text-center">
+    An Error occurred
   </div>
 </div>

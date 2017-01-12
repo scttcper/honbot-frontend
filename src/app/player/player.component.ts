@@ -11,6 +11,7 @@ import { Api } from '../api';
 export class PlayerComponent implements OnInit {
   matches: any[] = [];
   nickname = '';
+  error: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,7 +23,7 @@ export class PlayerComponent implements OnInit {
     this.api
       .getPlayerSeason(this.nickname)
       .then((res) => this.matches = res)
-      .catch((err) => console.log(err));
+      .catch((err) => this.error = err);
   }
 
 }
