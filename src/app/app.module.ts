@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
+import { AdsenseModule } from 'ng2-adsense';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
@@ -32,6 +33,10 @@ export const routes: Routes = [
     RouterModule.forRoot(routes),
     NgbModule.forRoot(),
     Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),
+    AdsenseModule.forRoot({
+      adClient: 'ca-pub-7640562161899788',
+      adSlot: 7259870550,
+    }),
   ],
   providers: [Api],
   bootstrap: [AppComponent]

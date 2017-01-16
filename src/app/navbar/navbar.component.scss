@@ -1,8 +1,29 @@
 .navbar {
-  padding: 0;
-  border-bottom: 1px grey solid;
-  margin-bottom: 20px;
+  padding-top: .3em;
+  padding-bottom: .3em;
+  border-bottom: 1px #228B22 solid;
+  margin-bottom: .5em;
 }
-.navbar-brand > span {
-  color: FORESTGREEN;
+
+
+
+@media (min-width: 576px){
+  .container {
+    width: 510px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    width: 690px;
+  }
+}
+@media (min-width: 992px){
+  .container {
+    width: 930px;
+  }
+}
+@media (min-width: 1200px){
+  .container {
+    width: 1110px;
+  }
 }

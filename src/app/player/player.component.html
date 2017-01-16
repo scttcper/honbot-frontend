@@ -1,25 +1,57 @@
 <div class="row">
   <div class="col">
+    <div class="mb-1">
+      <ng2-adsense></ng2-adsense>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
     <div class="bg-faded">
-      <div class="media">
-        <img class="d-flex m-2" [src]="avatar" alt="Avatar" height="70" width="70">
-        <div class="media-body mt-2">
-          <h2 class="">{{nickname}}</h2> Overview
+      <div class="row">
+        <div class="col-lg-7">
+          <img class="m-2 float-left" [src]="avatar" alt="Avatar" height="70" width="70">
+          <h1 class="mt-2">{{nickname}}</h1>
+          <div class="text-muted">Overview</div>
+        </div>
+        <div class="col-lg-5">
+          <div class="row m-2">
+            <div class="col">
+              <h6>{{ lastMatch || 'Loading...' }}</h6>
+              <div class="text-muted">Last Match</div>
+            </div>
+            <div class="col">
+              <h6>
+                <span class="text-success">{{ wins | number }}</span>
+                -
+                <span class="text-danger">{{ losses | number }}</span>
+              </h6>
+              <div class="text-muted">Record</div>
+            </div>
+            <div class="col">
+              <h6>{{ winPercent }}%</h6>
+              <div class="text-muted">Win Rate</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
     <ul class="nav bg-darker">
       <li class="nav-item">
-        <a class="nav-link active" href="#">Season</a>
+        <a class="nav-link active" href="#">Overview</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Ranked</a>
+        <a class="nav-link" href="#">Ranked</a>
       </li>
     </ul>
   </div>
 </div>
-
-
 
 <div class="row" *ngIf="!matches && !error">
   <div class="col text-center">
