@@ -1,8 +1,26 @@
-<div class="row text-center">
+<div class="row">
   <div class="col">
-    <h1>Player: {{nickname}}</h1>
+    <div class="bg-faded">
+      <div class="media">
+        <img class="d-flex m-2" [src]="avatar" alt="Avatar" height="70" width="70">
+        <div class="media-body mt-2">
+          <h2 class="">{{nickname}}</h2> Overview
+        </div>
+      </div>
+    </div>
+    <ul class="nav bg-darker">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Season</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Ranked</a>
+      </li>
+    </ul>
   </div>
 </div>
+
+
+
 <div class="row" *ngIf="!matches && !error">
   <div class="col text-center">
     Loading..

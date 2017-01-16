@@ -16,4 +16,11 @@ export class Api {
       .map(res => res.json())
       .toPromise();
   }
+  getAvatar(accountId: number): Promise<string> {
+    const url = `${this.url}/avatar/${accountId}`;
+    return this.http
+      .get(url)
+      .map(res => res.text())
+      .toPromise();
+  }
 }

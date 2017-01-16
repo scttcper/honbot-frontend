@@ -3,3 +3,7 @@
 // customizations to _variables.scss
 // $font-size-base: 12px;
 @import 'node_modules/bootstrap/scss/bootstrap';
+
+.bg-darker {
+  background-color: darken($body-bg, 6%);
+}
