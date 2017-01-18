@@ -3,7 +3,7 @@
 $brand-primary: #228B22;
 $white:  #fff;
 $black:  #000;
-$red:    #d9534f;
+$red:    #DB504A;
 $orange: #f0ad4e;
 $yellow: #ffd500;
 $green:  #228B22;
@@ -95,4 +95,31 @@ $grid-gutter-widths: (
 
 .bg-darker {
   background-color: darken($body-bg, 7%);
+}
+
+
+.bar {
+    height: 4px;
+    margin-top: 3px;
+    width: 98%;
+}
+.bar .segment.segment-kill, .bar .segment.segment-damage, .bar .segment.segment-physical {
+    background: #EA030E;
+}
+.bar .segment {
+    background: white;
+    content: ".";
+    display: inline-block;
+    height: 4px;
+    text-indent: -2000px;
+    vertical-align: top;
+}
+.bar .segment.segment-death, .bar .segment.segment-dn {
+    background: #979797;
+}
+.bar .segment.segment-win, .bar .segment.segment-assist, .bar .segment.segment-healing, .bar .segment.segment-lh {
+    background: #A9CF54;
+}
+.bar .segment.segment-duration {
+  background: $brand-info;
 }

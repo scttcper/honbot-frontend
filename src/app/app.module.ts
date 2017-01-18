@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
@@ -13,6 +14,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { PlayerComponent } from './player/player.component';
+import { Bar } from './bar/bar.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -24,12 +26,14 @@ export const routes: Routes = [
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    PlayerComponent
+    PlayerComponent,
+    Bar,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    CommonModule,
     RouterModule.forRoot(routes),
     NgbModule.forRoot(),
     Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),

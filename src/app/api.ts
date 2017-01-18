@@ -16,8 +16,15 @@ export class Api {
       .map(res => res.json())
       .toPromise();
   }
+  getPlayerMatches(nickname: string): Promise<any[]> {
+    const url = `${this.url}/playerMatches/${nickname}`;
+    return this.http
+      .get(url)
+      .map(res => res.json())
+      .toPromise();
+  }
   getAvatar(accountId: number): Promise<string> {
-    const url = `${this.url}/avatar/${accountId}`;
+    const url = `https://hon-avatar.now.sh/${accountId}`;
     return this.http
       .get(url)
       .map(res => res.text())
