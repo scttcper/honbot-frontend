@@ -79,7 +79,6 @@ export class PlayerComponent implements OnInit, OnDestroy {
     }
     this.latestMatches = this.playerMatches.slice(0, 10);
     this.maxLength = _.maxBy(this.latestMatches, _.property('length')).length;
-    console.log(this.maxLength)
     this.winPercent = Math.round((this.wins / this.playerMatches.length) * 10000) / 100;
     this.lastMatch = this.playerMatches[0].fromNow;
     this.api
