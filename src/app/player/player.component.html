@@ -46,9 +46,9 @@
       <li class="nav-item">
         <a class="nav-link active" href="#">Overview</a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" href="#">Matches</a>
-      </li>
+      </li> -->
     </ul>
   </div>
 </div>
@@ -74,14 +74,17 @@
         </tr>
         <tr *ngFor="let m of latestMatches">
           <td>
-            <img class="m-1" width="40" src="//heroesofnewerth.com/images/heroes/{{m.hero_id}}/icon_128.jpg">
+            <img width="50" src="//heroesofnewerth.com/images/heroes/{{m.hero_id}}/icon_128.jpg">
           </td>
           <td>
             <div *ngIf="m.win" class="text-success"><strong>Won Match</strong></div>
             <div *ngIf="!m.win" class="text-danger"><strong>Lost Match</strong></div>
             {{ m.fromNow }}
           </td>
-          <td>Otto</td>
+          <td>
+            <span *ngIf="m.isSeason">Season 1</span>
+            <span *ngIf="!m.isSeason">Not Season</span>
+          </td>
           <td>
             {{ m.duration }}
             <bar [value]="m.length" [max]="maxLength"></bar>

@@ -5,6 +5,7 @@ import * as moment from 'moment';
 import * as _ from 'lodash';
 
 import { Api } from '../api';
+import { isSeason } from '../util';
 
 const DEFAULT_AVATAR = 'https://s3.amazonaws.com/naeu-icb2/icons/default/account/default.png';
 
@@ -38,6 +39,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.sub = this.route.params.subscribe((params) => {
       this.matches = [];
+      this.latestMatches = [];
       this.loadingMatches = true;
       this.avatar = DEFAULT_AVATAR;
       this.nickname = params['nickname'];
@@ -68,6 +70,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
           n.version = m.version;
           n.c_state = m.c_state;
           n.map = m.map;
+          n.isSeason = isSeason(m);
           this.playerMatches.push(n);
           return;
         }
