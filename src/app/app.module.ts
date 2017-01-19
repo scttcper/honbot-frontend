@@ -15,6 +15,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { PlayerComponent } from './player/player.component';
 import { Bar } from './bar/bar.component';
+import { MatchComponent } from './match/match.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -28,6 +29,7 @@ export const routes: Routes = [
     HomeComponent,
     PlayerComponent,
     Bar,
+    MatchComponent,
   ],
   imports: [
     BrowserModule,
