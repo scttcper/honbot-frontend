@@ -8,13 +8,17 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   search = '';
+  match = '';
   constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
-  onSubmit() {
+  goPlayer() {
     this.router.navigate(['/player', this.search]);
+  }
+  goMatch() {
+    this.router.navigate(['/player', this.match]);
   }
 
 }

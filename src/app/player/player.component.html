@@ -77,8 +77,12 @@
             <img width="50" src="//heroesofnewerth.com/images/heroes/{{m.hero_id}}/icon_128.jpg">
           </td>
           <td>
-            <div *ngIf="m.win" class="text-success"><strong>Won Match</strong></div>
-            <div *ngIf="!m.win" class="text-danger"><strong>Lost Match</strong></div>
+            <div>
+              <a [routerLink]="['/match', m.match_id]">
+                <strong *ngIf="m.win" class="text-success">Won Match</strong>
+                <strong *ngIf="!m.win" class="text-danger">Lost Match</strong>
+              </a>
+            </div>
             {{ m.fromNow }}
           </td>
           <td>

@@ -30,4 +30,11 @@ export class Api {
       .map(res => res.text())
       .toPromise();
   }
+  getMatch(matchId: string): Promise<string> {
+    const url = `${this.url}/match/${matchId}`;
+    return this.http
+      .get(url)
+      .map(res => res.json())
+      .toPromise();
+  }
 }

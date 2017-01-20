@@ -20,6 +20,7 @@ import { MatchComponent } from './match/match.component';
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'player/:nickname', component: PlayerComponent },
+  { path: 'match/:matchId', component: MatchComponent },
 ];
 
 @NgModule({
@@ -41,7 +42,7 @@ export const routes: Routes = [
     Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),
     AdsenseModule.forRoot({
       adClient: 'ca-pub-7640562161899788',
-      adSlot: 7259870550,
+      adSlot: 2930227358,
     }),
   ],
   providers: [Api],

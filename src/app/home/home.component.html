@@ -1,6 +1,21 @@
-<h1>honbot</h1>
-<p>Demo hon 4 stats</p>
-<form class="form-inline my-2 my-lg-0" (ngSubmit)="onSubmit()">
-  <input [(ngModel)]="search" name="search" class="form-control mr-sm-2" type="text" placeholder="HoN Username">
-  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Go</button>
-</form>
+<div class="row">
+  <div class="col text-center">
+    <h1>honbot</h1>
+
+  <div class="row justify-content-center">
+    <div class="col-sm-12 col-md-10 col-lg-7 col-xl-6">
+      <form class="input-group p-2" (ngSubmit)="goPlayer()">
+        <input [(ngModel)]="search" name="search" type="text" class="form-control" placeholder="HoN Username">
+        <span class="input-group-btn">
+          <button class="btn btn-secondary" type="button">Go</button>
+        </span>
+      </form>
+      <form class="input-group p-2" (ngSubmit)="goMatch()">
+        <input [(ngModel)]="match" name="match" type="text" class="form-control" placeholder="Match ID">
+        <span class="input-group-btn">
+          <button class="btn btn-secondary" type="button">Go</button>
+        </span>
+      </form>
+    </div>
+  </div>
+</div>

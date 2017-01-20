@@ -40,6 +40,10 @@ export class PlayerComponent implements OnInit, OnDestroy {
     this.sub = this.route.params.subscribe((params) => {
       this.matches = [];
       this.latestMatches = [];
+      this.playerMatches = [];
+      this.wins = 0;
+      this.losses = 0;
+      this.winPercent = 0;
       this.loadingMatches = true;
       this.avatar = DEFAULT_AVATAR;
       this.nickname = params['nickname'];

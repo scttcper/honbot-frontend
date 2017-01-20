@@ -39,7 +39,7 @@
     "@types/lodash": "^4.14.50",
     "@types/moment": "^2.13.0",
     "@types/node": "^7.0.0",
-    "angular-cli": "1.0.0-beta.25.5",
+    "angular-cli": "1.0.0-beta.26",
     "codelyzer": "~2.0.0-beta.4",
     "jasmine-core": "2.5.2",
     "jasmine-spec-reporter": "3.2.0",
