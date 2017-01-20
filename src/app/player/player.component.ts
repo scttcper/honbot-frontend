@@ -5,7 +5,7 @@ import * as moment from 'moment';
 import * as _ from 'lodash';
 
 import { Api } from '../api';
-import { isSeason } from '../util';
+import { getLobby } from '../util';
 
 const DEFAULT_AVATAR = 'https://s3.amazonaws.com/naeu-icb2/icons/default/account/default.png';
 
@@ -74,7 +74,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
           n.version = m.version;
           n.c_state = m.c_state;
           n.map = m.map;
-          n.isSeason = isSeason(m);
+          n.lobby = getLobby(m);
           this.playerMatches.push(n);
           return;
         }

@@ -85,10 +85,7 @@
             </div>
             {{ m.fromNow }}
           </td>
-          <td>
-            <span *ngIf="m.isSeason">Season 1</span>
-            <span *ngIf="!m.isSeason">Not Season</span>
-          </td>
+          <td>{{ m.lobby }}</td>
           <td>
             {{ m.duration }}
             <bar [value]="m.length" [max]="maxLength"></bar>
