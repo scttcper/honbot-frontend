@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  backendUrl: '//test.honbot.com',
+  backendUrl: '//api.honbot.com',
 };
