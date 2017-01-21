@@ -81,7 +81,7 @@
       <tbody>
         <tr *ngFor="let p of team" class="player-{{p.position + 1}}">
           <th scope="row">
-            <img width="35" height="35" src="https://heroesofnewerth.com/images/heroes/{{p.hero_id}}/icon_128.jpg">
+            <img width="35" height="35" src="https://www.heroesofnewerth.com/images/heroes/{{p.hero_id}}/icon_128.jpg">
             <a [routerLink]="['/player', p.nickname]">{{p.nickname}}</a>
           </th>
           <td>
