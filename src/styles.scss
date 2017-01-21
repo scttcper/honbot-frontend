@@ -19,13 +19,14 @@ $grid-gutter-widths: (
   lg: $grid-gutter-width-base,
   xl: $grid-gutter-width-base
 );
-// $font-size-base: 12px;
-// $container-max-widths: (
-//   sm: 540px,
-//   md: 720px,
-//   lg: 960px,
-//   xl: 1400px
-// );
+$font-size-base: .8rem;
+// $table-bg: lightgrey;
+$container-max-widths: (
+  sm: 540px,
+  md: 700px,
+  lg: 992px,
+  xl: 1200px
+);
 
 @import "node_modules/bootstrap/scss/custom";
 @import "node_modules/bootstrap/scss/variables";
@@ -91,63 +92,39 @@ $player-10: #562507;
 
 .player-1 {
   border-left: $player-1 2px solid;
-  a {
-    color: $player-1;
-  }
 }
 .player-2 {
   border-left: $player-2 2px solid;
-  a {
-    color: $player-2;
-  }
 }
 .player-3 {
   border-left: $player-3 2px solid;
-  a {
-    color: $player-3;
-  }
 }
 .player-4 {
   border-left: $player-4 2px solid;
-  a {
-    color: $player-4;
-  }
 }
 .player-5 {
   border-left: $player-5 2px solid;
-  a {
-    color: $player-5;
-  }
 }
 .player-6 {
   border-left: $player-6 2px solid;
-  a {
-    color: $player-6;
-  }
 }
 .player-7 {
   border-left: $player-7 2px solid;
-  a {
-    color: $player-7;
-  }
 }
 .player-8 {
   border-left: $player-8 2px solid;
-  a {
-    color: $player-8;
-  }
 }
 .player-9 {
   border-left: $player-9 2px solid;
-  a {
-    color: $player-9;
-  }
 }
 .player-10 {
   border-left: $player-10 2px solid;
-  a {
-    color: $player-10;
-  }
+}
+.Hellbourne {
+  color: $brand-danger;
+}
+.Legion {
+  color: $brand-success;
 }
 
 .navbar-brand > span {

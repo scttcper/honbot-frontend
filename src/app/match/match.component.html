@@ -1,10 +1,10 @@
-<div class="row" *ngIf="match">
+<div class="row mb-2" *ngIf="match">
   <div class="col">
     <div class="bg-faded">
       <div class="row">
         <div class="col-md-6">
           <img class="m-2 float-left" src="/assets/img/maps/{{match.map}}.jpg" alt="Avatar" height="70" width="70">
-          <h2 class="mt-2">Match {{matchId}}</h2>
+          <h3 class="mt-2">Match {{matchId}}</h3>
           <div class="text-muted">Overview</div>
         </div>
         <div class="col-md-6">
@@ -33,30 +33,64 @@
 </div>
 
 
-<div class="row" *ngIf="match">
-  <div class="col">
-    <table class="table table-sm" *ngFor="let team of [team1, team2]">
+<div class="row ">
+  <div class="col text-center">
+    <h4 class="{{teamNames[winner]}}">{{ teamNames[winner] }} Wins</h4>
+  </div>
+</div>
+
+<div class="row mb-2">
+  <div class="col text-center">
+    <h4>
+      <span class="mr-2 Legion">{{ teamTotals[0].kills }}</span>
+      <small class="text-muted">{{ match.duration }}</small>
+      <span class="ml-2 Hellbourne">{{ teamTotals[1].kills }}</span>
+    </h4>
+  </div>
+</div>
+
+<div class="row" *ngFor="let team of [team1, team2]; let i = index;">
+  <div class="col table-responsive">
+    <table class="table table-sm table-striped" style="min-width: 600px">
       <thead>
         <tr>
-          <th>Player</th>
-          <th>K/D/A</th>
-          <th>Items</th>
-          <th>Username</th>
+          <th width="18%">Player</th>
+          <th width="220">Items</th>
+          <th width="1%">K</th>
+          <th width="1%">D</th>
+          <th width="1%">A</th>
+          <th>KDR</th>
+          <th>CK</th>
+          <th>CD</th>
+          <th>GPM</th>
+          <th>XPM</th>
+          <th>APM</th>
+          <th>W</th>
+          <th>HD</th>
+          <th>TD</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let p of team" class="player-{{p.position + 1}}">
           <th scope="row">
-            <img width="40" src="//heroesofnewerth.com/images/heroes/{{p.hero_id}}/icon_128.jpg">
+            <img width="35" height="35" src="//heroesofnewerth.com/images/heroes/{{p.hero_id}}/icon_128.jpg">
             <a [routerLink]="['/player', p.nickname]">{{p.nickname}}</a>
           </th>
-          <td>{{p.kills}}/{{p.deaths}}/{{p.assists}}</td>
           <td>
-            <span *ngFor="let i of p.items">{{ i }}</span>
-            <img *ngFor="let i of p.items" src="/assets/img/items/{{ i }}.jpg">
+            <img width="35" height="35" *ngFor="let i of p.items" src="/assets/img/items/{{ i }}.jpg">
           </td>
-          <td>Otto</td>
-          <td>@mdo</td>
+          <td>{{p.kills}}</td>
+          <td>{{p.deaths}}</td>
+          <td>{{p.assists}}</td>
+          <td>{{p.kdr | number:'1.0-2'}}</td>
+          <td>{{p.cs}}</td>
+          <td>{{p.denies}}</td>
+          <td>{{p.gpm}}</td>
+          <td>{{p.xpm | number:'1.0-0'}}</td>
+          <td>{{p.apm | number:'1.0-0'}}</td>
+          <td>{{p.wards}}</td>
+          <td>{{p.herodmg}}</td>
+          <td>{{p.bdmg}}</td>
         </tr>
       </tbody>
     </table>
