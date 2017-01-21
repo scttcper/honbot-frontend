@@ -15,13 +15,13 @@
     <form class="input-group p-2" (ngSubmit)="goPlayer()">
       <input [(ngModel)]="search" name="search" type="text" class="form-control" placeholder="HoN Username">
       <span class="input-group-btn">
-        <button class="btn btn-secondary" type="button">Go</button>
+        <button class="btn btn-secondary" type="submit">Go</button>
       </span>
     </form>
     <form class="input-group p-2" (ngSubmit)="goMatch()">
       <input [(ngModel)]="match" name="match" type="text" class="form-control" placeholder="Match ID">
       <span class="input-group-btn">
-        <button class="btn btn-secondary" type="button">Go</button>
+        <button class="btn btn-secondary" type="submit">Go</button>
       </span>
     </form>
   </div>
