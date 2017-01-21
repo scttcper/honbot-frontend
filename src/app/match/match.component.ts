@@ -45,7 +45,7 @@ export class MatchComponent implements OnInit {
     this.matchId = this.route.snapshot.params['matchId'];
     this.api
       .getMatch(this.matchId)
-      .then((m) => this.setupMatch(m));
+      .subscribe((m) => this.setupMatch(m));
   }
   setupMatch(match: any) {
     match.duration = new Date(match.length * 1000).toISOString().substr(11, 8);
@@ -65,7 +65,6 @@ export class MatchComponent implements OnInit {
     }
     this.winner = Number(this.teamTotals[0].win < this.teamTotals[1].win);
     this.match = match;
-    console.log(this.match)
   }
 
 
