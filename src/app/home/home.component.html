@@ -1,21 +1,34 @@
+<div class="row justify-content-center">
+  <div class="col-sm-12 col-md-10 col-lg-7 col-xl-5 mb-4">
+    <ng2-adsense></ng2-adsense>
+  </div>
+</div>
+
 <div class="row">
   <div class="col text-center">
     <h1>honbot</h1>
+  </div>
+</div>
 
-  <div class="row justify-content-center">
-    <div class="col-sm-12 col-md-10 col-lg-7 col-xl-6">
-      <form class="input-group p-2" (ngSubmit)="goPlayer()">
-        <input [(ngModel)]="search" name="search" type="text" class="form-control" placeholder="HoN Username">
-        <span class="input-group-btn">
-          <button class="btn btn-secondary" type="button">Go</button>
-        </span>
-      </form>
-      <form class="input-group p-2" (ngSubmit)="goMatch()">
-        <input [(ngModel)]="match" name="match" type="text" class="form-control" placeholder="Match ID">
-        <span class="input-group-btn">
-          <button class="btn btn-secondary" type="button">Go</button>
-        </span>
-      </form>
-    </div>
+<div class="row justify-content-center">
+  <div class="col-sm-12 col-md-10 col-lg-7 col-xl-5 mb-4">
+    <form class="input-group p-2" (ngSubmit)="goPlayer()">
+      <input [(ngModel)]="search" name="search" type="text" class="form-control" placeholder="HoN Username">
+      <span class="input-group-btn">
+        <button class="btn btn-secondary" type="button">Go</button>
+      </span>
+    </form>
+    <form class="input-group p-2" (ngSubmit)="goMatch()">
+      <input [(ngModel)]="match" name="match" type="text" class="form-control" placeholder="Match ID">
+      <span class="input-group-btn">
+        <button class="btn btn-secondary" type="button">Go</button>
+      </span>
+    </form>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-sm-12 col-md-10 col-lg-7 col-xl-5">
+    <ng2-adsense></ng2-adsense>
   </div>
 </div>

@@ -1,4 +1,4 @@
-export function getLobby(match: any): string {
+export function getMode(match: any): string {
   if (match.map === 'midwars') {
     return 'Mid Wars';
   }

@@ -1,29 +1,37 @@
+<div class="row">
+  <div class="col">
+    <div class="mb-1">
+      <ng2-adsense></ng2-adsense>
+    </div>
+  </div>
+</div>
+
 <div class="row mb-2" *ngIf="match">
   <div class="col">
     <div class="bg-faded">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-lg-6">
           <img class="m-2 float-left" src="/assets/img/maps/{{match.map}}.jpg" alt="Avatar" height="70" width="70">
           <h3 class="mt-2">Match {{matchId}}</h3>
           <div class="text-muted">Overview</div>
         </div>
-        <div class="col-md-6">
-          <div class="float-right">
+        <div class="col-lg-6">
+          <div class="float-lg-right">
             <div class="d-inline-block m-3">
-              <h6>{{ lobby }}</h6>
-              <div class="text-muted">Lobby</div>
+              <h6>{{ match.mode }}</h6>
+              <div class="text-muted">Game Mode</div>
             </div>
             <div class="d-inline-block m-3">
-              <h6>
-                <span class="text-success">{{ wins | number }}</span>
-                -
-                <span class="text-danger">{{ losses | number }}</span>
-              </h6>
-              <div class="text-muted">Record</div>
+              <h6>{{ match.duration }}</h6>
+              <div class="text-muted">Duration</div>
             </div>
             <div class="d-inline-block m-3">
-              <h6>{{ winPercent }}%</h6>
-              <div class="text-muted">Win Rate</div>
+              <h6>{{ match.fromNow }}</h6>
+              <div class="text-muted">Date Played</div>
+            </div>
+            <div class="d-inline-block m-3">
+              <h6>{{ match.version }}</h6>
+              <div class="text-muted">Version</div>
             </div>
           </div>
         </div>
@@ -65,9 +73,9 @@
           <th>GPM</th>
           <th>XPM</th>
           <th>APM</th>
-          <th>W</th>
-          <th>HD</th>
-          <th>TD</th>
+          <th>Wards</th>
+          <!-- <th>HD</th> -->
+          <!-- <th>TD</th> -->
         </tr>
       </thead>
       <tbody>
@@ -79,20 +87,40 @@
           <td>
             <img width="35" height="35" *ngFor="let i of p.items" src="/assets/img/items/{{ i }}.jpg">
           </td>
-          <td>{{p.kills}}</td>
-          <td>{{p.deaths}}</td>
-          <td>{{p.assists}}</td>
+          <td class="text-center">{{p.kills}}</td>
+          <td class="text-center">{{p.deaths}}</td>
+          <td class="text-center">{{p.assists}}</td>
           <td>{{p.kdr | number:'1.0-2'}}</td>
           <td>{{p.cs}}</td>
           <td>{{p.denies}}</td>
-          <td>{{p.gpm}}</td>
+          <td>{{p.gpm | number:'1.0-0'}}</td>
           <td>{{p.xpm | number:'1.0-0'}}</td>
           <td>{{p.apm | number:'1.0-0'}}</td>
           <td>{{p.wards}}</td>
-          <td>{{p.herodmg}}</td>
-          <td>{{p.bdmg}}</td>
+          <!-- <td>{{p.herodmg}}</td> -->
+          <!-- <td>{{p.bdmg}}</td> -->
+        </tr>
+        <tr>
+          <th scope="row"><h6>Total</h6></th>
+          <td></td>
+          <td>{{teamTotals[i].kills}}</td>
+          <td>{{teamTotals[i].deaths}}</td>
+          <td>{{teamTotals[i].assists}}</td>
+          <td></td>
+          <td>{{teamTotals[i].cs}}</td>
+          <td>{{teamTotals[i].denies}}</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>{{teamTotals[i].wards}}</td>
         </tr>
       </tbody>
     </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <ng2-adsense></ng2-adsense>
   </div>
 </div>
