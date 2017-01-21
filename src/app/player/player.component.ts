@@ -50,8 +50,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
       this.lowercaseNickname = params['nickname'].toLowerCase();
       this.api
         .getPlayerMatches(this.nickname)
-        .then((res: any[]) => this.useMatches(res))
-        .catch((err) => this.error = err);
+        .subscribe((res) => this.useMatches(res));
     });
   }
   ngOnDestroy() {
@@ -90,7 +89,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
     this.lastMatch = this.playerMatches[0].fromNow;
     this.api
       .getAvatar(this.playerMatches[0].account_id)
-      .then((res) => this.avatar = res);
+      .subscribe((res) => this.avatar = res);
   }
 
 }
