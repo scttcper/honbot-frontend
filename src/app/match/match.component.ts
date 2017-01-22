@@ -35,6 +35,7 @@ export class MatchComponent implements OnInit {
   teamNames = ['Legion', 'Hellbourne'];
   winner: number;
   teamTotals: any = [{}, {}];
+  matchError = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -43,9 +44,12 @@ export class MatchComponent implements OnInit {
 
   ngOnInit() {
     this.matchId = this.route.snapshot.params['matchId'];
-    this.api
+    this.match = this.api
       .getMatch(this.matchId)
-      .subscribe((m) => this.setupMatch(m));
+      .subscribe(
+        (m) => this.setupMatch(m),
+        (err) => this.matchError = true,
+      );
   }
   setupMatch(match: any) {
     match.duration = new Date(match.length * 1000).toISOString().substr(11, 8);

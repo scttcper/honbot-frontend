@@ -16,6 +16,7 @@ import { HomeComponent } from './home/home.component';
 import { PlayerComponent } from './player/player.component';
 import { Bar } from './bar/bar.component';
 import { MatchComponent } from './match/match.component';
+import { BackComponent } from './back/back.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -31,6 +32,7 @@ export const routes: Routes = [
     PlayerComponent,
     Bar,
     MatchComponent,
+    BackComponent,
   ],
   imports: [
     BrowserModule,
