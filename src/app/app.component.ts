@@ -1,10 +1,15 @@
 import { Component } from '@angular/core';
+import { Angulartics2GoogleAnalytics } from 'angulartics2';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: `
+  <hb-navbar></hb-navbar>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+  `,
 })
 export class AppComponent {
-  title = 'app works!';
+  constructor(angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics) {}
 }
