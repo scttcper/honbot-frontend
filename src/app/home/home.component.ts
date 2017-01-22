@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/player', this.search]);
   }
   goMatch() {
-    this.router.navigate(['/player', this.match]);
+    this.router.navigate(['/match', this.match]);
   }
 
 }
