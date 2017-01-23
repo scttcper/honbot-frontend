@@ -23,3 +23,23 @@ export function getMode(match: any): string {
   }
   return 'Unknown';
 }
+
+export function getSkillBracket(averageScore: number) {
+  if (averageScore >= 31) {
+    return 'Very High Skill';
+  }
+  if (averageScore >= 28) {
+    return 'High Skill';
+  }
+  return 'Normal Skill';
+}
+
+export function getQuality(quailty: number) {
+  if (quailty >= .7) {
+    return 'Very High';
+  }
+  if (quailty >= .6) {
+    return 'High';
+  }
+  return 'Normal';
+}

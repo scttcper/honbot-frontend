@@ -18,13 +18,21 @@
     <div class="col">
       <div class="bg-faded">
         <div class="row">
-          <div class="col-lg-6">
+          <div class="col-lg-4">
             <img class="m-2 float-left" src="/assets/img/maps/{{match.map || 'caldavar'}}.jpg" alt="map thumbnail" height="70" width="70">
-            <h3 class="mt-2">Match {{matchId}}</h3>
+            <h4 class="mt-2">Match {{matchId}}</h4>
             <div class="text-muted">Overview</div>
           </div>
-          <div class="col-lg-6">
+          <div class="col-lg-8">
             <div class="float-lg-right">
+              <div class="d-inline-block m-3" *ngIf="skillBracket">
+                <h6>{{ skillBracket }}</h6>
+                <div class="text-muted">Skill Bracket</div>
+              </div>
+              <div class="d-inline-block m-3" *ngIf="skillBracket">
+                <h6>{{ quality }}</h6>
+                <div class="text-muted">Team Balance</div>
+              </div>
               <div class="d-inline-block m-3">
                 <h6>{{ match.mode }}</h6>
                 <div class="text-muted">Game Mode</div>

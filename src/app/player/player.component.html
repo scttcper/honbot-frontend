@@ -44,10 +44,10 @@
   <div class="col">
     <ul class="nav bg-darker">
       <li class="nav-item">
-        <a class="nav-link active" href="#">Overview</a>
+        <a class="nav-link active">Overview</a>
       </li>
       <!-- <li class="nav-item">
-        <a class="nav-link" href="#">Matches</a>
+        <a class="nav-link">Matches</a>
       </li> -->
     </ul>
   </div>
@@ -85,7 +85,12 @@
             </div>
             {{ m.fromNow }}
           </td>
-          <td>{{ m.mode }}</td>
+          <td>
+            <div>{{ m.mode }}</div>
+            <!-- <span *ngIf="m.matchSkill | async">
+              {{ (m.matchSkill? | async).oddsTeam1Win }}
+            </span> -->
+          </td>
           <td>
             {{ m.duration }}
             <bar [value]="m.length" [max]="maxLength"></bar>

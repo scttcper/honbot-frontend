@@ -4,7 +4,7 @@ import * as _ from 'lodash';
 import * as moment from 'moment';
 
 import { Api } from '../api';
-import { getMode } from '../util';
+import { getMode, getSkillBracket, getQuality } from '../util';
 
 const needsTotal = [
   'kills',
@@ -36,6 +36,8 @@ export class MatchComponent implements OnInit {
   winner: number;
   teamTotals: any = [{}, {}];
   matchError = false;
+  skillBracket: string;
+  quality: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -44,11 +46,17 @@ export class MatchComponent implements OnInit {
 
   ngOnInit() {
     this.matchId = this.route.snapshot.params['matchId'];
-    this.match = this.api
+    this.api
       .getMatch(this.matchId)
       .subscribe(
         (m) => this.setupMatch(m),
         (err) => this.matchError = true,
+      );
+    this.api
+      .getMatchSkill(this.matchId)
+      .subscribe(
+        (m) => this.setupSkill(m),
+        (err) => console.log('skill not found'),
       );
   }
   setupMatch(match: any) {
@@ -69,6 +77,10 @@ export class MatchComponent implements OnInit {
     }
     this.winner = Number(this.teamTotals[0].win < this.teamTotals[1].win);
     this.match = match;
+  }
+  setupSkill(info: any) {
+    this.skillBracket = getSkillBracket(info.averageScore);
+    this.quality = getQuality(info.quality);
   }
 
 

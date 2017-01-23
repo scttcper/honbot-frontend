@@ -63,7 +63,6 @@ export class PlayerComponent implements OnInit, OnDestroy {
         if (n.lowercaseNickname === this.lowercaseNickname) {
           this.wins += n.win ? 1 : 0;
           this.losses += n.win ? 0 : 1;
-          n.match_id = m.match_id;
           n.server_id = m.server_id;
           n.setup = m.setup;
           n.date = m.date;
