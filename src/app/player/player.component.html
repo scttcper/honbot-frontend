@@ -6,17 +6,17 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row statsbar">
   <div class="col">
-    <div class="bg-faded">
+    <div class="bg-lighter">
       <div class="row">
         <div class="col-md-6">
           <img class="m-2 float-left" [src]="avatar" alt="Avatar" height="70" width="70">
-          <h3 class="mt-2">{{nickname}}</h3>
+          <h4 class="mt-2">{{nickname}}</h4>
           <div class="text-muted">Overview</div>
         </div>
         <div class="col-md-6">
-          <div class="float-right">
+          <div class="float-right mt-1">
             <div class="d-inline-block m-3">
               <h6>{{ lastMatch || 'Loading...' }}</h6>
               <div class="text-muted">Last Match</div>

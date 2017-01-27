@@ -1,0 +1,59 @@
+$brand-primary: #e5e5e5;
+// $brand-success: $green;
+// $brand-info: $teal;
+// $brand-warning: $orange;
+// $brand-danger: $red;
+$brand-inverse: #000;
+
+
+$white:  #fff;
+$black:  #000;
+$red:    #DB504A;
+$orange: #f0ad4e;
+$yellow: #ffd500;
+$green:  #44c141;
+$blue:   #0275d8;
+$teal:   #5bc0de;
+$pink:   #ff5b77;
+$purple: #613d7c;
+$grid-gutter-width-base: 30px;
+$grid-gutter-widths: (
+  xs: 10px,
+  sm: 10px,
+  md: 20px,
+  lg: $grid-gutter-width-base,
+  xl: $grid-gutter-width-base
+);
+$font-size-base: .9rem;
+// $table-bg: lightgrey;
+$container-max-widths: (
+  sm: 540px,
+  md: 700px,
+  lg: 992px,
+  xl: 1200px
+);
+$body-bg: #222b34;
+$body-color: #e5e5e5;
+$text-muted: darken($body-color, 30%);
+$btn-secondary-bg: lighten($body-bg, 15%);
+$btn-secondary-color: $body-color;
+$btn-secondary-border: lighten($body-bg, 15%);
+
+$table-border-color: darken($body-bg, 3%);
+$table-sm-cell-padding: 0.1rem;
+
+// Links
+//
+// Style anchor elements.
+
+$link-color:            $body-color;
+$link-decoration:       none;
+$link-hover-color:      lighten($link-color, 1%) !default;
+
+
+// forms
+$input-bg: lighten($body-bg, 7%);
+$input-color: $body-color;
+$input-color-placeholder: $text-muted;
+$input-border-color: lighten($body-bg, 15%);
+$input-border-focus: lighten($body-bg, 25%);

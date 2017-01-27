@@ -1,34 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
+@import "custom";
 
-$brand-primary: #228B22;
-$white:  #fff;
-$black:  #000;
-$red:    #DB504A;
-$orange: #f0ad4e;
-$yellow: #ffd500;
-$green:  #228B22;
-$blue:   #0275d8;
-$teal:   #5bc0de;
-$pink:   #ff5b77;
-$purple: #613d7c;
-$grid-gutter-width-base: 30px;
-$grid-gutter-widths: (
-  xs: 10px,
-  sm: 10px,
-  md: 20px,
-  lg: $grid-gutter-width-base,
-  xl: $grid-gutter-width-base
-);
-$font-size-base: .9rem;
-// $table-bg: lightgrey;
-$container-max-widths: (
-  sm: 540px,
-  md: 700px,
-  lg: 992px,
-  xl: 1200px
-);
-
-@import "node_modules/bootstrap/scss/custom";
 @import "node_modules/bootstrap/scss/variables";
 @import "node_modules/bootstrap/scss/mixins";
 
@@ -77,6 +48,15 @@ $container-max-widths: (
 
 // import all
 // @import "node_modules/bootstrap/scss/bootstrap";
+
+.bg-lighter {
+  background-color: lighten($body-bg, 10%);
+}
+.navbar {
+  padding-top: .3em;
+  padding-bottom: .3em;
+  margin-bottom: .5em;
+}
 
 
 $player-1: #002c9f;
@@ -127,24 +107,31 @@ $player-10: #562507;
   color: $brand-success;
 }
 
-.navbar-brand > span {
-  color: $brand-primary;
-}
 .nav-link {
   color: lighten($body-color, 20%);
 }
 .nav-link:hover {
   color: $body-color;
-  background-color: darken($body-bg, 10%);
+  background-color: darken($body-bg, 6%);
 }
 .nav-item > .active {
-  background-color: darken($body-bg, 10%);
+  background-color: darken($body-bg, 6%);
   border-bottom: 1px $brand-primary solid;
   color: $body-color;
 }
-
+a > .navbar-brand {
+  color: $body-color;
+}
+.navbar-brand > span {
+  color: $brand-primary;
+}
 .bg-darker {
-  background-color: darken($body-bg, 7%);
+  background-color: darken($body-bg, 2%);
+}
+.statsbar {
+  h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0.1rem;
+  }
 }
 
 
@@ -152,24 +139,13 @@ $player-10: #562507;
   height: 4px;
   margin-top: 3px;
   width: 98%;
-}
-.bar .segment.segment-kill, .bar .segment.segment-damage, .bar .segment.segment-physical {
-    background: #EA030E;
+  // background: lighten($body-bg, 2%);
 }
 .bar .segment {
-    background: white;
+    background: lighten($body-bg, 20%);
     content: ".";
     display: inline-block;
     height: 4px;
     text-indent: -2000px;
     vertical-align: top;
-}
-.bar .segment.segment-death, .bar .segment.segment-dn {
-    background: #979797;
-}
-.bar .segment.segment-win, .bar .segment.segment-assist, .bar .segment.segment-healing, .bar .segment.segment-lh {
-    background: #A9CF54;
-}
-.bar .segment.segment-duration {
-  background: $brand-info;
 }

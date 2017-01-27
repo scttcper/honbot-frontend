@@ -3,8 +3,8 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'bar',
   template: `
-    <div class="bar bar-default">
-      <div class="segment segment-duration" [style.width.%]="value / max * 100"></div>
+    <div class="bar">
+      <div class="segment" [style.width.%]="value / max * 100"></div>
     </div>
   `,
 })
