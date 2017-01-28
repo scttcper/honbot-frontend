@@ -18,7 +18,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
   matches: any[] = [];
   playerMatches: any[] = [];
   latestMatches: any[] = [];
-  lastMatch;
+  lastMatch = '';
   wins = 0;
   losses = 0;
   winPercent = 0;
@@ -45,6 +45,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
       this.losses = 0;
       this.winPercent = 0;
       this.loadingMatches = true;
+      this.lastMatch = '';
       this.avatar = DEFAULT_AVATAR;
       this.nickname = params['nickname'];
       this.lowercaseNickname = params['nickname'].toLowerCase();

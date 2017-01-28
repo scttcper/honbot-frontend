@@ -43,11 +43,16 @@
   <div class="col">
     <ul class="nav bg-darker">
       <li class="nav-item">
-        <a class="nav-link active">Overview</a>
+        <a class="nav-link"
+          [routerLink]="['/player/', nickname]"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }">
+          Overview
+        </a>
       </li>
-      <!-- <li class="nav-item">
-        <a class="nav-link">Matches</a>
-      </li> -->
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['matches']" routerLinkActive="active">Matches</a>
+      </li>
     </ul>
   </div>
 </div>
@@ -108,3 +113,5 @@
     </div>
   </div>
 </div>
+
+<router-outlet></router-outlet>
