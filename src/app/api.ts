@@ -7,6 +7,7 @@ import { environment } from '../environments/environment';
 @Injectable()
 export class Api {
   private url: string = environment.backendUrl;
+  playerCache = {};
 
   constructor(private http: Http) { }
 
@@ -18,11 +19,16 @@ export class Api {
       .catch(this.handleError);
   }
   getPlayerMatches(nickname: string) {
-    const url = `${this.url}/playerMatches/${nickname}`;
-    return this.http
-      .get(url)
-      .map(res => res.json())
-      .catch(this.handleError);
+    if (!this.playerCache[nickname]) {
+      const url = `${this.url}/playerMatches/${nickname}`;
+      this.playerCache[nickname] = this.http
+        .get(url)
+        .map(res => res.json())
+        .catch(this.handleError)
+        .publishReplay()
+        .refCount();
+    }
+    return this.playerCache[nickname];
   }
   getAvatar(accountId: number) {
     const url = `https://hon-avatar.now.sh/${accountId}`;

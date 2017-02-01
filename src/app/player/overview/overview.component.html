@@ -1,3 +1,48 @@
-<p>
-  overview works!
-</p>
+<div class="row">
+  <div class="col-lg-8">
+    <legend class="mt-2">Latest Matches</legend>
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th>Hero</th>
+          <th>Result</th>
+          <th>Type</th>
+          <th>Duration</th>
+          <th>KDA</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="loading">
+          <td>
+            Loading...
+          </td>
+        </tr>
+        <tr *ngFor="let m of matches | slice:0:10">
+          <td>
+            <img width="40" height="40" src="https://www.heroesofnewerth.com/images/heroes/{{m.hero_id}}/icon_128.jpg">
+          </td>
+          <td>
+            <div>
+              <a [routerLink]="['/match', m.match_id]">
+                <strong *ngIf="m.win" class="text-success">Won Match</strong>
+                <strong *ngIf="!m.win" class="text-danger">Lost Match</strong>
+              </a>
+            </div>
+            {{ m.date | timeAgo }}
+          </td>
+          <td>
+            <div>{{ m.mode }}</div>
+            <!-- <span *ngIf="m.matchSkill | async">
+              {{ (m.matchSkill? | async).oddsTeam1Win }}
+            </span> -->
+          </td>
+          <td>
+            {{ m.duration }}
+            <bar [value]="m.length" [max]="maxLength"></bar>
+          </td>
+          <td>{{ m.kills }}/{{ m.deaths }}/{{ m.assists }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

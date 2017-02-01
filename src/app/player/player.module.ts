@@ -9,6 +9,7 @@ import { Bar } from '../bar/bar.component';
 import { PlayerComponent } from './player.component';
 import { OverviewComponent } from './overview/overview.component';
 import { MatchesComponent } from './matches/matches.component';
+import { TimeAgoPipe } from '../time-ago.pipe';
 
 export const routes: Routes = [{
     path: 'player/:nickname',
@@ -16,7 +17,6 @@ export const routes: Routes = [{
     children: [
       { path: '', component: OverviewComponent },
       { path: 'matches', component: MatchesComponent },
-      { path: '**', redirectTo: '', pathMatch: 'full' },
     ],
   },
 ];
@@ -27,6 +27,7 @@ export const routes: Routes = [{
     PlayerComponent,
     MatchesComponent,
     OverviewComponent,
+    TimeAgoPipe,
   ],
   imports: [
     CommonModule,

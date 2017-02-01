@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import * as _ from 'lodash';
-import * as moment from 'moment';
 
 import { Api } from '../api';
 import { getMode, getSkillBracket, getQuality } from '../util';
@@ -66,7 +65,7 @@ export class MatchComponent implements OnInit {
     this.team1 = g[1];
     this.team2 = g[2];
     match.mode = getMode(match);
-    match.fromNow = moment(match.date).fromNow();
+    // match.fromNow = moment(match.date).fromNow();
     for (const p of match.players) {
       for (const v of needsTotal) {
         if (!_.has(this.teamTotals[p.team - 1], v)) {
