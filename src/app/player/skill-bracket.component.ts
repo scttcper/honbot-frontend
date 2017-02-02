@@ -4,11 +4,11 @@ import { Api } from '../api';
 
 @Component({
   selector: 'hb-bracket',
-  template: `{{ skill | skillBracket }}`,
+  template: `{{ (skill | skillBracket) || 'Loading..' }}`,
 })
 export class SkillBracketComponent implements OnInit {
   @Input() matchId: number;
-  skill = 'Loading...';
+  skill = '';
 
   constructor(private api: Api) { }
 

@@ -63,16 +63,16 @@ $input-border-focus: lighten($body-bg, 25%);
 $pagination-color:                     $body-color;
 $pagination-bg:                        $body-bg;
 // $pagination-border-width:              $border-width !default;
-// $pagination-border-color:              #ddd !default;
+$pagination-border-color:              darken($body-bg, 10%);
 //
-// $pagination-hover-color:               $link-hover-color !default;
-// $pagination-hover-bg:                  $gray-lighter !default;
-// $pagination-hover-border:              #ddd !default;
+$pagination-hover-color:               $brand-primary;
+$pagination-hover-bg:                  lighten($body-bg, 25%);
+$pagination-hover-border:              darken($body-bg, 10%);
 //
 $pagination-active-color:              $brand-primary;
 $pagination-active-bg:                 lighten($body-bg, 25%);
-// $pagination-active-border:             $brand-primary !default;
+$pagination-active-border:             darken($body-bg, 10%);
 //
 $pagination-disabled-color:            $text-muted;
 $pagination-disabled-bg:               $body-bg;
-// $pagination-disabled-border:           #ddd !default;
+$pagination-disabled-border:           darken($body-bg, 10%);
