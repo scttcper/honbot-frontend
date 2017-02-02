@@ -29,6 +29,7 @@
     "core-js": "^2.4.1",
     "lodash": "^4.17.4",
     "ng2-adsense": "^2.0.1",
+    "ng2-pagination": "^2.0.0",
     "rxjs": "^5.1.0",
     "ts-helpers": "^1.1.2",
     "zone.js": "^0.7.6"
@@ -38,7 +39,7 @@
     "@types/jasmine": "2.5.41",
     "@types/lodash": "^4.14.52",
     "@types/node": "^7.0.4",
-    "angular-cli": "1.0.0-beta.26",
+    "angular-cli": "1.0.0-beta.28.3",
     "codelyzer": "~2.0.0-beta.4",
     "jasmine-core": "2.5.2",
     "jasmine-spec-reporter": "3.2.0",

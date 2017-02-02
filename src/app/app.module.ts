@@ -15,6 +15,7 @@ import { HomeComponent } from './home/home.component';
 import { PlayerModule } from './player/player.module';
 import { MatchComponent } from './match/match.component';
 import { BackComponent } from './back/back.component';
+import { HbUtility } from './util';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -42,6 +43,7 @@ export const routes: Routes = [
       adSlot: 2930227358,
     }),
     PlayerModule,
+    HbUtility,
   ],
   providers: [Api],
   bootstrap: [AppComponent]

@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { AdsenseModule } from 'ng2-adsense';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { Ng2PaginationModule } from 'ng2-pagination';
 
 import { Api } from '../api';
 import { Bar } from '../bar/bar.component';
 import { PlayerComponent } from './player.component';
 import { OverviewComponent } from './overview/overview.component';
 import { MatchesComponent } from './matches/matches.component';
-import { TimeAgoPipe } from '../time-ago.pipe';
+import { HbUtility } from '../util';
+import { SkillBracketComponent } from './skill-bracket.component';
 
 export const routes: Routes = [{
     path: 'player/:nickname',
@@ -27,13 +29,15 @@ export const routes: Routes = [{
     PlayerComponent,
     MatchesComponent,
     OverviewComponent,
-    TimeAgoPipe,
+    SkillBracketComponent,
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     NgbModule,
     AdsenseModule,
+    HbUtility,
+    Ng2PaginationModule,
   ],
   exports: [RouterModule],
   providers: [Api],

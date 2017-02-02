@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import * as _ from 'lodash';
 
 import { Api } from '../api';
-import { getMode, getSkillBracket, getQuality } from '../util';
 
 const needsTotal = [
   'kills',
@@ -29,8 +27,8 @@ const needsTotal = [
 export class MatchComponent implements OnInit {
   match: any = {};
   matchId: string;
-  team1: any;
-  team2: any;
+  team1 = [];
+  team2 = [];
   teamNames = ['Legion', 'Hellbourne'];
   winner: number;
   teamTotals: any = [{}, {}];
@@ -61,25 +59,24 @@ export class MatchComponent implements OnInit {
   setupMatch(match: any) {
     match.duration = new Date(match.length * 1000).toISOString().substr(11, 8);
     match.players = match.players.sort((a, b) => a.position - b.position);
-    const g = _.groupBy(match.players, _.property('team'));
-    this.team1 = g[1];
-    this.team2 = g[2];
-    match.mode = getMode(match);
     // match.fromNow = moment(match.date).fromNow();
     for (const p of match.players) {
+      const key = `team${p.team}`;
+      this[key].push(p);
+      const tnumber = p.team - 1;
       for (const v of needsTotal) {
-        if (!_.has(this.teamTotals[p.team - 1], v)) {
-          this.teamTotals[p.team - 1][v] = 0;
+        if (this.teamTotals[tnumber][v] === undefined) {
+          this.teamTotals[tnumber][v] = 0;
         }
-        this.teamTotals[p.team - 1][v] += p[v];
+        this.teamTotals[tnumber][v] += p[v];
       }
     }
     this.winner = Number(this.teamTotals[0].win < this.teamTotals[1].win);
     this.match = match;
   }
   setupSkill(info: any) {
-    this.skillBracket = getSkillBracket(info.averageScore);
-    this.quality = getQuality(info.quality);
+    // this.skillBracket = getSkillBracket(info.averageScore);
+    // this.quality = getQuality(info.quality);
   }
 
 

@@ -1,3 +1,5 @@
+import { Pipe, PipeTransform } from '@angular/core';
+
 export function getMode(match: any): string {
   if (match.map === 'midwars') {
     return 'Mid Wars';
@@ -27,6 +29,16 @@ export function getMode(match: any): string {
   return 'Unknown';
 }
 
+@Pipe({ name: 'matchMode' })
+export class MatchModePipe implements PipeTransform {
+  transform(match: any) {
+    if (!match || !match.setup || !match.map) {
+      return '';
+    }
+    return getMode(match);
+  }
+}
+
 export function getSkillBracket(averageScore: number) {
   if (averageScore >= 31) {
     return 'Very High Skill';
@@ -35,6 +47,16 @@ export function getSkillBracket(averageScore: number) {
     return 'High Skill';
   }
   return 'Normal Skill';
+}
+
+@Pipe({ name: 'skillBracket' })
+export class SkillBracketPipe implements PipeTransform {
+  transform(value: number): string {
+    if (!value) {
+      return '';
+    }
+    return getSkillBracket(value);
+  }
 }
 
 export function getQuality(quailty: number) {

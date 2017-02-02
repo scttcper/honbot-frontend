@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import * as _ from 'lodash';
 
 import { Api } from '../api';
-import { getMode } from '../util';
 
 const DEFAULT_AVATAR = 'https://s3.amazonaws.com/naeu-icb2/icons/default/account/default.png';
 
@@ -54,7 +52,6 @@ export class PlayerComponent implements OnInit {
           this.losses = res.losses;
           this.winPercent = Math.round((res.wins / (res.wins + res.losses)) * 10000) / 100;
           this.lastMatch = res.matches[0].date;
-          console.log(this.lastMatch)
           this.api
             .getAvatar(res.matches[0].account_id)
             .subscribe((a) => this.avatar = a);
