@@ -34,7 +34,7 @@
                 <div class="text-muted">Team Balance</div>
               </div>
               <div class="d-inline-block m-3">
-                <h6>{{ match.mode }}</h6>
+                <h6>{{ match | matchMode }}</h6>
                 <div class="text-muted">Game Mode</div>
               </div>
               <div class="d-inline-block m-3">
@@ -42,7 +42,7 @@
                 <div class="text-muted">Duration</div>
               </div>
               <div class="d-inline-block m-3">
-                <h6>{{ match.fromNow }}</h6>
+                <h6>{{ match.date | timeAgo }}</h6>
                 <div class="text-muted">Date Played</div>
               </div>
               <div class="d-inline-block m-3">
@@ -86,7 +86,7 @@
             <th>KDR</th>
             <th>CK</th>
             <th>CD</th>
-            <th>GPM</th>
+            <th class="gold">GPM</th>
             <th>XPM</th>
             <th>APM</th>
             <th>Wards</th>
@@ -109,7 +109,7 @@
             <td>{{p.kdr | number:'1.0-2'}}</td>
             <td>{{p.cs}}</td>
             <td>{{p.denies}}</td>
-            <td>{{p.gpm | number:'1.0-0'}}</td>
+            <td class="gold">{{p.gpm | number:'1.0-0'}}</td>
             <td>{{p.xpm | number:'1.0-0'}}</td>
             <td>{{p.apm | number:'1.0-0'}}</td>
             <td>{{p.wards}}</td>
@@ -117,7 +117,9 @@
             <td>{{p.bdmg}}</td>
           </tr>
           <tr>
-            <th scope="row"><h6>Total</h6></th>
+            <th scope="row">
+              <h6 class="mt-1">Total</h6>
+            </th>
             <td></td>
             <td>{{teamTotals[i].kills}}</td>
             <td>{{teamTotals[i].deaths}}</td>

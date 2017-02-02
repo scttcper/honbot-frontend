@@ -39,8 +39,9 @@ $btn-secondary-bg: lighten($body-bg, 15%);
 $btn-secondary-color: $body-color;
 $btn-secondary-border: lighten($body-bg, 15%);
 
-$table-border-color: darken($body-bg, 3%);
+$table-border-color: darken($body-bg, 5%);
 $table-sm-cell-padding: 0.1rem;
+$table-bg-accent: rgba($black,.1);
 
 // Links
 //
@@ -48,7 +49,7 @@ $table-sm-cell-padding: 0.1rem;
 
 $link-color:            $body-color;
 $link-decoration:       none;
-$link-hover-color:      lighten($link-color, 1%) !default;
+$link-hover-color:      lighten($link-color, 1%);
 
 
 // forms
@@ -57,3 +58,21 @@ $input-color: $body-color;
 $input-color-placeholder: $text-muted;
 $input-border-color: lighten($body-bg, 15%);
 $input-border-focus: lighten($body-bg, 25%);
+
+// Pagination
+$pagination-color:                     $body-color;
+$pagination-bg:                        $body-bg;
+// $pagination-border-width:              $border-width !default;
+// $pagination-border-color:              #ddd !default;
+//
+// $pagination-hover-color:               $link-hover-color !default;
+// $pagination-hover-bg:                  $gray-lighter !default;
+// $pagination-hover-border:              #ddd !default;
+//
+$pagination-active-color:              $brand-primary;
+$pagination-active-bg:                 lighten($body-bg, 25%);
+// $pagination-active-border:             $brand-primary !default;
+//
+$pagination-disabled-color:            $text-muted;
+$pagination-disabled-bg:               $body-bg;
+// $pagination-disabled-border:           #ddd !default;

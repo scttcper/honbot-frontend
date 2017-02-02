@@ -27,7 +27,7 @@
 @import "node_modules/bootstrap/scss/navbar";
 @import "node_modules/bootstrap/scss/card";
 // @import "node_modules/bootstrap/scss/breadcrumb";
-// @import "node_modules/bootstrap/scss/pagination";
+@import "node_modules/bootstrap/scss/pagination";
 // @import "node_modules/bootstrap/scss/badge";
 // @import "node_modules/bootstrap/scss/jumbotron";
 // @import "node_modules/bootstrap/scss/alert";
@@ -132,6 +132,12 @@ a > .navbar-brand {
   h1, h2, h3, h4, h5, h6 {
     margin-bottom: 0.1rem;
   }
+}
+a:hover {
+  cursor: pointer;
+}
+.gold {
+  color: gold;
 }
 
 

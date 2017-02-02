@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { AdsenseModule } from 'ng2-adsense';
-
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
 
@@ -13,14 +12,13 @@ import { Api } from './api';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
-import { PlayerComponent } from './player/player.component';
-import { Bar } from './bar/bar.component';
+import { PlayerModule } from './player/player.module';
 import { MatchComponent } from './match/match.component';
 import { BackComponent } from './back/back.component';
+import { HbUtility } from './util';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'player/:nickname', component: PlayerComponent },
   { path: 'match/:matchId', component: MatchComponent },
 ];
 
@@ -29,8 +27,6 @@ export const routes: Routes = [
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    PlayerComponent,
-    Bar,
     MatchComponent,
     BackComponent,
   ],
@@ -46,6 +42,8 @@ export const routes: Routes = [
       adClient: 'ca-pub-7640562161899788',
       adSlot: 2930227358,
     }),
+    PlayerModule,
+    HbUtility,
   ],
   providers: [Api],
   bootstrap: [AppComponent]
