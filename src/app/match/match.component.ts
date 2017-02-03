@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Api } from '../api';
+import { getSkillBracket, getQuality } from '../util';
 
 const needsTotal = [
   'kills',
@@ -75,8 +76,8 @@ export class MatchComponent implements OnInit {
     this.match = match;
   }
   setupSkill(info: any) {
-    // this.skillBracket = getSkillBracket(info.averageScore);
-    // this.quality = getQuality(info.quality);
+    this.skillBracket = getSkillBracket(info.averageScore);
+    this.quality = getQuality(info.quality);
   }
 
 

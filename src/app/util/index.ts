@@ -7,3 +7,5 @@ import { TimeAgoPipe } from './time-ago.pipe';
   exports: [SkillBracketPipe, MatchModePipe, TimeAgoPipe],
 })
 export class HbUtility { }
+
+export * from './util';
