@@ -71,3 +71,8 @@ export function getQuality(quailty: number) {
   }
   return 'Low';
 }
+
+export function isRanked(match: any) {
+  const mode = getMode(match);
+  return mode.startsWith('Season') || mode === 'Ranked';
+}

@@ -16,19 +16,15 @@
       </thead>
       <tbody>
         <tr *ngIf="loading">
-          <td>
-            Loading...
-          </td>
+          <td>Loading...</td>
         </tr>
         <tr *ngFor="let m of matches">
-          <td>
-            <img width="40" height="40" src="https://www.heroesofnewerth.com/images/heroes/{{m.hero_id}}/icon_128.jpg">
-          </td>
+          <td><img width="40" height="40" src="https://www.heroesofnewerth.com/images/heroes/{{m.hero_id}}/icon_128.jpg"></td>
           <td>
             <div>
               <a [routerLink]="['/match', m.match_id]">
-                <strong *ngIf="m.win" class="text-success">Won Match</strong>
-                <strong *ngIf="!m.win" class="text-danger">Lost Match</strong>
+                <span *ngIf="m.win" class="text-success">Won Match</span>
+                <span *ngIf="!m.win" class="text-danger">Lost Match</span>
               </a>
             </div>
             <small>{{ m.date | timeAgo }}</small>
@@ -36,16 +32,20 @@
           <td>
             <div>{{ m | matchMode }}</div>
             <small>
-              <hb-bracket  [matchId]="m.match_id"></hb-bracket>
+              <hb-bracket [match]="m"></hb-bracket>
             </small>
           </td>
-          <td>
-            {{ m.length / 60 | number:'1.0-0' }} Minutes
+          <td class="p-1">
+            <div class="mb-2">{{ m.length / 60 | number:'1.0-0' }} Minutes</div>
             <bar [value]="m.length" [max]="maxLength"></bar>
           </td>
-          <td>{{ m.kills }}/{{ m.deaths }}/{{ m.assists }}</td>
+          <td>
+            <div class="mt-1">{{ m.kills }}/{{ m.deaths }}/{{ m.assists }}</div>
+          </td>
         </tr>
       </tbody>
     </table>
+  </div>
+  <div class="col-lg-4">
   </div>
 </div>
