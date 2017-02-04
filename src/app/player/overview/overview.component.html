@@ -45,6 +45,50 @@
         </tr>
       </tbody>
     </table>
+
+    <legend class="mt-2">
+      Most Played Heroes <small>All Time</small>
+      <!-- <small class="float-right mt-3"><a [routerLink]="['matches']">+more</a></small> -->
+    </legend>
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th>Hero</th>
+          <th>Matches</th>
+          <th>Win %</th>
+          <th>KDA</th>
+          <th>GPM</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="loading">
+          <td>Loading...</td>
+        </tr>
+        <tr *ngFor="let h of heroes">
+          <td>
+            <img width="40" height="40" src="https://www.heroesofnewerth.com/images/heroes/{{h.hero_id}}/icon_128.jpg">
+            {{ h.lastMatch | timeAgo }}
+          </td>
+          <td class="p-1">
+            <div class="pb-1">{{ h.matches | number }}</div>
+            <bar [value]="h.matches" [max]="maxHeroes.matches"></bar>
+          </td>
+          <td class="p-1">
+            <div class="pb-1">{{ h.winPercent | number:'1.0-1' }}%</div>
+            <bar [value]="h.winPercent" [max]="maxHeroes.winPercent"></bar>
+          </td>
+          <td class="p-1">
+            <div class="pb-1">{{ h.kda | number:'1.0-2' }}</div>
+            <bar [value]="h.kda" [max]="maxHeroes.kda"></bar>
+          </td>
+          <td class="p-1">
+            <div class="pb-1">{{ h.gpm | number:'1.0-0' }}</div>
+            <bar [value]="h.gpm" [max]="maxHeroes.gpm"></bar>
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
   </div>
   <div class="col-lg-4">
   </div>
