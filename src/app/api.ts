@@ -24,9 +24,14 @@ export class Api {
       this.playerCache[nickname] = this.http
         .get(url)
         .map(res => res.json())
-        .catch(this.handleError)
+        .catch((err) => {
+          console.error(`Player: ${nickname} not found`);
+          this.playerCache[nickname] = undefined;
+          return Observable.throw(err);
+        })
         .publishReplay()
-        .refCount();
+        .refCount()
+        ;
     }
     return this.playerCache[nickname];
   }

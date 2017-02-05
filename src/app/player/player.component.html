@@ -6,7 +6,14 @@
   </div>
 </div>
 
-<div class="row statsbar">
+<div class="row m-5" *ngIf="playerError">
+  <div class="col text-center">
+    <h2>No data for {{ nickname }} Available</h2>
+    <a class="btn btn-lg btn-secondary" [routerLink]="['']">Home</a>
+  </div>
+</div>
+
+<div class="row statsbar" *ngIf="!playerError">
   <div class="col">
     <div class="bg-lighter">
       <div class="row">
@@ -39,7 +46,7 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row" *ngIf="!playerError">
   <div class="col">
     <ul class="nav bg-darker">
       <li class="nav-item">

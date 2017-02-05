@@ -24,6 +24,7 @@ export class OverviewComponent implements OnInit {
   heroes: any[];
   maxHeroes = {};
   maxLength = 0;
+  playerError = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,15 +33,18 @@ export class OverviewComponent implements OnInit {
 
   ngOnInit() {
     this.route.parent.params.subscribe((params) => {
+      this.playerError = false;
       this.loading = true;
       this.api
         .getPlayerMatches(params['nickname'])
         .subscribe((res) => {
           this.loading = false;
-          this.matches = res.matches.slice(0, 10);
+          this.matches = res.matches.slice(0, 15);
           const max = _.maxBy(this.matches, _.property('length')) || {};
           this.maxLength = max.length || 0;
           this.setupHeroes(res.matches);
+        }, () => {
+          this.playerError = true;
         });
     });
   }
