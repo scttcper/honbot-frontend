@@ -6,4 +6,8 @@ legend > small {
 }
 td {
   line-height: 1.3;
+  padding-top: 0.25rem
+}
+tr > td:first-child {
+  padding: 0;
 }

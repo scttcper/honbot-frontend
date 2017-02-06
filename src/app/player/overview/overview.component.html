@@ -20,7 +20,7 @@
         </tr>
         <tr *ngFor="let h of heroes">
           <td>
-            <img width="40" height="40" src="https://www.heroesofnewerth.com/images/heroes/{{h.hero_id}}/icon_128.jpg">
+            <img width="45" height="45" alt="hero icon" src="https://www.heroesofnewerth.com/images/heroes/{{h.hero_id}}/icon_128.jpg">
             {{ h.lastMatch | timeAgo }}
           </td>
           <td class="p-1">
@@ -63,7 +63,7 @@
           <td>Loading...</td>
         </tr>
         <tr *ngFor="let m of matches">
-          <td><img width="40" height="40" src="https://www.heroesofnewerth.com/images/heroes/{{m.hero_id}}/icon_128.jpg"></td>
+          <td><img width="45" height="45" alt="hero icon" src="https://www.heroesofnewerth.com/images/heroes/{{m.hero_id}}/icon_128.jpg"></td>
           <td>
             <div>
               <a [routerLink]="['/match', m.match_id]">
@@ -80,11 +80,11 @@
             </small>
           </td>
           <td class="p-1">
-            <div class="mb-2">{{ m.length / 60 | number:'1.0-0' }} Minutes</div>
+            <div class="pb-1">{{ m.length / 60 | number:'1.0-0' }} Minutes</div>
             <bar [value]="m.length" [max]="maxLength"></bar>
           </td>
           <td>
-            <div class="mt-1">{{ m.kills }}/{{ m.deaths }}/{{ m.assists }}</div>
+            <div>{{ m.kills }}/{{ m.deaths }}/{{ m.assists }}</div>
           </td>
         </tr>
       </tbody>
