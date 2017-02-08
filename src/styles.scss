@@ -144,14 +144,23 @@ a:hover {
 .bar {
   height: 4px;
   margin-top: 3px;
-  width: 98%;
-  // background: lighten($body-bg, 2%);
+  width: 92%;
+  font-size: 0;
 }
 .bar .segment {
-    background: lighten($body-bg, 20%);
-    content: ".";
-    display: inline-block;
-    height: 4px;
-    text-indent: -2000px;
-    vertical-align: top;
+  background: lighten($body-bg, 20%);
+  content: ".";
+  display: inline-block;
+  height: 4px;
+  text-indent: -2000px;
+  vertical-align: top;
+}
+.bar .kills {
+  background: $brand-danger;
+}
+.bar .deaths {
+  // background: blue;
+}
+.bar .assists {
+  background: $brand-success;
 }
