@@ -21,6 +21,8 @@ const needsSum = [
 export class OverviewComponent implements OnInit {
   loading = true;
   matches: any[];
+  with: any[];
+  against: any[];
   heroes: any[];
   maxHeroes = {};
   maxLength = 0;
@@ -40,6 +42,8 @@ export class OverviewComponent implements OnInit {
         .subscribe((res) => {
           this.loading = false;
           this.matches = res.matches.slice(0, 15);
+          this.with = res.with;
+          this.against = res.against;
           const max = _.maxBy(this.matches, _.property('length')) || {};
           this.maxLength = max.length || 0;
           this.setupHeroes(res.matches);

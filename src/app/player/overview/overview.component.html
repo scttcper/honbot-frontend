@@ -104,5 +104,29 @@
         </div>
       </div>
     </div>
+
+    <legend class="mt-2">
+      Friends
+      <small class="mt-3">This Week</small>
+    </legend>
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th>Friend</th>
+          <th class="text-right">Matches</th>
+          <th class="text-right">Win Rate</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="loading">
+          <td>Loading...</td>
+        </tr>
+        <tr *ngFor="let w of with">
+          <td><a [routerLink]="['player', w.nickname]">{{w.nickname}}</a></td>
+          <td class="text-right">{{w.t}}</td>
+          <td class="text-right">{{w.w / w.t * 100 | number:'1.0-1'}}%</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
