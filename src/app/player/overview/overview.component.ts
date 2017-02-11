@@ -37,6 +37,10 @@ export class OverviewComponent implements OnInit {
     this.route.parent.params.subscribe((params) => {
       this.playerError = false;
       this.loading = true;
+      this.matches = undefined;
+      this.with = undefined;
+      this.against = undefined;
+      this.heroes = undefined;
       this.api
         .getPlayerMatches(params['nickname'])
         .subscribe((res) => {

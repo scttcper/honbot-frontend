@@ -29,7 +29,7 @@ export class PlayerComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.router.events.subscribe(() => {
+    this.route.params.subscribe((params) => {
       this.playerError = false;
       this.wins = 0;
       this.losses = 0;
@@ -37,8 +37,6 @@ export class PlayerComponent implements OnInit {
       this.loading = true;
       this.lastMatch = null;
       this.avatar = DEFAULT_AVATAR;
-    });
-    this.route.params.subscribe((params) => {
       this.nickname = params['nickname'];
       this.api
         .getPlayerMatches(this.nickname)
