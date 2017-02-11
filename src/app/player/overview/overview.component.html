@@ -125,7 +125,7 @@
           <td>None</td>
         </tr>
         <tr *ngFor="let p of with">
-          <td><a [routerLink]="['player', p.nickname]">{{p.nickname}}</a></td>
+          <td><a [routerLink]="['/player', p.nickname]">{{p.nickname}}</a></td>
           <td class="text-right">{{p.t}}</td>
           <td class="text-right">{{p.w / p.t * 100 | number:'1.1-1'}}%</td>
         </tr>
@@ -151,7 +151,7 @@
           <td>None</td>
         </tr>
         <tr *ngFor="let p of against">
-          <td><a [routerLink]="['player', p.nickname]">{{p.nickname}}</a></td>
+          <td><a [routerLink]="['/player', p.nickname]">{{p.nickname}}</a></td>
           <td class="text-right">{{p.t}}</td>
           <td class="text-right">{{p.w / p.t * 100 | number:'1.1-1'}}%</td>
         </tr>
