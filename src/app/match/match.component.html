@@ -80,18 +80,18 @@
           <tr>
             <th width="200" style="min-width: 200px">Player</th>
             <th width="220" style="min-width: 230px">Items</th>
-            <th>K</th>
-            <th>D</th>
-            <th>A</th>
-            <th>KDR</th>
-            <th>CK</th>
-            <th>CD</th>
-            <th class="gold">GPM</th>
-            <th>XPM</th>
-            <th>APM</th>
-            <th>Wards</th>
-            <th>HD</th>
-            <th>TD</th>
+            <th class="text-center">K</th>
+            <th class="text-center">D</th>
+            <th class="text-center">A</th>
+            <th class="text-center">KDR</th>
+            <th class="text-right">CK</th>
+            <th class="text-right">CD</th>
+            <th class="gold text-right">GPM</th>
+            <th class="text-right">XPM</th>
+            <th class="text-right">APM</th>
+            <th class="text-right">Wards</th>
+            <th class="text-right">HD</th>
+            <th class="text-right">TD</th>
           </tr>
         </thead>
         <tbody>
@@ -103,36 +103,36 @@
             <td>
               <img width="32" height="32" *ngFor="let i of p.items" src="/assets/img/items/{{ i }}.jpg">
             </td>
-            <td>{{p.kills}}</td>
-            <td>{{p.deaths}}</td>
-            <td>{{p.assists}}</td>
-            <td>{{p.kdr | number:'1.0-2'}}</td>
-            <td>{{p.cs}}</td>
-            <td>{{p.denies}}</td>
-            <td class="gold">{{p.gpm | number:'1.0-0'}}</td>
-            <td>{{p.xpm | number:'1.0-0'}}</td>
-            <td>{{p.apm | number:'1.0-0'}}</td>
-            <td>{{p.wards}}</td>
-            <td>{{p.herodmg}}</td>
-            <td>{{p.bdmg}}</td>
+            <td class="text-center">{{p.kills}}</td>
+            <td class="text-center">{{p.deaths}}</td>
+            <td class="text-center">{{p.assists}}</td>
+            <td class="text-center">{{p.kdr | number:'1.2-2'}}</td>
+            <td class="text-right">{{p.cs}}</td>
+            <td class="text-right">{{p.denies}}</td>
+            <td class="gold text-right">{{p.gpm | number:'1.0-0'}}</td>
+            <td class="text-right">{{p.xpm | number:'1.0-0'}}</td>
+            <td class="text-right">{{p.apm | number:'1.0-0'}}</td>
+            <td class="text-right">{{p.wards}}</td>
+            <td class="text-right">{{p.herodmg}}</td>
+            <td class="text-right">{{p.bdmg}}</td>
           </tr>
           <tr>
             <th scope="row">
               <h6 class="mt-1">Total</h6>
             </th>
             <td></td>
-            <td>{{teamTotals[i].kills}}</td>
-            <td>{{teamTotals[i].deaths}}</td>
-            <td>{{teamTotals[i].assists}}</td>
+            <td class="text-center">{{teamTotals[i].kills}}</td>
+            <td class="text-center">{{teamTotals[i].deaths}}</td>
+            <td class="text-center">{{teamTotals[i].assists}}</td>
             <td></td>
-            <td>{{teamTotals[i].cs}}</td>
-            <td>{{teamTotals[i].denies}}</td>
-            <td class="gold">{{teamTotals[i].gpm | number:'1.0-0'}}</td>
-            <td>{{teamTotals[i].xpm | number:'1.0-0'}}</td>
-            <td>{{teamTotals[i].apm | number:'1.0-0'}}</td>
-            <td>{{teamTotals[i].wards}}</td>
-            <td>{{teamTotals[i].herodmg}}</td>
-            <td>{{teamTotals[i].bdmg}}</td>
+            <td class="text-right">{{teamTotals[i].cs}}</td>
+            <td class="text-right">{{teamTotals[i].denies}}</td>
+            <td class="gold text-right">{{teamTotals[i].gpm | number:'1.0-0'}}</td>
+            <td class="text-right">{{teamTotals[i].xpm | number:'1.0-0'}}</td>
+            <td class="text-right">{{teamTotals[i].apm | number:'1.0-0'}}</td>
+            <td class="text-right">{{teamTotals[i].wards}}</td>
+            <td class="text-right">{{teamTotals[i].herodmg}}</td>
+            <td class="text-right">{{teamTotals[i].bdmg}}</td>
           </tr>
         </tbody>
       </table>
