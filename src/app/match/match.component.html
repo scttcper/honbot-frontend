@@ -112,9 +112,9 @@
             <td class="gold text-right">{{p.gpm | number:'1.0-0'}}</td>
             <td class="text-right">{{p.xpm | number:'1.0-0'}}</td>
             <td class="text-right">{{p.apm | number:'1.0-0'}}</td>
-            <td class="text-right">{{p.wards}}</td>
-            <td class="text-right">{{p.herodmg}}</td>
-            <td class="text-right">{{p.bdmg}}</td>
+            <td class="text-right">{{p.wards | number}}</td>
+            <td class="text-right">{{p.herodmg | number}}</td>
+            <td class="text-right">{{p.bdmg | number}}</td>
           </tr>
           <tr>
             <th scope="row">
@@ -130,9 +130,9 @@
             <td class="gold text-right">{{teamTotals[i].gpm | number:'1.0-0'}}</td>
             <td class="text-right">{{teamTotals[i].xpm | number:'1.0-0'}}</td>
             <td class="text-right">{{teamTotals[i].apm | number:'1.0-0'}}</td>
-            <td class="text-right">{{teamTotals[i].wards}}</td>
-            <td class="text-right">{{teamTotals[i].herodmg}}</td>
-            <td class="text-right">{{teamTotals[i].bdmg}}</td>
+            <td class="text-right">{{teamTotals[i].wards | number}}</td>
+            <td class="text-right">{{teamTotals[i].herodmg | number}}</td>
+            <td class="text-right">{{teamTotals[i].bdmg | number}}</td>
           </tr>
         </tbody>
       </table>
