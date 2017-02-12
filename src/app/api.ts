@@ -56,6 +56,13 @@ export class Api {
       .map(res => res.json())
       .catch(this.handleError);
   }
+  getTwitchStreams() {
+    const url = `${this.url}/twitchStreams`;
+    return this.http
+      .get(url)
+      .map(res => res.json())
+      .catch(this.handleError);
+  }
   private handleError (error: Response | any) {
     let errMsg: string;
     if (error instanceof Response) {

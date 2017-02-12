@@ -1,17 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { Api } from '../api';
+
 @Component({
-  selector: 'app-home',
+  selector: 'hb-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
   search = '';
   match = '';
-  constructor(private router: Router) { }
+  twitch: any[];
+  constructor(
+    private router: Router,
+    private api: Api,
+  ) { }
 
   ngOnInit() {
+    this.api.getTwitchStreams().subscribe((res) => {
+      this.twitch = res;
+    });
   }
 
   goPlayer() {
