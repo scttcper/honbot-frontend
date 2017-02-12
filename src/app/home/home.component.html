@@ -5,7 +5,7 @@
 </div>
 
 <div class="row justify-content-center">
-  <div class="col-sm-12 col-md-10 col-lg-7 col-xl-5 mb-2">
+  <div class="col-sm-12 col-md-10 col-lg-6 col-xl-4 mb-2">
     <form class="input-group p-2" (ngSubmit)="goPlayer()">
       <input [(ngModel)]="search" name="search" type="text" class="form-control" placeholder="HoN Username"
         autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
@@ -22,12 +22,12 @@
     </form>
   </div>
 </div>
-<div class="row justify-content-center mb-5">
-  <div class="col-sm-12 col-md-10 col-lg-7 mb-4">
+<div class="row justify-content-center mb-3">
+  <div class="col-sm-12 col-md-10 col-lg-9 mb-4">
     <div class="row justify-content-center">
-      <div class="col-sm-12 col-md-6" *ngFor="let t of twitch">
-        <img class="img-fluid" [src]="t.preview.large">
-        <h5 class="p-0 m-0 pt-1 text-truncate">{{ t.channel.status }}</h5>
+      <div class="col-sm-12 col-md-6 mb-3" *ngFor="let t of twitch">
+        <a [href]="t._links.self" target="_blank"><img class="img-fluid" [src]="t.preview.large"></a>
+        <h5 class="p-0 m-0 pt-1 text-truncate"><a [href]="t._links.self" target="_blank">{{ t.channel.status }}</a></h5>
         {{ t.viewers }} viewers on {{ t.channel.display_name }}
       </div>
     </div>
