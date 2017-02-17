@@ -1,41 +1,47 @@
-<div class="row mb-2">
-  <div class="col">
-    <ng2-adsense></ng2-adsense>
-  </div>
-</div>
-
-<div class="row justify-content-center">
-  <div class="col-sm-12 col-md-10 col-lg-6 mb-3">
-    <form class="input-group p-2" (ngSubmit)="goPlayer()">
-      <input [(ngModel)]="search" name="search" type="text" class="form-control" placeholder="HoN Username"
-        autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-      <span class="input-group-btn">
-        <button class="btn btn-secondary" type="submit">Go</button>
-      </span>
-    </form>
-    <form class="input-group p-2" (ngSubmit)="goMatch()">
-      <input [(ngModel)]="match" name="match" type="text" class="form-control" placeholder="Match ID"
-        autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-      <span class="input-group-btn">
-        <button class="btn btn-secondary" type="submit">Go</button>
-      </span>
-    </form>
-  </div>
-</div>
-<div class="row justify-content-center mb-3">
-  <div class="col-sm-12 col-md-10 col-lg-9 mb-4">
-    <div class="row justify-content-center">
-      <div class="col-md-12 col-lg-6 mb-3" *ngFor="let t of twitch">
+<div class="row">
+  <div class="col-md-12 col-lg-8">
+    <div class="row">
+      <div class="col-md-12 col-lg-6 mt-3">
+        <form class="input-group" (ngSubmit)="goPlayer()">
+          <input [(ngModel)]="search" name="search" type="text" class="form-control" placeholder="HoN Username"
+            autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+          <span class="input-group-btn">
+            <button class="btn btn-secondary" type="submit">Go</button>
+          </span>
+        </form>
+      </div>
+      <div class="col-md-12 col-lg-6 mt-3 mb-3">
+        <form class="input-group" (ngSubmit)="goMatch()">
+          <input [(ngModel)]="match" name="match" type="text" class="form-control" placeholder="Match ID"
+            autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+          <span class="input-group-btn">
+            <button class="btn btn-secondary" type="submit">Go</button>
+          </span>
+        </form>
+      </div>
+    </div>
+    <ng2-adsense class="mt-3 mb-3"></ng2-adsense>
+    <div class="row mt-1 mb-1">
+      <div class="col-12">
+        <legend>Live on Twitch:</legend>
+      </div>
+      <div class="col-sm-12 col-md-6 mb-2" *ngFor="let t of twitch">
         <a [href]="t.channel.url" target="_blank"><img class="img-fluid" [src]="t.preview.large"></a>
         <h5 class="p-0 m-0 pt-1 text-truncate"><a [href]="t.channel.url" target="_blank">{{ t.channel.status }}</a></h5>
         {{ t.viewers }} viewers on {{ t.channel.display_name }}
       </div>
     </div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col">
     <ng2-adsense></ng2-adsense>
+  </div>
+  <div class="col-md-12 col-lg-4">
+    <legend class="m-0 p-0">Honbot Stats</legend>
+    <div *ngIf="!matches">
+      Loading...
+    </div>
+    <div *ngIf="matches">
+      <h5><small class="text-muted">total matches</small> {{ matches }}m</h5>
+      <h5><small class="text-muted">24 hours</small> {{ lastDay | number }}</h5>
+      <h5><small class="text-muted">db size</small> {{ disksize }}GB</h5>
+    </div>
   </div>
 </div>

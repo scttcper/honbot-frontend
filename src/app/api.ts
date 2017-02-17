@@ -11,13 +11,6 @@ export class Api {
 
   constructor(private http: Http) { }
 
-  getPlayerSeason(nickname: string) {
-    const url = `${this.url}/season/${nickname}`;
-    return this.http
-      .get(url)
-      .map(res => res.json())
-      .catch(this.handleError);
-  }
   getPlayerMatches(nickname: string) {
     if (!this.playerCache[nickname]) {
       const url = `${this.url}/playerMatches/${nickname}`;
@@ -58,6 +51,13 @@ export class Api {
   }
   getTwitchStreams() {
     const url = `${this.url}/twitchStreams`;
+    return this.http
+      .get(url)
+      .map(res => res.json())
+      .catch(this.handleError);
+  }
+  getServerStats() {
+    const url = `${this.url}/stats`;
     return this.http
       .get(url)
       .map(res => res.json())
