@@ -26,8 +26,12 @@
         <legend>Live on Twitch:</legend>
       </div>
       <div class="col-sm-12 col-md-6 mb-2" *ngFor="let t of twitch">
-        <a [href]="t.channel.url" target="_blank"><img class="img-fluid" [src]="t.preview.large"></a>
-        <h5 class="p-0 m-0 pt-1 text-truncate"><a [href]="t.channel.url" target="_blank">{{ t.channel.status }}</a></h5>
+        <a [href]="t.channel.url" target="_blank">
+          <img class="img-fluid" [src]="t.preview.medium">
+        </a>
+        <h5 class="p-0 m-0 pt-1 text-truncate">
+          <a [href]="t.channel.url" target="_blank">{{ t.channel.status }}</a>
+        </h5>
         {{ t.viewers }} viewers on {{ t.channel.display_name }}
       </div>
     </div>
