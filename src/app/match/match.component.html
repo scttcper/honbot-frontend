@@ -42,7 +42,8 @@
                 <div class="text-muted">Duration</div>
               </div>
               <div class="d-inline-block m-3">
-                <h6 [ngbTooltip]="match.date | date:'medium'">{{ match.date | timeAgo }}</h6>
+                <!-- <h6 [ngbTooltip]="match.date | date:'medium'">{{ match.date | timeAgo }}</h6> -->
+                <h6>{{ match.date | timeAgo }}</h6>
                 <div class="text-muted">Date Played</div>
               </div>
               <div class="d-inline-block m-3">
