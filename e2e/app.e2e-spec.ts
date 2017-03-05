@@ -1,10 +1,10 @@
-import { HonbotFrontendPage } from './app.po';
+import { HonbotPage } from './app.po';
 
-describe('honbot-frontend App', function() {
-  let page: HonbotFrontendPage;
+describe('honbot App', () => {
+  let page: HonbotPage;
 
   beforeEach(() => {
-    page = new HonbotFrontendPage();
+    page = new HonbotPage();
   });
 
   it('should display message saying app works', () => {

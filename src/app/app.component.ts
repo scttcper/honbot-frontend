@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Angulartics2GoogleAnalytics } from 'angulartics2';
 
 @Component({
-  selector: 'app-root',
+  selector: 'hb-root',
   template: `
   <hb-navbar></hb-navbar>
   <div class="container">

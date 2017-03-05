@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class HonbotFrontendPage {
+export class HonbotPage {
   navigateTo() {
     return browser.get('/');
   }
