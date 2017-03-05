@@ -34,6 +34,5 @@ export function getQuality(quailty: number) {
 }
 
 export function isRanked(match: any) {
-  const mode = getMode(match);
-  return mode.startsWith('Season') || mode === 'Ranked';
+  return match.mode.startsWith('Season') || match.mode === 'Ranked';
 }
