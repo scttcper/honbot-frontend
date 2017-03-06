@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import * as distanceInWordsStrict from 'date-fns/distance_in_words_strict';
+import { distanceInWordsStrict } from 'date-fns';
 
 @Pipe({ name: 'timeAgo' })
 export class TimeAgoPipe implements PipeTransform {

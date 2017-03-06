@@ -77,3 +77,6 @@ $pagination-active-border:             darken($body-bg, 10%);
 $pagination-disabled-color:            $text-muted;
 $pagination-disabled-bg:               $body-bg;
 $pagination-disabled-border:           darken($body-bg, 10%);
+
+// cards
+$card-bg: lighten($body-bg, 4%);

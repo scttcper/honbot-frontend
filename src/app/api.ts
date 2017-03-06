@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import * as _ from 'lodash';
 
 import { environment } from '../environments/environment';
 
@@ -8,6 +9,7 @@ import { environment } from '../environments/environment';
 export class Api {
   private url: string = environment.backendUrl;
   playerCache = {};
+  herostatsCache: Observable<any>;
 
   constructor(private http: Http) { }
 
@@ -62,6 +64,18 @@ export class Api {
       .get(url)
       .map(res => res.json())
       .catch(this.handleError);
+  }
+  getHeroStats() {
+    if (!this.herostatsCache) {
+      const url = `${this.url}/herostats`;
+      this.herostatsCache = this.http
+        .get(url)
+        .map(res => res.json())
+        .publishReplay()
+        .refCount()
+        ;
+    }
+    return this.herostatsCache;
   }
   private handleError (error: Response | any) {
     let errMsg: string;

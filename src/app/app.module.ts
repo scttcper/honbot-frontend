@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
+
 import { AdsenseModule } from 'ng2-adsense';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
@@ -15,10 +16,13 @@ import { HomeComponent } from './home/home.component';
 import { PlayerModule } from './player/player.module';
 import { MatchComponent } from './match/match.component';
 import { HbUtility } from './util';
+import { HeroesComponent } from './heroes/heroes.component';
+import { LineComponent } from './heroes/line/line.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'match/:matchId', component: MatchComponent },
+  { path: 'hero', component: HeroesComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
@@ -28,6 +32,8 @@ export const routes: Routes = [
     NavbarComponent,
     HomeComponent,
     MatchComponent,
+    HeroesComponent,
+    LineComponent,
   ],
   imports: [
     BrowserModule,
