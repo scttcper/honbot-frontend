@@ -9,6 +9,7 @@ import { Api } from '../api';
 })
 export class HeroesComponent implements OnInit {
   herostats: any;
+  loading = true;
 
   constructor(private api: Api) { }
 
@@ -16,8 +17,8 @@ export class HeroesComponent implements OnInit {
     this.api
       .getHeroStats()
       .subscribe((res) => {
+        this.loading = false;
         this.herostats = res;
-        console.log(res)
       });
   }
 

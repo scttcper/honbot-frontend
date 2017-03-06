@@ -6,6 +6,11 @@
   </div>
 </div>
 <div class="row">
+  <div class="col-sm-4 mb-2 mt-2" *ngIf="loading">
+    <h1>Loading...</h1>
+  </div>
+</div>
+<div class="row">
   <div class="col-sm-4 mb-2 mt-2" *ngFor="let hero of herostats?.avg">
     <div class="card">
       <div class="card-block p-0">
