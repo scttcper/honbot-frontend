@@ -26,16 +26,17 @@ export class HeroesComponent implements OnInit {
         this.prMax = prMax.pr;
         const wrMax = _.maxBy(this.herostatsAvg, _.property('wr'));
         this.wrMax = wrMax.wr;
-        this.sortStats(this.sortMethod);
+        this.sortStats();
       }, () => {
       }, () => {
         this.loading = false;
       });
   }
-  sortStats(el) {
+  sortStats(el = this.sortMethod) {
     if (!this.herostatsAvg) {
       return;
     }
-    return this.herostatsAvg.sort((a, b) => b[el] - a[el]);
+    this.herostatsAvg.sort((a, b) => b[el] - a[el]);
+    this.sortMethod = el;
   }
 }
