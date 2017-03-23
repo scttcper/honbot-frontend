@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-12 col-lg-6 mt-3">
         <form class="input-group" (ngSubmit)="goPlayer()">
-          <input [(ngModel)]="search" name="search" type="text" class="form-control" placeholder="Nickname"
+          <input [(ngModel)]="search" name="search" type="text" class="form-control" placeholder="nickname"
             autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
           <span class="input-group-btn">
             <button class="btn btn-secondary" type="submit">Go</button>
@@ -12,7 +12,7 @@
       </div>
       <div class="col-md-12 col-lg-6 mt-3 mb-3">
         <form class="input-group" (ngSubmit)="goMatch()">
-          <input [(ngModel)]="match" name="match" type="text" class="form-control" placeholder="Match ID"
+          <input [(ngModel)]="match" name="match" type="text" class="form-control" placeholder="match id"
             autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
           <span class="input-group-btn">
             <button class="btn btn-secondary" type="submit">Go</button>
