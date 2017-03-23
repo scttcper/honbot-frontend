@@ -6,7 +6,6 @@ import { Api } from '../api';
 @Component({
   selector: 'hb-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
   search = '';

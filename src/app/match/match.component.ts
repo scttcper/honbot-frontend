@@ -23,7 +23,11 @@ const needsTotal = [
 @Component({
   selector: 'hb-match',
   templateUrl: './match.component.html',
-  styleUrls: ['./match.component.scss']
+  styles: [`
+  td {
+    line-height: 2.1rem;
+  }
+  `]
 })
 export class MatchComponent implements OnInit {
   match: any = {};

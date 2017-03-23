@@ -6,6 +6,6 @@ export class HonbotPage {
   }
 
   getParagraphText() {
-    return element(by.css('app-root h1')).getText();
+    return element(by.css('hb-root legend')).getText();
   }
 }
