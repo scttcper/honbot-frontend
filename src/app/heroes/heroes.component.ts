@@ -8,8 +8,9 @@ import { Api } from '../api';
   styleUrls: ['./heroes.component.css']
 })
 export class HeroesComponent implements OnInit {
-  herostatsAvg: any[];
   loading = true;
+  herostatsAvg: any[];
+  sortMethod = 'wr';
 
   constructor(private api: Api) { }
 
@@ -18,10 +19,16 @@ export class HeroesComponent implements OnInit {
       .getHeroStats()
       .subscribe((res) => {
         this.herostatsAvg = res.avg;
+        this.sortStats(this.sortMethod);
       }, () => {
       }, () => {
         this.loading = false;
       });
   }
-
+  sortStats(el) {
+    if (!this.herostatsAvg) {
+      return;
+    }
+    return this.herostatsAvg.sort((a, b) => b[el] - a[el]);
+  }
 }
