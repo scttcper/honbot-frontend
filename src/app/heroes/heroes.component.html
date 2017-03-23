@@ -9,20 +9,20 @@
   </div>
 </div>
 <div class="row" *ngIf="!loading && herostatsAvg">
-  <div class="col">
+  <div class="col-12">
     <legend>14 day average from Ranked/Season matches</legend>
   </div>
-  <div class="col">
+  <div class="col-12 mb-2">
     <div class="d-flex justify-content-start">
       <div class="mr-auto">
         <label>Sort By: </label>
         <div class="btn-group" role="group" aria-label="Basic example">
-          <button type="button" class="btn btn-secondary" (click)="sortStats('wr')" [class.active]="sortMethod === 'wr'">
+          <a class="btn btn-secondary" (click)="sortStats('wr')" [class.active]="sortMethod === 'wr'">
             Win Rate
-          </button>
-          <button type="button" class="btn btn-secondary" (click)="sortStats('pr')" [class.active]="sortMethod === 'pr'">
+          </a>
+          <a class="btn btn-secondary" (click)="sortStats('pr')" [class.active]="sortMethod === 'pr'">
             Pick Rate
-          </button>
+          </a>
         </div>
       </div>
       <div class="mt-2">
@@ -44,6 +44,8 @@
         </h5>
         <p class="m-0">
           WR: {{ hero.wr * 100 | number:'1.2-2' }}%
+        </p>
+        <p class="m-0">
           PR: {{ hero.pr * 100 | number:'1.2-2' }}%
         </p>
       </div>
