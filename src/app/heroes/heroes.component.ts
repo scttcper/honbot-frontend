@@ -8,7 +8,7 @@ import { Api } from '../api';
   styleUrls: ['./heroes.component.css']
 })
 export class HeroesComponent implements OnInit {
-  herostatsAvg: any[] = [];
+  herostatsAvg: any[];
   loading = true;
 
   constructor(private api: Api) { }
@@ -17,9 +17,8 @@ export class HeroesComponent implements OnInit {
     this.api
       .getHeroStats()
       .subscribe((res) => {
-        this.herostatsAvg = res;
+        this.herostatsAvg = res.avg;
       }, () => {
-        return;
       }, () => {
         this.loading = false;
       });

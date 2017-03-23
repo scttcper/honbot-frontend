@@ -3,13 +3,21 @@
     <hb-loading></hb-loading>
   </div>
 </div>
-<div class="row" *ngIf="!loading && !herostatsAvg.length">
+<div class="row" *ngIf="!loading && !herostatsAvg">
   <div class="col text-center">
     <h3>Failed to load hero stats</h3>
   </div>
 </div>
-<div class="row" *ngIf="!loading && herostatsAvg.length">
-  <div class="col-sm-4 mb-2 mt-2" *ngFor="let hero of herostatsAvg">
+<div class="row">
+  <div class="col">
+    <code>
+      WR = Win Rate
+      PR = Pick Rate
+    </code>
+  </div>
+</div>
+<div class="row" *ngIf="!loading && herostatsAvg">
+  <div class="col-sm-4 col-md-3 col-lg-2 mb-2 mt-2" *ngFor="let hero of herostatsAvg">
     <div class="card">
       <div class="card-block p-0">
         <!--<hb-line [stats]="herostats.week[hero.hero_id]"></hb-line>-->
@@ -18,12 +26,10 @@
         <h5 class="card-title">
           <img width="60" height="60" src="https://www.heroesofnewerth.com/images/heroes/{{hero.hero_id}}/icon_128.jpg">
         </h5>
-        <h5 class="card-title">
-          Win Rate: {{ hero.percent * 100 | number:'1.2-2' }}%
-        </h5>
-        <h5 class="card-title">
-          Pick Rate: {{ hero.pickRate * 100 | number:'1.2-2' }}%
-        </h5>
+        <p class="m-0">
+          WR: {{ hero.percent * 100 | number:'1.2-2' }}%
+          PR: {{ hero.pickRate * 100 | number:'1.2-2' }}%
+        </p>
       </div>
     </div>
   </div>
