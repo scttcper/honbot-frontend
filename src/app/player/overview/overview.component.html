@@ -25,19 +25,19 @@
           </td>
           <td class="p-1">
             <div class="pb-1">{{ h.matches | number }}</div>
-            <bar [value]="h.matches" [max]="maxHeroes.matches"></bar>
+            <hb-bar [value]="h.matches" [max]="maxHeroes.matches"></hb-bar>
           </td>
           <td class="p-1">
             <div class="pb-1">{{ h.winPercent | number:'1.0-1' }}%</div>
-            <bar [value]="h.winPercent" [max]="maxHeroes.winPercent"></bar>
+            <hb-bar [value]="h.winPercent" [max]="maxHeroes.winPercent"></hb-bar>
           </td>
           <td class="p-1">
             <div class="pb-1">{{ h.kda | number:'1.0-2' }}</div>
-            <bar [value]="h.kda" [max]="maxHeroes.kda"></bar>
+            <hb-bar [value]="h.kda" [max]="maxHeroes.kda"></hb-bar>
           </td>
           <td class="p-1">
             <div class="pb-1">{{ h.gpm | number:'1.0-0' }}</div>
-            <bar [value]="h.gpm" [max]="maxHeroes.gpm"></bar>
+            <hb-bar [value]="h.gpm" [max]="maxHeroes.gpm"></hb-bar>
           </td>
 
         </tr>
@@ -81,7 +81,7 @@
           </td>
           <td>
             <div class="pb-1">{{ m.length / 60 | number:'1.0-0' }} Minutes</div>
-            <bar [value]="m.length" [max]="maxLength"></bar>
+            <hb-bar [value]="m.length" [max]="maxLength"></hb-bar>
           </td>
           <td>
             <div class="pb-1">{{ m.kills }}/{{ m.deaths }}/{{ m.assists }}</div>

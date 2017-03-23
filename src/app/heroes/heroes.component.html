@@ -38,16 +38,18 @@
       <!-- <div class="card-block">
         <hb-line [stats]="herostatsWeek[hero.hero_id]"></hb-line>
       </div> -->
-      <div class="card-block text-center">
+      <div class="card-block text-center p-3">
         <h5 class="card-title p-0 m-0">
           <img width="60" height="60" src="https://www.heroesofnewerth.com/images/heroes/{{hero.hero_id}}/icon_128.jpg">
         </h5>
-        <p class="m-0">
+        <p class="mb-1">
           WR: {{ hero.wr * 100 | number:'1.2-2' }}%
         </p>
-        <p class="m-0">
+        <hb-bar [value]="hero.wr" [max]="wrMax"></hb-bar>
+        <p class="mb-1 mt-1">
           PR: {{ hero.pr * 100 | number:'1.2-2' }}%
         </p>
+        <hb-bar [value]="hero.pr" [max]="prMax"></hb-bar>
       </div>
     </div>
   </div>

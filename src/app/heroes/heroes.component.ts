@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as _ from 'lodash';
 
 import { Api } from '../api';
 
@@ -11,6 +12,8 @@ export class HeroesComponent implements OnInit {
   loading = true;
   herostatsAvg: any[];
   sortMethod = 'wr';
+  prMax = 0;
+  wrMax = 0;
 
   constructor(private api: Api) { }
 
@@ -19,6 +22,10 @@ export class HeroesComponent implements OnInit {
       .getHeroStats()
       .subscribe((res) => {
         this.herostatsAvg = res.avg;
+        const prMax = _.maxBy(this.herostatsAvg, _.property('pr'));
+        this.prMax = prMax.pr;
+        const wrMax = _.maxBy(this.herostatsAvg, _.property('wr'));
+        this.wrMax = wrMax.wr;
         this.sortStats(this.sortMethod);
       }, () => {
       }, () => {

@@ -37,7 +37,7 @@
           </td>
           <td>
             {{ m.length / 60 | number:'1.0-0' }} Minutes
-            <bar [value]="m.length" [max]="maxLength"></bar>
+            <hb-bar [value]="m.length" [max]="maxLength"></hb-bar>
           </td>
           <td>{{ m.kills }}/{{ m.deaths }}/{{ m.assists }}</td>
         </tr>

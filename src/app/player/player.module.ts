@@ -6,7 +6,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Ng2PaginationModule } from 'ng2-pagination';
 
 import { Api } from '../api';
-import { Bar } from '../bar/bar.component';
 import { PlayerComponent } from './player.component';
 import { OverviewComponent } from './overview/overview.component';
 import { MatchesComponent } from './matches/matches.component';
@@ -26,7 +25,6 @@ export const routes: Routes = [{
 
 @NgModule({
   declarations: [
-    Bar,
     PlayerComponent,
     MatchesComponent,
     OverviewComponent,
