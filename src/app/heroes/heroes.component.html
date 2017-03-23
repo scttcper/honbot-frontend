@@ -1,17 +1,15 @@
-<div class="row">
-  <div class="col mt-3">
-    <div class="alert alert-info" role="alert">
-      <strong>Warning!</strong> This is in beta.
-    </div>
+<div class="row" *ngIf="loading">
+  <div class="col text-center">
+    <hb-loading></hb-loading>
   </div>
 </div>
-<div class="row">
-  <div class="col-sm-4 mb-2 mt-2" *ngIf="loading">
-    <h1>Loading...</h1>
+<div class="row" *ngIf="!loading && !herostatsAvg.length">
+  <div class="col text-center">
+    <h3>Failed to load hero stats</h3>
   </div>
 </div>
-<div class="row">
-  <div class="col-sm-4 mb-2 mt-2" *ngFor="let hero of herostats?.avg">
+<div class="row" *ngIf="!loading && herostatsAvg.length">
+  <div class="col-sm-4 mb-2 mt-2" *ngFor="let hero of herostatsAvg">
     <div class="card">
       <div class="card-block p-0">
         <!--<hb-line [stats]="herostats.week[hero.hero_id]"></hb-line>-->

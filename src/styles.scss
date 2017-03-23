@@ -49,6 +49,12 @@
 // import all
 // @import "node_modules/bootstrap/scss/bootstrap";
 
+// spinner
+$spinkit-spinner-color: #fff;
+$spinkit-spinner-margin: 1em auto;
+$spinkit-size: 2em;
+@import 'node_modules/spinkit/scss/spinners/7-three-bounce';
+
 .bg-lighter {
   background-color: lighten($body-bg, 10%);
 }

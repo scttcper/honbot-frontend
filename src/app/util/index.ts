@@ -1,10 +1,17 @@
 import { NgModule } from '@angular/core';
 import { SkillBracketPipe } from './util';
 import { TimeAgoPipe } from './time-ago.pipe';
+import { LoadingComponent } from './loading.component';
+
+const all = [
+  SkillBracketPipe,
+  TimeAgoPipe,
+  LoadingComponent,
+];
 
 @NgModule({
-  declarations: [SkillBracketPipe, TimeAgoPipe],
-  exports: [SkillBracketPipe, TimeAgoPipe],
+  declarations: all,
+  exports: all,
 })
 export class HbUtility { }
 
