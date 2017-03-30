@@ -10,5 +10,5 @@ import { Component, Input } from '@angular/core';
 })
 export class BarComponent {
   @Input() value: number;
-  @Input() max: string;
+  @Input() max: number;
 }

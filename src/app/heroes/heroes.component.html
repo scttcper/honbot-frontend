@@ -8,12 +8,12 @@
     <hb-loading></hb-loading>
   </div>
 </div>
-<div class="row" *ngIf="!loading && !herostatsAvg">
+<div class="row" *ngIf="!loading && herostatsAvg?.length < 0">
   <div class="col text-center">
     <h3>Failed to load hero stats</h3>
   </div>
 </div>
-<div class="row" *ngIf="!loading && herostatsAvg">
+<div class="row" *ngIf="!loading && herostatsAvg?.length > 0">
   <div class="col-12">
     <legend>14 day average from Ranked/Season matches</legend>
   </div>

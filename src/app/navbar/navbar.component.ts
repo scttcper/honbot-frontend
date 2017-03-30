@@ -44,7 +44,9 @@ import { Router } from '@angular/router';
   `]
 })
 export class NavbarComponent {
+  isCollapsed = false;
   search = '';
+
   constructor(private router: Router) { }
 
   onSubmit() {

@@ -11,6 +11,7 @@ import { Api } from '../../api';
   styleUrls: ['./matches.component.scss']
 })
 export class MatchesComponent implements OnInit {
+  loading = false;
   matches: any[];
   maxLength = 0;
 
