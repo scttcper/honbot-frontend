@@ -8,8 +8,8 @@
     <hb-loading></hb-loading>
   </div>
 </div>
-<div class="row" *ngIf="!loading && herostatsAvg?.length < 0">
-  <div class="col text-center">
+<div class="row" *ngIf="!loading && !herostatsAvg.length">
+  <div class="col p-5 text-center">
     <h3>Failed to load hero stats</h3>
   </div>
 </div>

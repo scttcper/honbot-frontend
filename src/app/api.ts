@@ -18,7 +18,7 @@ export class Api {
       const url = `${this.url}/playerMatches/${nickname}`;
       this.playerCache[nickname] = this.http
         .get(url)
-        .map(res => res.json())
+        .map((res) => res.json())
         .catch((err) => {
           console.error(`Player: ${nickname} not found`);
           this.playerCache[nickname] = undefined;
@@ -34,35 +34,42 @@ export class Api {
     const url = `https://hon-avatar.now.sh/${accountId}`;
     return this.http
       .get(url)
-      .map(res => res.text())
+      .map((res) => res.text())
       .catch(this.handleError);
   }
   getMatch(matchId: string | number) {
     const url = `${this.url}/match/${matchId}`;
     return this.http
       .get(url)
-      .map(res => res.json())
+      .map((res) => res.json())
+      .catch(this.handleError);
+  }
+  getPlayerSkill(accountId: number): Observable<playerSkill> {
+    const url = `${this.url}/playerSkill/${accountId}`;
+    return this.http
+      .get(url)
+      .map((res) => res.json())
       .catch(this.handleError);
   }
   getMatchSkill(matchId: string | number) {
     const url = `${this.url}/matchSkill/${matchId}`;
     return this.http
       .get(url)
-      .map(res => res.json())
+      .map((res) => res.json())
       .catch(this.handleError);
   }
   getTwitchStreams() {
     const url = `${this.url}/twitchStreams`;
     return this.http
       .get(url)
-      .map(res => res.json())
+      .map((res) => res.json())
       .catch(this.handleError);
   }
   getServerStats() {
     const url = `${this.url}/stats`;
     return this.http
       .get(url)
-      .map(res => res.json())
+      .map((res) => res.json())
       .catch(this.handleError);
   }
   getHeroStats() {
@@ -70,7 +77,7 @@ export class Api {
       const url = `${this.url}/herostats`;
       this.herostatsCache = this.http
         .get(url)
-        .map(res => res.json())
+        .map((res) => res.json())
         .publishReplay()
         .refCount()
         ;
@@ -88,4 +95,11 @@ export class Api {
     console.error(errMsg);
     return Observable.throw(errMsg);
   }
+}
+
+interface playerSkill {
+  _id: number;
+  mu: number;
+  sigma: number;
+  games: number;
 }

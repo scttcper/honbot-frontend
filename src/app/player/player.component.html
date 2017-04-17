@@ -25,7 +25,12 @@
         <div class="col-md-6">
           <div class="float-right mt-1">
             <div class="d-inline-block m-3">
-              <h6>{{ (this.lastMatch | timeAgo) || 'Loading...' }}</h6>
+              <h6 *ngIf="playerSkill">{{ playerSkill | number:'1.1-1' }}</h6>
+              <h6 *ngIf="!playerSkill">Loading...</h6>
+              <div class="text-muted">honbot Score</div>
+            </div>
+            <div class="d-inline-block m-3">
+              <h6>{{ (lastMatch | timeAgo) || 'Loading...' }}</h6>
               <div class="text-muted">Last Match</div>
             </div>
             <div class="d-inline-block m-3">
@@ -52,8 +57,7 @@
       <li class="nav-item">
         <a class="nav-link"
           [routerLink]="['/player', nickname]"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }">
+          routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
           Overview
         </a>
       </li>

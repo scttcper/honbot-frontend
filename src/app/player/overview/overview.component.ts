@@ -24,7 +24,7 @@ export class OverviewComponent implements OnInit {
   with: any[];
   against: any[];
   heroes: any[];
-  maxHeroes = {};
+  maxHeroes: any = {};
   maxLength = 0;
   playerError = false;
 

@@ -113,11 +113,11 @@ $player-10: #562507;
   color: $brand-success;
 }
 
-// .nav-item > .active {
-//   background-color: darken($body-bg, 6%);
-//   border-bottom: 1px $brand-primary solid;
-//   color: $body-color;
-// }
+.nav-item > .active {
+  background-color: darken($body-bg, 6%);
+  border-bottom: 1px $brand-primary solid;
+  color: $body-color;
+}
 a > .navbar-brand {
   color: $body-color;
 }
@@ -162,4 +162,23 @@ a:hover {
 }
 .bar .assists {
   background: $brand-success;
+}
+
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
 }

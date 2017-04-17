@@ -118,11 +118,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngIf="loading">
-          <td>Loading...</td>
+        <tr class="text-center" *ngIf="loading">
+          <td colspan="3">Loading...</td>
         </tr>
-        <tr *ngIf="with && with.length === 0">
-          <td>None</td>
+        <tr class="text-center" *ngIf="with && with.length === 0">
+          <td colspan="3">None</td>
         </tr>
         <tr *ngFor="let p of with | slice:0:8">
           <th scope="row"><a [routerLink]="['/player', p.nickname]">{{p.nickname}}</a></th>
@@ -144,11 +144,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngIf="loading">
-          <td>Loading...</td>
+        <tr class="text-center" *ngIf="loading">
+          <td colspan="3">Loading...</td>
         </tr>
-        <tr *ngIf="against && against.length === 0">
-          <td>None</td>
+        <tr class="text-center" *ngIf="against && against.length === 0">
+          <td colspan="3">None</td>
         </tr>
         <tr *ngFor="let p of against | slice:0:8">
           <th scope="row"><a [routerLink]="['/player', p.nickname]">{{p.nickname}}</a></th>

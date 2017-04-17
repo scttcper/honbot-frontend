@@ -19,6 +19,7 @@ export class PlayerComponent implements OnInit {
   nickname = '';
   avatar = DEFAULT_AVATAR;
   playerError = false;
+  playerSkill: number;
 
   maxLength: number;
 
@@ -53,6 +54,9 @@ export class PlayerComponent implements OnInit {
           this.api
             .getAvatar(res.matches[0].account_id)
             .subscribe((a) => this.avatar = a);
+          this.api
+            .getPlayerSkill(res.matches[0].account_id)
+            .subscribe((a) => this.playerSkill = a.mu);
         },
         () => {
           this.playerError = true;

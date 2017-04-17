@@ -10,7 +10,7 @@ import { Api } from '../api';
 })
 export class HeroesComponent implements OnInit {
   loading = true;
-  herostatsAvg: any[];
+  herostatsAvg: any[] = [];
   sortMethod = 'wr';
   prMax = 0;
   wrMax = 0;
@@ -22,20 +22,22 @@ export class HeroesComponent implements OnInit {
       .getHeroStats()
       .subscribe((res) => {
         this.herostatsAvg = res.avg;
+        this.loading = false;
+        if (!this.herostatsAvg.length) {
+          return;
+        }
         const prMax = _.maxBy(this.herostatsAvg, _.property('pr'));
         this.prMax = prMax.pr;
         const wrMax = _.maxBy(this.herostatsAvg, _.property('wr'));
         this.wrMax = wrMax.wr;
         this.sortStats();
       }, () => {
+        this.loading = false;
       }, () => {
         this.loading = false;
       });
   }
   sortStats(el = this.sortMethod) {
-    if (!this.herostatsAvg) {
-      return;
-    }
     this.herostatsAvg.sort((a, b) => b[el] - a[el]);
     this.sortMethod = el;
   }
