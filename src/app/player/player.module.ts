@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { AdsenseModule } from 'ng2-adsense';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { Ng2PaginationModule } from 'ng2-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { Api } from '../api';
 import { PlayerComponent } from './player.component';
@@ -37,7 +37,7 @@ export const routes: Routes = [{
     NgbModule,
     AdsenseModule,
     HbUtility,
-    Ng2PaginationModule,
+    NgxPaginationModule,
   ],
   exports: [RouterModule],
   providers: [Api],

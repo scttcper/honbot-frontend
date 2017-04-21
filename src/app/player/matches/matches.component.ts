@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PaginationInstance } from 'ng2-pagination';
+import { PaginationInstance } from 'ngx-pagination';
 import * as _ from 'lodash';
 
 import { Api } from '../../api';
