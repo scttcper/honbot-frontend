@@ -8,18 +8,20 @@ import { Api } from '../api';
   template: `{{ skill | skillBracket }}`,
 })
 export class SkillBracketComponent implements OnInit {
-  @Input() match: any;
+  @Input() mode: string;
+  @Input() id: number;
   skill = 'Loading...';
 
   constructor(private api: Api) { }
 
   ngOnInit() {
-    if (!isRanked(this.match)) {
+    if (!isRanked(this.mode)) {
       this.skill = '';
       return;
     }
+    console.log(this.id)
     this.api
-      .getMatchSkill(this.match.match_id)
+      .getMatchSkill(this.id)
       .subscribe((res) => {
         this.skill = res.averageScore;
       });

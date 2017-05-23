@@ -22,7 +22,7 @@
           </td>
           <td>
             <div>
-              <a [routerLink]="['/match', m.match_id]">
+              <a [routerLink]="['/match', m.id]">
                 <strong *ngIf="m.win" class="text-success">Won Match</strong>
                 <strong *ngIf="!m.win" class="text-danger">Lost Match</strong>
               </a>
@@ -32,7 +32,7 @@
           <td>
             <div>{{ m.mode }}</div>
             <small>
-              <hb-bracket [match]="m"></hb-bracket>
+              <hb-bracket [mode]="m.mode" [mode]="m.id"></hb-bracket>
             </small>
           </td>
           <td>
