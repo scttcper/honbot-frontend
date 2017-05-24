@@ -30,14 +30,14 @@
     <ng2-adsense class="mt-3 mb-3 adsbygoogle"></ng2-adsense>
     <div class="row mt-1 mb-1">
       <div class="col-lg-12 text-center text-md-left">
-        <legend>Live on Twitch:</legend>
+        <legend>Live on Twitch</legend>
       </div>
       <div class="col-xs-6 col-md-6 mb-2" *ngIf="!twitch">
         <hb-loading></hb-loading>
       </div>
       <div class="col-xs-6 col-md-6 mb-2 text-center text-md-left" *ngFor="let t of twitch">
         <a [href]="t.channel.url" target="_blank">
-          <img class="img-fluid" [src]="t.preview.medium">
+          <img [src]="t.preview.medium">
         </a>
         <h5 class="p-0 m-0 pt-1 text-truncate">
           <a [href]="t.channel.url" target="_blank">{{ t.channel.status }}</a>
