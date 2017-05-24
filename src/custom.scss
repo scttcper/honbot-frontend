@@ -17,21 +17,21 @@ $teal:   #5bc0de;
 $pink:   #ff5b77;
 $purple: #613d7c;
 $grid-gutter-width-base: 30px;
-$grid-gutter-widths: (
-  xs: 10px,
-  sm: 10px,
-  md: 20px,
-  lg: $grid-gutter-width-base,
-  xl: $grid-gutter-width-base
-);
+// $grid-gutter-widths: (
+//   xs: 10px,
+//   sm: 10px,
+//   md: 20px,
+//   lg: $grid-gutter-width-base,
+//   xl: $grid-gutter-width-base
+// );
 $font-size-base: .9rem;
 // $table-bg: lightgrey;
-$container-max-widths: (
-  sm: 540px,
-  md: 700px,
-  lg: 992px,
-  xl: 1200px
-);
+// $container-max-widths: (
+//   sm: 540px,
+//   md: 700px,
+//   lg: 992px,
+//   xl: 1200px
+// );
 $body-bg: #222b34;
 $body-color: #e5e5e5;
 $text-muted: darken($body-color, 30%);
@@ -80,6 +80,7 @@ $pagination-disabled-border:           darken($body-bg, 10%);
 
 // cards
 $card-bg: lighten($body-bg, 4%);
+$list-group-bg: darken($body-bg, 4%);
 
 // code
 $code-bg: darken($body-bg, 3%);

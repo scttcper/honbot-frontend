@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   disksize: any;
   matches: any;
   lastDay: any;
+  loadedLastDay: any;
   constructor(
     private router: Router,
     private api: Api,
@@ -24,6 +25,7 @@ export class HomeComponent implements OnInit {
       this.disksize = res.disksize;
       this.matches = (res.matches / 1000000).toFixed(2);
       this.lastDay = res.lastDay;
+      this.loadedLastDay = res.loadedLastDay;
     });
     this.api.getTwitchStreams().subscribe((res) => {
       this.twitch = res;
