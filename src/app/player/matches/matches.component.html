@@ -12,9 +12,7 @@
       </thead>
       <tbody>
         <tr *ngIf="loading">
-          <td>
-            Loading...
-          </td>
+          <td>Loading...</td>
         </tr>
         <tr *ngFor="let m of matches | paginate: config">
           <td>

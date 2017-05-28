@@ -52,21 +52,15 @@
       <div class="card-block pb-1">
         <h4 class="card-title pb-0">honbot stats</h4>
       </div>
-      <div class="card-block" *ngIf="!disksize">
+      <div class="card-block" *ngIf="!matches">
         <hb-loading></hb-loading>
       </div>
-      <ul class="list-group list-group-flush" *ngIf="disksize">
+      <ul class="list-group list-group-flush" *ngIf="matches">
         <li class="list-group-item">
           <strong class="mr-1">total matches:</strong> {{ matches }}m
         </li>
         <li class="list-group-item">
           <strong class="mr-1">Loaded 24 hrs:</strong> {{ loadedLastDay | number }}
-        </li>
-        <li class="list-group-item">
-          <strong class="mr-1">Played 24 hours:</strong> {{ lastDay | number }}
-        </li>
-        <li class="list-group-item">
-          <strong class="mr-1">db size:</strong> {{ disksize }}
         </li>
       </ul>
     </div>
