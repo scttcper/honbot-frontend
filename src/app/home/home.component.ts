@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 import { Api } from '../api';
 
@@ -16,7 +17,10 @@ export class HomeComponent implements OnInit {
   constructor(
     private router: Router,
     private api: Api,
-  ) { }
+    private title: Title,
+  ) {
+    title.setTitle('honbot - Heroes of Newerth Stats');
+  }
 
   ngOnInit() {
     this.api.getServerStats().subscribe((res) => {

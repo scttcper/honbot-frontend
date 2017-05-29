@@ -17,7 +17,6 @@ import { PlayerModule } from './player/player.module';
 import { MatchComponent } from './match/match.component';
 import { HbUtility } from './util';
 import { HeroesComponent } from './heroes/heroes.component';
-import { LineComponent } from './heroes/line/line.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -33,7 +32,6 @@ export const routes: Routes = [
     HomeComponent,
     MatchComponent,
     HeroesComponent,
-    LineComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,12 +39,16 @@ export const routes: Routes = [
     HttpModule,
     CommonModule,
     RouterModule.forRoot(routes),
+
+    // 3rd party
     NgbModule.forRoot(),
     Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),
     AdsenseModule.forRoot({
       adClient: 'ca-pub-7640562161899788',
       adSlot: 2930227358,
     }),
+
+    // 1st party
     PlayerModule,
     HbUtility,
   ],

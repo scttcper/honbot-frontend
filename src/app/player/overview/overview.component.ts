@@ -46,19 +46,23 @@ export class OverviewComponent implements OnInit {
         .subscribe((res) => {
           this.loading = false;
           this.matches = res.matches.slice(0, 15);
-          this.with = res.with;
-          this.against = res.against;
           const max = _.maxBy(this.matches, _.property('length')) || {};
           this.maxLength = max.length || 0;
           this.setupHeroes(res.matches);
         }, () => {
           this.playerError = true;
         });
+      this.api
+        .getPlayerCompetition(params['nickname'])
+        .subscribe((res) => {
+          this.with = res.with;
+          this.against = res.against;
+        })
     });
   }
   setupHeroes(matches: any) {
     const heroes = {};
-    for (const m of matches) {
+    matches.map((m) => {
       if (!heroes[m.hero_id]) {
         heroes[m.hero_id] = {
           hero_id: m.hero_id,
@@ -73,17 +77,17 @@ export class OverviewComponent implements OnInit {
         };
       }
       heroes[m.hero_id].matches += 1;
-      for (const n of needsSum) {
+      needsSum.map((n) => {
         if (n === 'win') {
           heroes[m.hero_id].win += m.win ? 1 : 0;
-          continue;
+          return;
         } else if (n === 'loss') {
           heroes[m.hero_id].loss += m.loss ? 0 : 1;
-          continue;
+          return;
         }
         heroes[m.hero_id][n] += m[n];
-      }
-    }
+      });
+    });
     const allHeroes = _.toArray(heroes);
     this.heroes = _.sortBy(allHeroes, 'matches').reverse().slice(0, 10);
     this.heroes = this.heroes.map((n) => {
@@ -92,9 +96,9 @@ export class OverviewComponent implements OnInit {
       n.gpm = n.gpm / n.matches;
       return n;
     });
-    for (const n of needsSum) {
+    needsSum.map((n) => {
       this.maxHeroes[n] = _.maxBy(this.heroes, _.identity(n))[n];
-    }
+    });
     this.maxHeroes['matches'] = _.maxBy(this.heroes, _.identity('matches'))['matches'];
     this.maxHeroes['winPercent'] = _.maxBy(this.heroes, _.identity('winPercent'))['winPercent'];
     this.maxHeroes['kda'] = _.maxBy(this.heroes, _.identity('kda'))['kda'];

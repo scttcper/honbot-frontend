@@ -2,12 +2,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 export function getSkillBracket(averageScore: number) {
   if (averageScore >= 31) {
-    return 'Very High Skill';
+    return 'Very High';
   }
   if (averageScore >= 28) {
-    return 'High Skill';
+    return 'High';
   }
-  return 'Normal Skill';
+  return 'Normal';
 }
 
 @Pipe({ name: 'skillBracket' })

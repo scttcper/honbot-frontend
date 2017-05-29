@@ -19,7 +19,6 @@ export class SkillBracketComponent implements OnInit {
       this.skill = '';
       return;
     }
-    console.log(this.id)
     this.api
       .getMatchSkill(this.id)
       .subscribe((res) => {

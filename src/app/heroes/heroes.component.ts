@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import * as _ from 'lodash';
 
 import { Api } from '../api';
@@ -11,11 +12,14 @@ import { Api } from '../api';
 export class HeroesComponent implements OnInit {
   loading = true;
   herostatsAvg: any[] = [];
+  herostatsWeek: any[] = [];
   sortMethod = 'wr';
   prMax = 0;
   wrMax = 0;
 
-  constructor(private api: Api) { }
+  constructor(private api: Api, private title: Title) {
+    title.setTitle('honbot - Hero Stats');
+  }
 
   ngOnInit() {
     this.api
@@ -30,6 +34,7 @@ export class HeroesComponent implements OnInit {
         this.prMax = prMax.pr;
         const wrMax = _.maxBy(this.herostatsAvg, _.property('wr'));
         this.wrMax = wrMax.wr;
+        this.herostatsWeek = res.week;
         this.sortStats();
       }, () => {
         this.loading = false;
