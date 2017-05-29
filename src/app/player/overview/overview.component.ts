@@ -44,7 +44,9 @@ const needsSum = [
         </thead>
         <tbody>
           <tr class="text-center" *ngIf="loading">
-            <td colspan="3">Loading...</td>
+            <td colspan="3">
+              <hb-loading></hb-loading>
+            </td>
           </tr>
           <tr class="text-center" *ngIf="with && with.length === 0">
             <td colspan="3">None</td>
@@ -70,7 +72,9 @@ const needsSum = [
         </thead>
         <tbody>
           <tr class="text-center" *ngIf="loading">
-            <td colspan="3">Loading...</td>
+            <td colspan="3">
+              <hb-loading></hb-loading>
+            </td>
           </tr>
           <tr class="text-center" *ngIf="against && against.length === 0">
             <td colspan="3">None</td>

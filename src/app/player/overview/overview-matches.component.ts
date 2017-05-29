@@ -19,13 +19,15 @@ import * as _ from 'lodash';
       </tr>
     </thead>
     <tbody>
-      <tr *ngIf="loading">
-        <td>Loading...</td>
+      <tr *ngIf="matches === undefined" class="text-center">
+        <td colspan="5">
+          <hb-loading></hb-loading>
+        </td>
       </tr>
       <tr *ngFor="let m of matches | slice:0:15">
         <td>
-          <img width="45" height="45" alt="hero icon" src="https://www.heroesofnewerth.com/images/heroes/{{m.hero_id}}/icon_128.jpg"
-        ></td>
+          <img width="45" height="45" alt="hero icon" src="https://www.heroesofnewerth.com/images/heroes/{{m.hero_id}}/icon_128.jpg">
+        </td>
         <td>
           <div>
             <a [routerLink]="['/match', m.matchId]">

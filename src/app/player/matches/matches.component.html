@@ -8,11 +8,14 @@
           <th>Type</th>
           <th>Duration</th>
           <th>KDA</th>
+          <th width="200">Items</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngIf="loading">
-          <td>Loading...</td>
+          <td colspan="5">
+            <hb-loading></hb-loading>
+          </td>
         </tr>
         <tr *ngFor="let m of matches | paginate: config">
           <td>
@@ -37,7 +40,17 @@
             {{ m.length / 60 | number:'1.0-0' }} Minutes
             <hb-bar [value]="m.length" [max]="maxLength"></hb-bar>
           </td>
-          <td>{{ m.kills }}/{{ m.deaths }}/{{ m.assists }}</td>
+          <td>
+            {{ m.kills }}/{{ m.deaths }}/{{ m.assists }}
+            <div class="bar">
+              <div class="segment kills" [style.width.%]="m.kills / (m.kills + m.assists + m.deaths) * 100"></div>
+              <div class="segment deaths" [style.width.%]="m.deaths / (m.kills + m.assists + m.deaths) * 100"></div>
+              <div class="segment assists" [style.width.%]="m.assists / (m.kills + m.assists + m.deaths) * 100"></div>
+            </div>
+          </td>
+          <td>
+            <img width="32" height="32" *ngFor="let i of m.items" src="/assets/img/items/{{ i }}.jpg">
+          </td>
         </tr>
       </tbody>
     </table>

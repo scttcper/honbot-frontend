@@ -21,6 +21,7 @@ export class PlayerComponent implements OnInit {
   avatar = DEFAULT_AVATAR;
   playerError = false;
   playerSkill: number;
+  activePage = '';
 
   maxLength: number;
 
@@ -32,6 +33,13 @@ export class PlayerComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.route.children[0].url.subscribe((n) => {
+      if (!n.length) {
+        this.activePage = 'overview';
+        return;
+      }
+      this.activePage = n[0].path;
+    });
     this.route.params.subscribe((params) => {
       this.title.setTitle(`honbot - Player: ${params['nickname']}`);
       this.playerError = false;
