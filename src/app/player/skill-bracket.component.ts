@@ -5,7 +5,10 @@ import { Api } from '../api';
 
 @Component({
   selector: 'hb-bracket',
-  template: `{{ skill | skillBracket }}`,
+  template: `
+    {{ skill | skillBracket }}
+    <ng-content *ngIf="skill"></ng-content>
+  `,
 })
 export class SkillBracketComponent implements OnInit {
   @Input() mode: string;
@@ -21,9 +24,7 @@ export class SkillBracketComponent implements OnInit {
     }
     this.api
       .getMatchSkill(this.id)
-      .subscribe((res) => {
-        this.skill = res.averageScore;
-      });
+      .subscribe(r => this.skill = r.averageScore);
   }
 
 }
