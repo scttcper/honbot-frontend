@@ -8,10 +8,12 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { Api } from '../api';
 import { PlayerComponent } from './player.component';
 import { OverviewComponent } from './overview/overview.component';
+import { OverviewHeroesComponent } from './overview/overview-heroes.component';
 import { MatchesComponent } from './matches/matches.component';
 import { HbUtility } from '../util';
 import { SkillBracketComponent } from './skill-bracket.component';
 import { HeroesComponent } from './heroes/heroes.component';
+import { OverviewMatchesComponent } from './overview/overview-matches.component';
 
 export const routes: Routes = [{
     path: 'player/:nickname',
@@ -30,6 +32,8 @@ export const routes: Routes = [{
     OverviewComponent,
     SkillBracketComponent,
     HeroesComponent,
+    OverviewHeroesComponent,
+    OverviewMatchesComponent,
   ],
   imports: [
     CommonModule,

@@ -46,12 +46,12 @@ export class PlayerComponent implements OnInit {
         .getPlayerMatches(this.nickname)
         .subscribe(
           r => this.setupPlayer(r),
-          () => this.playerError = true
+          () => this.playerError = true,
+          () => this.loading = false,
         );
     });
   }
   setupPlayer(res: PlayerMatches) {
-    this.loading = false;
     if (!res.matches) {
       this.playerError = true;
       return;

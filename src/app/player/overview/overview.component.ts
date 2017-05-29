@@ -15,8 +15,76 @@ const needsSum = [
 
 @Component({
   selector: 'hb-overview',
-  templateUrl: './overview.component.html',
-  styleUrls: ['./overview.component.scss']
+  template: `
+  <div class="row" *ngIf="!playerError">
+    <div class="col-lg-8">
+      <hb-overview-heroes [matches]="matches"></hb-overview-heroes>
+      <hb-overview-matches [matches]="matches"></hb-overview-matches>
+    </div>
+    <div class="col-lg-4">
+      <div class="row adsbygoogle">
+        <div class="col">
+          <div class="mt-3 text-center">
+            <ng2-adsense></ng2-adsense>
+          </div>
+        </div>
+      </div>
+
+      <legend class="mt-2">
+        Friends
+        <small class="mt-3">This Week</small>
+      </legend>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Friend</th>
+            <th>Matches</th>
+            <th>Win Rate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-center" *ngIf="loading">
+            <td colspan="3">Loading...</td>
+          </tr>
+          <tr class="text-center" *ngIf="with && with.length === 0">
+            <td colspan="3">None</td>
+          </tr>
+          <tr *ngFor="let p of with | slice:0:8">
+            <th scope="row"><a [routerLink]="['/player', p.nickname]">{{p.nickname}}</a></th>
+            <td>{{p.t}}</td>
+            <td>{{p.w / p.t * 100 | number:'1.1-1'}}%</td>
+          </tr>
+        </tbody>
+      </table>
+      <legend class="mt-2">
+        Opponents
+        <small class="mt-3">This Week</small>
+      </legend>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Player</th>
+            <th>Matches</th>
+            <th>Win Rate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-center" *ngIf="loading">
+            <td colspan="3">Loading...</td>
+          </tr>
+          <tr class="text-center" *ngIf="against && against.length === 0">
+            <td colspan="3">None</td>
+          </tr>
+          <tr *ngFor="let p of against | slice:0:8">
+            <th scope="row"><a [routerLink]="['/player', p.nickname]">{{p.nickname}}</a></th>
+            <td>{{p.t}}</td>
+            <td>{{p.w / p.t * 100 | number:'1.1-1'}}%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  `,
 })
 export class OverviewComponent implements OnInit {
   loading = true;
@@ -25,7 +93,6 @@ export class OverviewComponent implements OnInit {
   against: any[];
   heroes: any[];
   maxHeroes: any = {};
-  maxLength = 0;
   playerError = false;
 
   constructor(
@@ -45,10 +112,7 @@ export class OverviewComponent implements OnInit {
         .getPlayerMatches(params['nickname'])
         .subscribe((res) => {
           this.loading = false;
-          this.matches = res.matches.slice(0, 15);
-          const max = _.maxBy(this.matches, _.property('length')) || {};
-          this.maxLength = max.length || 0;
-          this.setupHeroes(res.matches);
+          this.matches = res.matches;
         }, () => {
           this.playerError = true;
         });
@@ -59,49 +123,6 @@ export class OverviewComponent implements OnInit {
           this.against = res.against;
         })
     });
-  }
-  setupHeroes(matches: any) {
-    const heroes = {};
-    matches.map((m) => {
-      if (!heroes[m.hero_id]) {
-        heroes[m.hero_id] = {
-          hero_id: m.hero_id,
-          lastMatch: m.date,
-          matches: 0,
-          win: 0,
-          loss: 0,
-          kills: 0,
-          deaths: 0,
-          assists: 0,
-          gpm: 0,
-        };
-      }
-      heroes[m.hero_id].matches += 1;
-      needsSum.map((n) => {
-        if (n === 'win') {
-          heroes[m.hero_id].win += m.win ? 1 : 0;
-          return;
-        } else if (n === 'loss') {
-          heroes[m.hero_id].loss += m.loss ? 0 : 1;
-          return;
-        }
-        heroes[m.hero_id][n] += m[n];
-      });
-    });
-    const allHeroes = _.toArray(heroes);
-    this.heroes = _.sortBy(allHeroes, 'matches').reverse().slice(0, 10);
-    this.heroes = this.heroes.map((n) => {
-      n.winPercent = (n.win / n.loss) * 100;
-      n.kda = (n.kills + n.assists) / n.deaths;
-      n.gpm = n.gpm / n.matches;
-      return n;
-    });
-    needsSum.map((n) => {
-      this.maxHeroes[n] = _.maxBy(this.heroes, _.identity(n))[n];
-    });
-    this.maxHeroes['matches'] = _.maxBy(this.heroes, _.identity('matches'))['matches'];
-    this.maxHeroes['winPercent'] = _.maxBy(this.heroes, _.identity('winPercent'))['winPercent'];
-    this.maxHeroes['kda'] = _.maxBy(this.heroes, _.identity('kda'))['kda'];
   }
 
 }
