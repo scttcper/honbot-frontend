@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import * as _ from 'lodash';
+import { differenceInDays } from 'date-fns';
 
 import { Api } from '../../api';
 
@@ -15,6 +16,14 @@ const needsSum = [
 
 @Component({
   selector: 'hb-overview',
+  styles: [`
+    legend {
+      margin-bottom: 0.1rem;
+    }
+    legend > small {
+      font-size: 50%;
+    }
+  `],
   template: `
   <div class="row" *ngIf="!playerError">
     <div class="col-lg-8">
@@ -22,6 +31,20 @@ const needsSum = [
       <hb-overview-matches [matches]="matches"></hb-overview-matches>
     </div>
     <div class="col-lg-4">
+      <legend class="mt-2">
+        Activity
+        <small class="mt-3">30 Days</small>
+      </legend>
+      <ngx-trend
+        [data]="activity"
+        [gradient]="gradient"
+        [smooth]="true"
+        [strokeWidth]="2"
+        [height]="150"
+        [padding]="5"
+      >
+      </ngx-trend>
+
       <div class="row adsbygoogle">
         <div class="col">
           <div class="mt-3 text-center">
@@ -98,6 +121,8 @@ export class OverviewComponent implements OnInit {
   heroes: any[];
   maxHeroes: any = {};
   playerError = false;
+  activity: number[];
+  gradient = ['grey', 'lightgreen', 'green'];
 
   constructor(
     private route: ActivatedRoute,
@@ -112,11 +137,22 @@ export class OverviewComponent implements OnInit {
       this.with = undefined;
       this.against = undefined;
       this.heroes = undefined;
+      const activity = _.fill(Array(30), 0);
+      this.activity = _.fill(Array(30), 0);
       this.api
         .getPlayerMatches(params['nickname'])
         .subscribe((res) => {
           this.loading = false;
           this.matches = res.matches;
+          const now = new Date();
+          this.matches.map((n) => {
+            const date = new Date(n.date);
+            const diff = differenceInDays(date, now);
+            if (diff > -30) {
+              activity[29 + diff] += 1;
+            }
+          });
+          this.activity = activity;
         }, () => {
           this.playerError = true;
         });

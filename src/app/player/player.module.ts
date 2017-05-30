@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdsenseModule } from 'ng2-adsense';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { TrendModule } from 'ngx-trend';
 
 import { Api } from '../api';
 import { PlayerComponent } from './player.component';
@@ -42,6 +43,7 @@ export const routes: Routes = [{
     AdsenseModule,
     HbUtility,
     NgxPaginationModule,
+    TrendModule,
   ],
   exports: [RouterModule],
   providers: [Api],

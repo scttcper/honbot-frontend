@@ -9,7 +9,7 @@ const DEFAULT_AVATAR = 'https://s3.amazonaws.com/naeu-icb2/icons/default/account
 @Component({
   selector: 'hb-player',
   templateUrl: './player.component.html',
-  styleUrls: ['./player.component.scss']
+  styleUrls: ['./player.component.scss'],
 })
 export class PlayerComponent implements OnInit {
   lastMatch: string;
