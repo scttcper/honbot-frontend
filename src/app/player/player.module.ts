@@ -15,6 +15,7 @@ import { HbUtility } from '../util';
 import { SkillBracketComponent } from './skill-bracket.component';
 import { HeroesComponent } from './heroes/heroes.component';
 import { OverviewMatchesComponent } from './overview/overview-matches.component';
+import { OverviewCompetitionComponent } from './overview/overview-competition.component';
 
 export const routes: Routes = [{
     path: 'player/:nickname',
@@ -35,6 +36,7 @@ export const routes: Routes = [{
     HeroesComponent,
     OverviewHeroesComponent,
     OverviewMatchesComponent,
+    OverviewCompetitionComponent,
   ],
   imports: [
     CommonModule,

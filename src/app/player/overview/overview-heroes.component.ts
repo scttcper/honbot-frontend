@@ -58,14 +58,6 @@ const needsSum = [
     </tbody>
   </table>
   `,
-  styles: [`
-    legend {
-      margin-bottom: 0.1rem;
-    }
-    legend > small {
-      font-size: 50%;
-    }
-  `],
 })
 export class OverviewHeroesComponent implements OnChanges {
   @Input() matches;

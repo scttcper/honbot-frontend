@@ -139,6 +139,13 @@ a:hover {
   color: gold;
 }
 
+legend {
+  margin-bottom: 0.1rem;
+}
+legend > small {
+  font-size: 50%;
+}
+
 
 .bar {
   height: 4px;

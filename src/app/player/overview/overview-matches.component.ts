@@ -60,12 +60,6 @@ import * as _ from 'lodash';
   </table>
   `,
   styles: [`
-    legend {
-      margin-bottom: 0.1rem;
-    }
-    legend > small {
-      font-size: 50%;
-    }
     .table-sm > td {
       line-height: 1.3;
       padding-top: 0.25rem
