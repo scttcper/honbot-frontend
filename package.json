@@ -24,14 +24,17 @@
     "@ng-bootstrap/ng-bootstrap": "^1.0.0-alpha.26",
     "angulartics2": "^2.2.1",
     "bootstrap": "^4.0.0-alpha.6",
+    "classlist.js": "^1.1.20150312",
     "core-js": "^2.4.1",
     "date-fns": "^1.28.5",
+    "intl": "^1.2.5",
     "lodash": "^4.17.4",
     "ng2-adsense": "^2.2.1",
     "ngx-pagination": "^3.0.0",
     "ngx-trend": "0.0.4",
     "rxjs": "^5.4.0",
     "spinkit": "^1.2.5",
+    "web-animations-js": "^2.2.5",
     "zone.js": "^0.8.11"
   },
   "devDependencies": {
