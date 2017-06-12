@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col">
+  <div class="col-12">
     <div class="mb-1">
       <ng2-adsense></ng2-adsense>
     </div>
@@ -7,7 +7,7 @@
 </div>
 
 <div class="row m-5" *ngIf="matchError">
-  <div class="col text-center">
+  <div class="col-12 text-center">
     <h1>Match Unavailable</h1>
     <a class="btn btn-lg btn-secondary" [routerLink]="['']">Home</a>
   </div>
@@ -15,7 +15,7 @@
 
 <div *ngIf="!matchError">
   <div class="row mb-2" *ngIf="match">
-    <div class="col statsbar">
+    <div class="col-12 statsbar">
       <div class="bg-lighter">
         <div class="row">
           <div class="col-lg-4">
@@ -58,13 +58,13 @@
 
 
   <div class="row">
-    <div class="col text-center">
+    <div class="col-12 text-center">
       <h4 class="{{teamNames[winner]}}">{{ teamNames[winner] }} Wins</h4>
     </div>
   </div>
 
   <div class="row mb-2">
-    <div class="col text-center">
+    <div class="col-12 text-center">
       <h4>
         <span class="mr-2 Legion">{{ teamTotals[0].kills }}</span>
         <small class="text-muted">{{ match.duration }}</small>
@@ -74,7 +74,7 @@
   </div>
 
   <div class="row" *ngFor="let team of [team1, team2]; let i = index;">
-    <div class="col table-responsive">
+    <div class="col-12 table-responsive">
       <table class="table table-sm table-striped" style="min-width: 600px">
         <thead>
           <tr>
@@ -141,7 +141,7 @@
 </div>
 
 <div class="row">
-  <div class="col">
+  <div class="col-12">
     <ng2-adsense></ng2-adsense>
   </div>
 </div>

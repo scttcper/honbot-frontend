@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col">
+  <div class="col-12">
     <div class="mb-1">
       <ng2-adsense></ng2-adsense>
     </div>
@@ -7,14 +7,14 @@
 </div>
 
 <div class="row m-5" *ngIf="playerError">
-  <div class="col text-center">
+  <div class="col-12 text-center">
     <h2>No data for {{ nickname }} Available</h2>
     <a class="btn btn-lg btn-secondary" [routerLink]="['']">Home</a>
   </div>
 </div>
 
 <div class="row statsbar" *ngIf="!playerError">
-  <div class="col">
+  <div class="col-12">
     <div class="bg-lighter">
       <div class="row">
         <div class="col-md-6">
@@ -52,7 +52,7 @@
 </div>
 
 <div class="row" *ngIf="!playerError">
-  <div class="col">
+  <div class="col-12">
     <ul class="nav bg-darker">
       <li class="nav-item">
         <a class="nav-link"
@@ -60,6 +60,11 @@
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }">
           Overview
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/player/', nickname, 'heroes']" routerLinkActive="active">
+          Heroes <span class="badge badge-danger">New</span>
         </a>
       </li>
       <li class="nav-item">
@@ -74,7 +79,7 @@
 <router-outlet></router-outlet>
 
 <div class="row">
-  <div class="col">
+  <div class="col-12">
     <div class="mb-1">
       <ng2-adsense></ng2-adsense>
     </div>

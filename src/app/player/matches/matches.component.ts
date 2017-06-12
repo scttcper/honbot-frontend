@@ -6,16 +6,16 @@ import * as _ from 'lodash';
 import { Api } from '../../api';
 
 @Component({
-  selector: 'hb-matches',
+  selector: 'hb-player-matches',
   templateUrl: './matches.component.html',
-  styleUrls: ['./matches.component.scss']
+  styleUrls: ['./matches.component.scss'],
 })
 export class MatchesComponent implements OnInit {
   loading = false;
   matches: any[];
   maxLength = 0;
 
-  public config: PaginationInstance = {
+  config: PaginationInstance = {
     id: 'matches',
     itemsPerPage: 15,
     currentPage: 1,

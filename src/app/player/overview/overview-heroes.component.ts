@@ -3,7 +3,6 @@ import * as _ from 'lodash';
 
 const needsSum = [
   'win',
-  'loss',
   'kills',
   'deaths',
   'assists',
@@ -62,7 +61,7 @@ const needsSum = [
 export class OverviewHeroesComponent implements OnChanges {
   @Input() matches;
   heroes: any[] = [];
-  maxHeroes = {};
+  maxHeroes: any = {};
   loading = true;
 
   constructor() { }
@@ -82,7 +81,6 @@ export class OverviewHeroesComponent implements OnChanges {
           lastMatch: m.date,
           matches: 0,
           win: 0,
-          loss: 0,
           kills: 0,
           deaths: 0,
           assists: 0,
@@ -94,9 +92,6 @@ export class OverviewHeroesComponent implements OnChanges {
         if (n === 'win') {
           heroes[m.hero_id].win += m.win ? 1 : 0;
           return;
-        } else if (n === 'loss') {
-          heroes[m.hero_id].loss += m.loss ? 0 : 1;
-          return;
         }
         heroes[m.hero_id][n] += m[n];
       });
@@ -104,7 +99,7 @@ export class OverviewHeroesComponent implements OnChanges {
     const allHeroes = _.toArray(heroes);
     this.heroes = _.sortBy(allHeroes, 'matches').reverse().slice(0, 10);
     this.heroes = this.heroes.map((n) => {
-      n.winPercent = (n.win / n.loss) * 100;
+      n.winPercent = (n.win / n.matches) * 100;
       n.kda = (n.kills + n.assists) / n.deaths;
       n.gpm = n.gpm / n.matches;
       return n;
@@ -112,9 +107,9 @@ export class OverviewHeroesComponent implements OnChanges {
     needsSum.map((n) => {
       this.maxHeroes[n] = _.maxBy(this.heroes, _.identity(n))[n];
     });
-    this.maxHeroes['matches'] = _.maxBy(this.heroes, _.identity('matches'))['matches'];
-    this.maxHeroes['winPercent'] = _.maxBy(this.heroes, _.identity('winPercent'))['winPercent'];
-    this.maxHeroes['kda'] = _.maxBy(this.heroes, _.identity('kda'))['kda'];
+    this.maxHeroes.matches = _.maxBy<any>(this.heroes, _.identity('matches')).matches;
+    this.maxHeroes.maxHeroes = _.maxBy<any>(this.heroes, _.identity('winPercent')).winPercent;
+    this.maxHeroes.kda = _.maxBy<any>(this.heroes, _.identity('kda')).kda;
   }
 
 }

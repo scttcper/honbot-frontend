@@ -1,3 +1,94 @@
-<p>
-  heroes works!
-</p>
+<hb-loading *ngIf="loading"></hb-loading>
+<div class="row mt-3" *ngIf="!loading">
+  <div class="col-12">
+    <form class="form-inline">
+      <label class="mr-2">Filter:</label>
+      <div class="form-group mr-2">
+        <select class="form-control" name="timeSelect" [(ngModel)]="time" (ngModelChange)="applyFilters()">
+          <option selected="selected" disabled="disabled" value="">Time</option>
+          <option value="all">All Time</option>
+          <option value="week">This Week</option>
+          <option value="month">This Month</option>
+          <option value="3month">Last 3 Months</option>
+          <option value="6month">Last 6 Months</option>
+          <option value="year">Last 12 Months</option>
+        </select>
+      </div>
+      <div class="form-group mr-2">
+        <select class="form-control" name="modeSelect" [(ngModel)]="mode" (ngModelChange)="applyFilters()">
+          <option selected="selected" disabled="disabled" value="">Mode</option>
+          <option value="all">All</option>
+          <option value="Season 3">Season 3</option>
+          <option value="Season 2">Season 2</option>
+          <option value="Season 1">Season 1</option>
+          <option value="Ranked">Ranked</option>
+          <option value="Unknown">Unknown</option>
+        </select>
+      </div>
+      <div class="form-group mr-2">
+        <select class="form-control" name="lobbySelect" [(ngModel)]="lobby" (ngModelChange)="applyFilters()">
+          <option selected="selected" disabled="disabled" value="">Lobby</option>
+          <option value="all">All</option>
+          <option value="season">Season</option>
+          <option value="ranked">Ranked</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="form-group mr-2">
+        <select class="form-control" name="teamSelect" [(ngModel)]="team" (ngModelChange)="applyFilters()">
+          <option selected="selected" disabled="disabled" value="">Team</option>
+          <option value="all">All</option>
+          <option value="legion">Legion</option>
+          <option value="hellbourne">Hellbourne</option>
+        </select>
+      </div>
+      <!-- <div class="form-group mr-2">
+        <select class="form-control" name="timeSelect" [(ngModel)]="length" (ngModelChange)="applyFilters()">
+          <option selected="selected" disabled="disabled" value="">Length</option>
+          <option value="all">All Time</option>
+          <option value="week">This Week</option>
+          <option value="month">This Month</option>
+        </select>
+      </div> -->
+    </form>
+  </div>
+</div>
+<div class="row mt-3" *ngIf="!loading">
+  <div class="col-12">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Hero</th>
+          <th>Matches</th>
+          <th>Win Percent</th>
+          <th>KDA</th>
+          <th>GPM</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let hero of heroes">
+          <th>
+            <img width="45" height="45" alt="hero icon" src="https://www.heroesofnewerth.com/images/heroes/{{ hero.hero_id }}/icon_128.jpg">
+            {{ hero.lastMatch | timeAgo }}
+          </th>
+          <td>
+            {{ hero.matches }}
+            <hb-bar [value]="hero.matches" [max]="maxMatches"></hb-bar>
+          </td>
+          <td>
+            {{ hero.winPercent | number:'1.0-0' }}%
+            <hb-bar [value]="hero.winPercent" [max]="maxWinPercent"></hb-bar>
+          </td>
+          <td>
+            {{ hero.kda | number:'1.0-2' }}
+            <hb-bar [value]="hero.kda" [max]="maxKda"></hb-bar>
+          </td>
+          <td>
+            {{ hero.gpm | number:'1.0-2' }}
+            <hb-bar [value]="hero.gpm" [max]="maxGpm"></hb-bar>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

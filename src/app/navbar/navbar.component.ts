@@ -50,7 +50,7 @@ export class NavbarComponent {
   constructor(private router: Router) { }
 
   onSubmit() {
-    this.router.navigate(['player', this.search]);
+    this.router.navigate(['/player', this.search]);
     this.search = '';
   }
 

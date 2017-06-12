@@ -13,15 +13,13 @@ import { Api } from './api';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
-import { PlayerModule } from './player/player.module';
-import { MatchComponent } from './match/match.component';
 import { HbUtility } from './util';
-import { HeroesComponent } from './heroes/heroes.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'match/:matchId', component: MatchComponent },
-  { path: 'hero', component: HeroesComponent },
+  { path: 'match/:matchId', loadChildren: './match/match.module#MatchModule' },
+  { path: 'hero', loadChildren: './heroes/heroes.module#HeroesModule' },
+  { path: 'player/:nickname', loadChildren: './player/player.module#PlayerModule' },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
@@ -30,8 +28,6 @@ export const routes: Routes = [
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    MatchComponent,
-    HeroesComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +45,6 @@ export const routes: Routes = [
     }),
 
     // 1st party
-    PlayerModule,
     HbUtility,
   ],
   providers: [Api],

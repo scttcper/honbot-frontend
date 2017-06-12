@@ -1,15 +1,15 @@
 <div class="row">
-  <div class="col text-center">
+  <div class="col-12 text-center">
     <ng2-adsense></ng2-adsense>
   </div>
 </div>
 <div class="row" *ngIf="loading">
-  <div class="col text-center">
+  <div class="col-12 text-center">
     <hb-loading></hb-loading>
   </div>
 </div>
 <div class="row" *ngIf="!loading && !herostatsAvg.length">
-  <div class="col p-5 text-center">
+  <div class="col-12 p-5 text-center">
     <h3>Failed to load hero stats</h3>
   </div>
 </div>
