@@ -8,7 +8,7 @@ import { HeroesComponent } from './heroes.component';
 import { HbUtility } from '../util';
 
 export const routes: Routes = [{
-  path: '',
+  path: 'hero',
   component: HeroesComponent,
 }];
 

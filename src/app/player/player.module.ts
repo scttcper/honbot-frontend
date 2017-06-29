@@ -19,7 +19,7 @@ import { OverviewMatchesComponent } from './overview/overview-matches.component'
 import { OverviewCompetitionComponent } from './overview/overview-competition.component';
 
 export const routes: Routes = [{
-    path: '',
+    path: 'player/:nickname',
     component: PlayerComponent,
     children: [
       { path: '', component: OverviewComponent },

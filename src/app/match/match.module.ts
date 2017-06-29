@@ -9,7 +9,7 @@ import { MatchComponent } from './match.component';
 import { HbUtility } from '../util';
 
 export const routes: Routes = [{
-  path: '',
+  path: 'match/:matchId',
   component: MatchComponent,
 }];
 
