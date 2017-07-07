@@ -10,7 +10,6 @@ import { Api } from '../../api';
 @Component({
   selector: 'hb-player-heroes',
   templateUrl: './heroes.component.html',
-  styleUrls: ['./heroes.component.scss']
 })
 export class HeroesComponent implements OnInit {
   loading = true;
@@ -18,7 +17,8 @@ export class HeroesComponent implements OnInit {
   heroes: any[];
   maxMatches = 0;
   maxWinPercent = 0;
-  maxGpm= 0;
+  maxGpm = 0;
+  maxKda = 0;
 
   time = '';
   mode = '';
@@ -127,17 +127,23 @@ export class HeroesComponent implements OnInit {
         h.lastMatch = d;
       }
     });
-    const values = _.sortBy<any>(_.values(res), _.identity('matches'))
+    const values = _.sortBy(_.values(res), _.identity('matches'))
       .reverse()
-      .map((n) => {
+      .map((n: any) => {
         n.winPercent = (n.win / n.matches) * 100;
         n.kda = (n.kills + n.assists) / n.deaths;
         n.gpm = n.gpm / n.matches;
         return n;
       });
     this.maxMatches = values[0].matches;
-    this.maxWinPercent = _.maxBy<any>(values, _.identity('winPercent')).winPercent;
-    this.maxGpm = _.maxBy<any>(values, _.identity('gpm')).gpm;
+    this.maxWinPercent = _.maxBy(values, _.identity('winPercent')).winPercent;
+    this.maxGpm = _.maxBy(values, _.identity('gpm')).gpm;
+    this.maxKda = _.maxBy(values, (n) => {
+      if (_.isFinite(n.kda)) {
+        return n.kda;
+      }
+      return 0;
+    }).kda;
     // this.maxDeaths = _.maxBy<any>(values, _.identity('deaths')).deaths;
     return values
   }
