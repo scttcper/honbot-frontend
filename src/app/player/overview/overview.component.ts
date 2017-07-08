@@ -69,7 +69,7 @@ export class OverviewComponent implements OnInit {
       this.loading = true;
       this.matches = undefined;
       this.heroes = undefined;
-      this.activity = _.fill(Array(30), 0);
+      const activity = _.fill(Array(30), 0);
       this.api
         .getPlayerMatches(params['nickname'])
         .subscribe(
@@ -80,9 +80,10 @@ export class OverviewComponent implements OnInit {
               const date = new Date(n.date);
               const diff = differenceInDays(date, now);
               if (diff > -30) {
-                this.activity[29 + diff] += 1;
+                activity[29 + diff] += 1;
               }
             });
+            this.activity = activity;
           },
           () => this.playerError = true,
           () => this.loading = false,
