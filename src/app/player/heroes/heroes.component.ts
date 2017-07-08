@@ -20,6 +20,15 @@ export class HeroesComponent implements OnInit {
   maxGpm = 0;
   maxKda = 0;
 
+  totalMatches = 0;
+  totalPercent = 0;
+  totalKills = 0;
+  totalDeaths = 0;
+  totalWards = 0;
+  avgGpm = 0;
+  avgApm = 0;
+  avgKda = 0;
+
   time = '';
   mode = '';
   lobby = '';
@@ -101,6 +110,15 @@ export class HeroesComponent implements OnInit {
     if (!matches.length) {
       return matches;
     }
+    this.totalMatches = matches.length;
+    this.totalPercent = 0;
+    this.totalKills = 0;
+    this.totalDeaths = 0;
+    this.totalWards = 0;
+    this.avgGpm = 0;
+    this.avgApm = 0;
+    this.avgKda = 0;
+    let totalWin = 0;
     const res: any = {};
     matches.map((n) => {
       if (!res[n.hero_id]) {
@@ -126,6 +144,12 @@ export class HeroesComponent implements OnInit {
       if (!isAfter(h.lastMatch, d)) {
         h.lastMatch = d;
       }
+      this.totalKills += n.kills;
+      this.totalDeaths += n.deaths;
+      this.totalWards += n.wards;
+      this.avgGpm += n.gpm;
+      this.avgApm += n.apm;
+      totalWin += n.win ? 1 : 0;
     });
     const values = _.sortBy(_.values(res), _.identity('matches'))
       .reverse()
@@ -135,6 +159,10 @@ export class HeroesComponent implements OnInit {
         n.gpm = n.gpm / n.matches;
         return n;
       });
+    this.avgGpm = this.avgGpm / matches.length;
+    this.avgApm = this.avgApm / matches.length;
+    this.avgKda = this.totalKills / this.totalDeaths;
+    this.totalPercent = (totalWin / matches.length) * 100;
     this.maxMatches = values[0].matches;
     this.maxWinPercent = _.maxBy(values, _.identity('winPercent')).winPercent;
     this.maxGpm = _.maxBy(values, _.identity('gpm')).gpm;

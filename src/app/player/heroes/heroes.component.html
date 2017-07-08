@@ -1,5 +1,5 @@
 <hb-loading *ngIf="loading"></hb-loading>
-<div class="row mt-3" *ngIf="!loading">
+<div class="row mb-3" *ngIf="!loading">
   <div class="col-12">
     <form class="form-inline">
       <label class="mr-2">Filter:</label>
@@ -53,17 +53,90 @@
     </form>
   </div>
 </div>
-<div class="row adsbygoogle">
+<div class="row adsbygoogle mb-3">
   <div class="col-12">
-    <div class="mt-3 text-center">
+    <div class="text-center">
       <ng2-adsense></ng2-adsense>
     </div>
   </div>
 </div>
-<div class="row mt-3" *ngIf="!loading">
+<div class="row">
+  <div class="col-6 col-md-4 col-lg-3">
+    <div class="card mb-3">
+      <div class="card-block pb-1 pt-2">
+        <h4 class="card-title">Matches</h4>
+        <h6 class="card-subtitle mb-2 text-muted">{{ totalMatches | number }}</h6>
+      </div>
+    </div>
+  </div>
+  <div class="col-6 col-md-4 col-lg-3">
+    <div class="card mb-3">
+      <div class="card-block pb-1 pt-2">
+        <h4 class="card-title">Win Percent</h4>
+        <h6 class="card-subtitle mb-2 text-muted">{{ totalPercent | number:'1.0-0' }}%</h6>
+      </div>
+    </div>
+  </div>
+  <div class="col-6 col-md-4 col-lg-3">
+    <div class="card mb-3">
+      <div class="card-block pb-1 pt-2">
+        <h4 class="card-title">Kills</h4>
+        <h6 class="card-subtitle mb-2 text-muted">{{ totalKills | number }}</h6>
+      </div>
+    </div>
+  </div>
+  <div class="col-6 col-md-4 col-lg-3">
+    <div class="card mb-3">
+      <div class="card-block pb-1 pt-2">
+        <h4 class="card-title">Deaths</h4>
+        <h6 class="card-subtitle mb-2 text-muted">{{ totalDeaths | number }}</h6>
+      </div>
+    </div>
+  </div>
+  <div class="col-6 col-md-4 col-lg-3">
+    <div class="card mb-3">
+      <div class="card-block pb-1 pt-2">
+        <h4 class="card-title">GPM</h4>
+        <h6 class="card-subtitle mb-2 text-muted">{{ avgGpm | number:'1.0-0' }}</h6>
+      </div>
+    </div>
+  </div>
+  <div class="col-6 col-md-4 col-lg-3">
+    <div class="card mb-3">
+      <div class="card-block pb-1 pt-2">
+        <h4 class="card-title">APM</h4>
+        <h6 class="card-subtitle mb-2 text-muted">{{ avgApm | number:'1.0-0' }}</h6>
+      </div>
+    </div>
+  </div>
+  <div class="col-6 col-md-4 col-lg-3">
+    <div class="card mb-3">
+      <div class="card-block pb-1 pt-2">
+        <h4 class="card-title">KDA</h4>
+        <h6 class="card-subtitle mb-2 text-muted">{{ avgKda | number:'1.0-2' }}</h6>
+      </div>
+    </div>
+  </div>
+  <div class="col-6 col-md-4 col-lg-3">
+    <div class="card mb-3">
+      <div class="card-block pb-1 pt-2">
+        <h4 class="card-title">Wards</h4>
+        <h6 class="card-subtitle mb-2 text-muted">{{ totalWards | number }}</h6>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row adsbygoogle mb-3">
+  <div class="col-12">
+    <div class="text-center">
+      <ng2-adsense></ng2-adsense>
+    </div>
+  </div>
+</div>
+<div class="row" *ngIf="!loading">
   <div class="col-12">
     <table class="table">
-      <thead>
+      <thead class="bg-darker">
         <tr>
           <th>Hero</th>
           <th>Matches</th>
@@ -91,7 +164,7 @@
             <hb-bar [value]="hero.kda" [max]="maxKda"></hb-bar>
           </td>
           <td>
-            {{ hero.gpm | number:'1.0-2' }}
+            {{ hero.gpm | number:'1.0-0' }}
             <hb-bar [value]="hero.gpm" [max]="maxGpm"></hb-bar>
           </td>
         </tr>

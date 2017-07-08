@@ -51,7 +51,7 @@
   </div>
 </div>
 
-<div class="row" *ngIf="!playerError">
+<div class="row mb-3" *ngIf="!playerError">
   <div class="col-12">
     <ul class="nav bg-darker">
       <li class="nav-item">
@@ -64,7 +64,7 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/player/', nickname, 'heroes']" routerLinkActive="active">
-          Heroes <span class="badge badge-danger">New</span>
+          Heroes <span class="badge badge-success">New</span>
         </a>
       </li>
       <li class="nav-item">
