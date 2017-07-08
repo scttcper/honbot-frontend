@@ -41,7 +41,7 @@ export class PlayerComponent implements OnInit {
       this.activePage = n[0].path;
     });
     this.route.params.subscribe((params) => {
-      this.title.setTitle(`honbot - Player: ${params['nickname']}`);
+      this.title.setTitle(`${params['nickname']} stats - honbot.com Heroes of Newerth Player stats`);
       this.playerError = false;
       this.wins = 0;
       this.losses = 0;

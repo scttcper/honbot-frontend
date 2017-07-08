@@ -54,7 +54,7 @@ export class MatchComponent implements OnInit {
       this.matchError = false;
       this.loading = true;
       this.matchId = params['matchId'];
-      this.title.setTitle(`honbot - Match: ${this.matchId}`);
+      this.title.setTitle(`Match: ${this.matchId} - honbot.com`);
       this.api
         .getMatch(this.matchId)
         .subscribe(

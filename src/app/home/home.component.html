@@ -41,9 +41,26 @@
     <ng2-adsense></ng2-adsense>
   </div>
   <div class="col-md-12 col-lg-4">
+    <div class="card mb-3">
+      <div class="card-block pb-1">
+        <h4 class="card-title pb-0">Recent Matches</h4>
+      </div>
+      <div class="card-block" *ngIf="!recent">
+        <hb-loading></hb-loading>
+      </div>
+      <ul class="list-group list-group-flush" *ngIf="recent">
+        <a [routerLink]="['/match', r.id]" *ngFor="let r of recent">
+          <li class="list-group-item">
+            {{ r.id }} - {{ r.date | timeAgo }} -
+            <span class="text-muted ml-1">{{ r.mode }}</span>
+          </li>
+        </a>
+      </ul>
+    </div>
+
     <div class="card">
       <div class="card-block pb-1">
-        <h4 class="card-title pb-0">honbot stats</h4>
+        <h4 class="card-title pb-0">Stats</h4>
       </div>
       <div class="card-block" *ngIf="!matches">
         <hb-loading></hb-loading>
@@ -57,5 +74,7 @@
         </li>
       </ul>
     </div>
+
+
   </div>
 </div>

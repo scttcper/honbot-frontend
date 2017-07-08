@@ -15,9 +15,8 @@ export class Api {
 
   getPlayerMatches(nickname: string): Observable<PlayerMatches> {
     if (!this.playerCache[nickname]) {
-      const url = `${this.url}/playerMatches/${nickname}`;
       this.playerCache[nickname] = this.http
-        .get(url)
+        .get(`${this.url}/playerMatches/${nickname}`)
         .map((res) => res.json())
         .catch((err) => {
           console.error(`Player: ${nickname} not found`);
@@ -31,59 +30,57 @@ export class Api {
     return this.playerCache[nickname];
   }
   getPlayerCompetition(nickname: string) {
-    const url = `${this.url}/playerCompetition/${nickname}`;
     return this.http
-      .get(url)
+      .get(`${this.url}/playerCompetition/${nickname}`)
       .map((res) => res.json())
       .catch(this.handleError);
   }
   getAvatar(accountId: number) {
-    const url = `https://hon-avatar.now.sh/${accountId}`;
     return this.http
-      .get(url)
+      .get(`https://hon-avatar.now.sh/${accountId}`)
       .map((res) => res.text())
       .catch(this.handleError);
   }
   getMatch(matchId: string | number) {
-    const url = `${this.url}/match/${matchId}`;
     return this.http
-      .get(url)
+      .get(`${this.url}/match/${matchId}`)
       .map((res) => res.json())
       .catch(this.handleError);
   }
   getPlayerSkill(accountId: number): Observable<PlayerSkill> {
-    const url = `${this.url}/playerSkill/${accountId}`;
     return this.http
-      .get(url)
+      .get(`${this.url}/playerSkill/${accountId}`)
       .map((res) => res.json())
       .catch(this.handleError);
   }
   getMatchSkill(matchId: string | number) {
-    const url = `${this.url}/matchSkill/${matchId}`;
     return this.http
-      .get(url)
+      .get(`${this.url}/matchSkill/${matchId}`)
       .map((res) => res.json())
       .catch(this.handleError);
   }
   getTwitchStreams() {
-    const url = `${this.url}/twitchStreams`;
     return this.http
-      .get(url)
+      .get(`${this.url}/twitchStreams`)
       .map((res) => res.json())
       .catch(this.handleError);
   }
   getServerStats() {
-    const url = `${this.url}/stats`;
     return this.http
-      .get(url)
+      .get(`${this.url}/stats`)
+      .map((res) => res.json())
+      .catch(this.handleError);
+  }
+  getLatestMatches() {
+    return this.http
+      .get(`${this.url}/latestMatches`)
       .map((res) => res.json())
       .catch(this.handleError);
   }
   getHeroStats() {
     if (!this.herostatsCache) {
-      const url = `${this.url}/herostats`;
       this.herostatsCache = this.http
-        .get(url)
+        .get(`${this.url}/herostats`)
         .map((res) => res.json())
         .publishReplay()
         .refCount()

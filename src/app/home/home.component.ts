@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   search = '';
   match = '';
   twitch: any[];
+  recent: any[];
   matches: any;
   loadedLastDay: any;
   constructor(
@@ -19,7 +20,7 @@ export class HomeComponent implements OnInit {
     private api: Api,
     private title: Title,
   ) {
-    title.setTitle('honbot - Heroes of Newerth Stats');
+    title.setTitle('honbot - Heroes of Newerth Player Stats');
   }
 
   ngOnInit() {
@@ -30,11 +31,15 @@ export class HomeComponent implements OnInit {
     this.api.getTwitchStreams().subscribe((res) => {
       this.twitch = res;
     });
+    this.api.getLatestMatches().subscribe((res) => {
+      this.recent = res;
+    });
   }
 
   goPlayer() {
     this.router.navigate(['/player', this.search]);
   }
+
   goMatch() {
     this.router.navigate(['/match', this.match]);
   }
