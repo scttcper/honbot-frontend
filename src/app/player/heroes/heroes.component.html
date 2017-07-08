@@ -149,7 +149,7 @@
         <tr>
           <th>Hero</th>
           <th>Matches</th>
-          <th>Win Percent</th>
+          <th>Win%</th>
           <th>KDA</th>
           <th>GPM</th>
           <th>XPM</th>
@@ -168,7 +168,6 @@
           </td>
           <td>
             {{ hero.winPercent | number:'1.0-0' }}%
-            <hb-bar [value]="hero.winPercent" [max]="maxWinPercent"></hb-bar>
           </td>
           <td>
             {{ hero.kda | number:'1.0-2' }}

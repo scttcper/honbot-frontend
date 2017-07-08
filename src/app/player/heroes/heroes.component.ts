@@ -16,7 +16,7 @@ export class HeroesComponent implements OnInit {
   unfiltered: any[];
   heroes: any[];
   maxMatches = 0;
-  maxWinPercent = 0;
+  // maxWinPercent = 0;
   maxGpm = 0;
   maxKda = 0;
   maxWards = 0;
@@ -178,7 +178,7 @@ export class HeroesComponent implements OnInit {
     this.avgKda = this.totalKills / this.totalDeaths;
     this.totalPercent = (totalWin / matches.length) * 100;
     this.maxMatches = values[0].matches;
-    this.maxWinPercent = _.maxBy(values, _.identity('winPercent')).winPercent;
+    // this.maxWinPercent = _.maxBy(values, _.identity('winPercent')).winPercent;
     this.maxGpm = _.maxBy(values, _.identity('gpm')).gpm;
     this.maxWards = _.maxBy(values, _.identity('wards')).wards;
     this.maxXpm = _.maxBy(values, _.identity('xpm')).xpm;
