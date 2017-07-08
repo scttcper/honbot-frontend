@@ -169,6 +169,7 @@ export class HeroesComponent implements OnInit {
         n.kda = (n.kills + n.assists) / n.deaths;
         n.gpm = n.gpm / n.matches;
         n.xpm = n.xpm / n.matches;
+        n.wards = n.wards / n.matches;
         return n;
       });
     this.avgGpm = this.avgGpm / matches.length;
