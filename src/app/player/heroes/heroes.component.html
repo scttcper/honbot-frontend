@@ -1,4 +1,11 @@
 <hb-loading *ngIf="loading"></hb-loading>
+<div class="row adsbygoogle mb-3">
+  <div class="col-12">
+    <div class="text-center">
+      <ng2-adsense></ng2-adsense>
+    </div>
+  </div>
+</div>
 <div class="row mb-3" *ngIf="!loading">
   <div class="col-12">
     <form class="form-inline">
@@ -53,13 +60,6 @@
     </form>
   </div>
 </div>
-<div class="row adsbygoogle mb-3">
-  <div class="col-12">
-    <div class="text-center">
-      <ng2-adsense></ng2-adsense>
-    </div>
-  </div>
-</div>
 <div class="row">
   <div class="col-6 col-md-4 col-lg-3">
     <div class="card mb-3">
@@ -112,6 +112,14 @@
   <div class="col-6 col-md-4 col-lg-3">
     <div class="card mb-3">
       <div class="card-block pb-1 pt-2">
+        <h4 class="card-title">XPM</h4>
+        <h6 class="card-subtitle mb-2 text-muted">{{ avgXpm | number:'1.0-0' }}</h6>
+      </div>
+    </div>
+  </div>
+  <div class="col-6 col-md-4 col-lg-3">
+    <div class="card mb-3">
+      <div class="card-block pb-1 pt-2">
         <h4 class="card-title">KDA</h4>
         <h6 class="card-subtitle mb-2 text-muted">{{ avgKda | number:'1.0-2' }}</h6>
       </div>
@@ -125,11 +133,12 @@
       </div>
     </div>
   </div>
-</div>
-<div class="row adsbygoogle mb-3">
-  <div class="col-12">
-    <div class="text-center">
-      <ng2-adsense></ng2-adsense>
+  <div class="col-6 col-md-4 col-lg-3">
+    <div class="card mb-3">
+      <div class="card-block pb-1 pt-2">
+        <h4 class="card-title">Smackdowns</h4>
+        <h6 class="card-subtitle mb-2 text-muted">{{ totalSmackdown | number }}</h6>
+      </div>
     </div>
   </div>
 </div>
@@ -143,6 +152,8 @@
           <th>Win Percent</th>
           <th>KDA</th>
           <th>GPM</th>
+          <th>XPM</th>
+          <th>Wards</th>
         </tr>
       </thead>
       <tbody>
@@ -166,6 +177,14 @@
           <td>
             {{ hero.gpm | number:'1.0-0' }}
             <hb-bar [value]="hero.gpm" [max]="maxGpm"></hb-bar>
+          </td>
+          <td>
+            {{ hero.xpm | number:'1.0-0' }}
+            <hb-bar [value]="hero.xpm" [max]="maxXpm"></hb-bar>
+          </td>
+          <td>
+            {{ hero.wards | number:'1.0-0' }}
+            <hb-bar [value]="hero.wards" [max]="maxWards"></hb-bar>
           </td>
         </tr>
       </tbody>

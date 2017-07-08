@@ -19,15 +19,19 @@ export class HeroesComponent implements OnInit {
   maxWinPercent = 0;
   maxGpm = 0;
   maxKda = 0;
+  maxWards = 0;
+  maxXpm = 0;
 
   totalMatches = 0;
   totalPercent = 0;
   totalKills = 0;
   totalDeaths = 0;
   totalWards = 0;
+  totalSmackdown = 0;
   avgGpm = 0;
   avgApm = 0;
   avgKda = 0;
+  avgXpm = 0;
 
   time = '';
   mode = '';
@@ -117,6 +121,7 @@ export class HeroesComponent implements OnInit {
     this.totalWards = 0;
     this.avgGpm = 0;
     this.avgApm = 0;
+    this.avgXpm = 0;
     this.avgKda = 0;
     let totalWin = 0;
     const res: any = {};
@@ -130,6 +135,8 @@ export class HeroesComponent implements OnInit {
           deaths: 0,
           assists: 0,
           gpm: 0,
+          wards: 0,
+          xpm: 0,
           lastMatch: new Date(0),
         };
       }
@@ -140,6 +147,8 @@ export class HeroesComponent implements OnInit {
       h.win += n.win ? 1 : 0;
       h.assists += n.assists;
       h.gpm += n.gpm;
+      h.wards += n.wards;
+      h.xpm += n.xpm;
       const d = new Date(n.date);
       if (!isAfter(h.lastMatch, d)) {
         h.lastMatch = d;
@@ -147,6 +156,8 @@ export class HeroesComponent implements OnInit {
       this.totalKills += n.kills;
       this.totalDeaths += n.deaths;
       this.totalWards += n.wards;
+      this.totalSmackdown += n.smackdown;
+      this.avgXpm += n.xpm;
       this.avgGpm += n.gpm;
       this.avgApm += n.apm;
       totalWin += n.win ? 1 : 0;
@@ -157,15 +168,19 @@ export class HeroesComponent implements OnInit {
         n.winPercent = (n.win / n.matches) * 100;
         n.kda = (n.kills + n.assists) / n.deaths;
         n.gpm = n.gpm / n.matches;
+        n.xpm = n.xpm / n.matches;
         return n;
       });
     this.avgGpm = this.avgGpm / matches.length;
     this.avgApm = this.avgApm / matches.length;
+    this.avgXpm = this.avgXpm / matches.length;
     this.avgKda = this.totalKills / this.totalDeaths;
     this.totalPercent = (totalWin / matches.length) * 100;
     this.maxMatches = values[0].matches;
     this.maxWinPercent = _.maxBy(values, _.identity('winPercent')).winPercent;
     this.maxGpm = _.maxBy(values, _.identity('gpm')).gpm;
+    this.maxWards = _.maxBy(values, _.identity('wards')).wards;
+    this.maxXpm = _.maxBy(values, _.identity('xpm')).xpm;
     this.maxKda = _.maxBy(values, (n) => {
       if (_.isFinite(n.kda)) {
         return n.kda;
