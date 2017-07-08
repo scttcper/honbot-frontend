@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { subWeeks, subMonths, subYears, isAfter } from 'date-fns';
-import { PaginationInstance } from 'ngx-pagination';
 import * as _ from 'lodash';
 
 import { Api } from '../../api';
@@ -38,12 +37,6 @@ export class HeroesComponent implements OnInit {
   lobby = '';
   team = '';
   length = '';
-
-  config: PaginationInstance = {
-    id: 'matches',
-    itemsPerPage: 15,
-    currentPage: 1,
-  };
 
   constructor(
     private route: ActivatedRoute,
