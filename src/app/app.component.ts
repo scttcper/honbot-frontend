@@ -11,7 +11,9 @@ import { Angulartics2GoogleAnalytics } from 'angulartics2';
   <footer class="footer">
     <div class="container text-center">
       <span class="text-muted">
-        <a href="https://twitter.com/scttcper">@scttcper</a>
+        Created by <a href="https://twitter.com/scttcper">@scttcper</a> -
+        <a href="https://github.com/scttcper/honbot-frontend">Frontend</a> +
+        <a href="https://github.com/scttcper/honbot-api">Backend</a>
         <br>
         Not affiliated with Frostburn Studios
       </span>
