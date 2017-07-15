@@ -36,7 +36,7 @@ export class Api {
   }
   getAvatar(accountId: number) {
     return this.http
-      .get(`https://hon-avatar.now.sh/${accountId}`)
+      .get(`https://hon-avatar.now.sh/${accountId}`, { responseType: 'text' })
       .catch(this.handleError);
   }
   getMatch(matchId: string | number) {
