@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+
 import { Observable } from 'rxjs/Observable';
 import * as _ from 'lodash';
 
@@ -11,13 +12,12 @@ export class Api {
   herostatsCache: Observable<any>;
   private url = environment.backendUrl;
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
   getPlayerMatches(nickname: string): Observable<PlayerMatches> {
     if (!this.playerCache[nickname]) {
       this.playerCache[nickname] = this.http
         .get(`${this.url}/playerMatches/${nickname}`)
-        .map((res) => res.json())
         .catch((err) => {
           console.error(`Player: ${nickname} not found`);
           this.playerCache[nickname] = undefined;
@@ -32,69 +32,60 @@ export class Api {
   getPlayerCompetition(nickname: string) {
     return this.http
       .get(`${this.url}/playerCompetition/${nickname}`)
-      .map((res) => res.json())
       .catch(this.handleError);
   }
   getAvatar(accountId: number) {
     return this.http
       .get(`https://hon-avatar.now.sh/${accountId}`)
-      .map((res) => res.text())
       .catch(this.handleError);
   }
   getMatch(matchId: string | number) {
     return this.http
       .get(`${this.url}/match/${matchId}`)
-      .map((res) => res.json())
       .catch(this.handleError);
   }
   getPlayerSkill(accountId: number): Observable<PlayerSkill> {
     return this.http
       .get(`${this.url}/playerSkill/${accountId}`)
-      .map((res) => res.json())
       .catch(this.handleError);
   }
   getMatchSkill(matchId: string | number) {
     return this.http
       .get(`${this.url}/matchSkill/${matchId}`)
-      .map((res) => res.json())
       .catch(this.handleError);
   }
   getTwitchStreams() {
     return this.http
       .get(`${this.url}/twitchStreams`)
-      .map((res) => res.json())
       .catch(this.handleError);
   }
   getServerStats() {
     return this.http
       .get(`${this.url}/stats`)
-      .map((res) => res.json())
       .catch(this.handleError);
   }
   getLatestMatches() {
     return this.http
       .get(`${this.url}/latestMatches`)
-      .map((res) => res.json())
       .catch(this.handleError);
   }
   getHeroStats() {
     if (!this.herostatsCache) {
       this.herostatsCache = this.http
         .get(`${this.url}/herostats`)
-        .map((res) => res.json())
         .publishReplay()
         .refCount()
         ;
     }
     return this.herostatsCache;
   }
-  private handleError (error: Response | any) {
+  private handleError(error: HttpErrorResponse) {
     let errMsg: string;
-    if (error instanceof Response) {
-      const err = error.text() || '';
+    if (error instanceof Error) {
+      const err = error.message || '';
       errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
     } else {
-      errMsg = error.message ? error.message : error.toString();
+      errMsg = error.error ? error.error : error.toString();
     }
     console.error(errMsg);
     return Observable.throw(errMsg);
