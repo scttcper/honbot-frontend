@@ -34,7 +34,7 @@ export class Api {
       .get(`${this.url}/playerCompetition/${nickname}`)
       .catch(this.handleError);
   }
-  getAvatar(accountId: number) {
+  getAvatar(accountId: number): Observable<string> {
     return this.http
       .get(`https://hon-avatar.now.sh/${accountId}`, { responseType: 'text' })
       .catch(this.handleError);
