@@ -30,7 +30,7 @@
       </div>
       <div class="col-xs-6 col-md-6 mb-2 text-center text-md-left" *ngFor="let t of twitch">
         <a [href]="t.channel.url" target="_blank">
-          <img [src]="t.preview.medium">
+          <img [src]="t.preview.medium" class="img-fluid" [alt]="t.channel.display_name">
         </a>
         <h5 class="p-0 m-0 pt-1 text-truncate">
           <a [href]="t.channel.url" target="_blank">{{ t.channel.status }}</a>
