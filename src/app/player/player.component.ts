@@ -53,7 +53,7 @@ export class PlayerComponent implements OnInit {
       this.api
         .getPlayerMatches(this.nickname)
         .subscribe(
-          r => this.setupPlayer(r),
+          (r) => this.setupPlayer(r),
           () => this.playerError = true,
           () => this.loading = false,
         );

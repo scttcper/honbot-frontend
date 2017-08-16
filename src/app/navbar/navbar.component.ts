@@ -4,13 +4,9 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'hb-navbar',
   template: `
-  <nav class="navbar navbar-toggleable-xl navbar-inverse bg-lighter">
-    <button class="navbar-toggler navbar-toggler-right" (click)="isCollapsed = !isCollapsed">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <nav class="navbar navbar-expand-lg navbar-inverse bg-lighter">
     <div class="container">
-      <a class="navbar-brand" routerLink="/"><span>honbot</span></a>
-
+      <a class="navbar-brand" routerLink="/">honbot</a>
       <div class="collapse navbar-collapse" [ngbCollapse]="isCollapsed">
         <form class="form-inline my-0" (ngSubmit)="onSubmit()">
           <input [(ngModel)]="search" name="search" class="form-control mr-sm-2" type="text" placeholder="nickname">
@@ -25,23 +21,6 @@ import { Router } from '@angular/router';
     </div>
   </nav>
   `,
-  styles: [`
-  @media (min-width: 768px) {
-    .container {
-      width: 675px;
-    }
-  }
-  @media (min-width: 992px) {
-    .container {
-      width: 960px;
-    }
-  }
-  @media (min-width: 1200px) {
-    .container {
-      width: 1170px;
-    }
-  }
-  `]
 })
 export class NavbarComponent {
   isCollapsed = false;
