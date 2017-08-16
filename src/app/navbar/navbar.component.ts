@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'hb-navbar',
   template: `
-  <nav class="navbar navbar-expand-lg navbar-inverse bg-lighter">
+  <nav class="navbar navbar-expand navbar-inverse bg-lighter">
     <div class="container">
       <a class="navbar-brand" routerLink="/">honbot</a>
       <div class="collapse navbar-collapse" [ngbCollapse]="isCollapsed">
