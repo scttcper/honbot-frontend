@@ -27,12 +27,11 @@ const needsSum = [
         Activity
         <small class="mt-3">30 Days</small>
       </legend>
-      <ngx-trend
+      <ngx-trend *ngIf="activity"
         [data]="activity"
         [gradient]="gradient"
         [smooth]="true"
         [strokeWidth]="2"
-        [height]="150"
         [padding]="5"
       >
       </ngx-trend>
