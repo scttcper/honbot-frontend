@@ -32,6 +32,7 @@ const needsSum = [
         [gradient]="gradient"
         [smooth]="true"
         [strokeWidth]="2"
+        [height]="200"
         [padding]="5"
       >
       </ngx-trend>
