@@ -1,9 +1,10 @@
+/* tslint:disable:no-access-missing-member*/
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PaginationInstance } from 'ngx-pagination';
 import * as _ from 'lodash';
 
-import { subWeeks, subMonths, subYears, isAfter } from 'date-fns';
+import { subWeeks, subMonths, subYears } from 'date-fns';
 import { Api } from '../../api';
 
 @Component({

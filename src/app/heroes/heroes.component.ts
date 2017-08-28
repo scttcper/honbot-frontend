@@ -17,7 +17,7 @@ export class HeroesComponent implements OnInit {
   prMax = 0;
   wrMax = 0;
 
-  constructor(private api: Api, private title: Title) {
+  constructor(private api: Api, title: Title) {
     title.setTitle('honbot - Hero Stats');
   }
 

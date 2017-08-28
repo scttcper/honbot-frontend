@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private router: Router,
     private api: Api,
-    private title: Title,
+    title: Title,
   ) {
     title.setTitle('honbot - Heroes of Newerth Player Stats');
   }

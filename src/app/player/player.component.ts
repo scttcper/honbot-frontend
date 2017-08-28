@@ -27,7 +27,7 @@ export class PlayerComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
+    router: Router,
     private api: Api,
     private title: Title,
   ) {}

@@ -5,14 +5,6 @@ import { differenceInDays } from 'date-fns';
 
 import { Api } from '../../api';
 
-const needsSum = [
-  'win',
-  'loss',
-  'kills',
-  'deaths',
-  'assists',
-  'gpm',
-];
 
 @Component({
   selector: 'hb-overview',
