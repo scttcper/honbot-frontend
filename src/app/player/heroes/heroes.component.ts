@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { subWeeks, subMonths, subYears, isAfter } from 'date-fns';
-import * as _ from 'lodash';
+import { filter, maxBy, property, sortBy, values } from 'lodash-es';
 
 import { Api } from '../../api';
 
@@ -59,7 +59,7 @@ export class HeroesComponent implements OnInit {
 
   applyFilters() {
     const date = this.selectedDate();
-    this.heroes = this.groupByHero(_.filter(this.unfiltered, (n) => {
+    this.heroes = this.groupByHero(filter(this.unfiltered, (n) => {
       return this.filterTime(n, date) &&
         this.filterMode(n) &&
         this.filterTeam(n) &&
@@ -155,7 +155,7 @@ export class HeroesComponent implements OnInit {
       this.avgApm += n.apm;
       totalWin += n.win ? 1 : 0;
     });
-    const values = _.sortBy(_.values(res), _.identity('matches'))
+    const vals = sortBy(values(res), property('matches'))
       .reverse()
       .map((n: any) => {
         n.winPercent = (n.win / n.matches) * 100;
@@ -170,18 +170,18 @@ export class HeroesComponent implements OnInit {
     this.avgXpm = this.avgXpm / matches.length;
     this.avgKda = this.totalKills / this.totalDeaths;
     this.totalPercent = (totalWin / matches.length) * 100;
-    this.maxMatches = values[0].matches;
-    // this.maxWinPercent = _.maxBy(values, _.identity('winPercent')).winPercent;
-    this.maxGpm = _.maxBy(values, _.identity('gpm')).gpm;
-    this.maxWards = _.maxBy(values, _.identity('wards')).wards;
-    this.maxXpm = _.maxBy(values, _.identity('xpm')).xpm;
-    this.maxKda = _.maxBy(values, (n) => {
-      if (_.isFinite(n.kda)) {
+    this.maxMatches = vals[0].matches;
+    // this.maxWinPercent = maxBy(vals, property('winPercent')).winPercent;
+    this.maxGpm = maxBy(vals, property('gpm')).gpm;
+    this.maxWards = maxBy(vals, property('wards')).wards;
+    this.maxXpm = maxBy(vals, property('xpm')).xpm;
+    this.maxKda = maxBy(vals, (n) => {
+      if (isFinite(n.kda)) {
         return n.kda;
       }
       return 0;
     }).kda;
-    // this.maxDeaths = _.maxBy<any>(values, _.identity('deaths')).deaths;
-    return values
+    // this.maxDeaths = maxBy<any>(vals, property('deaths')).deaths;
+    return vals
   }
 }

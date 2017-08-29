@@ -1,5 +1,5 @@
 import { Component, OnChanges, Input } from '@angular/core';
-import * as _ from 'lodash';
+import { maxBy, property } from 'lodash-es';
 
 @Component({
   selector: 'hb-overview-matches',
@@ -75,7 +75,7 @@ export class OverviewMatchesComponent implements OnChanges {
   constructor() { }
 
   ngOnChanges() {
-    const max = _.maxBy<any>(this.matches, _.property('length'));
+    const max = maxBy<any>(this.matches, property('length'));
     this.maxLength = max ? max.length : 0;
   }
 

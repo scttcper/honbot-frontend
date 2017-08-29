@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import * as _ from 'lodash';
+import { fill } from 'lodash-es';
 import { differenceInDays } from 'date-fns';
 
 import { Api } from '../../api';
@@ -61,7 +61,7 @@ export class OverviewComponent implements OnInit {
       this.loading = true;
       this.matches = undefined;
       this.heroes = undefined;
-      const activity = _.fill(Array(30), 0);
+      const activity = fill(Array(30), 0);
       this.api
         .getPlayerMatches(params['nickname'])
         .subscribe(

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import * as _ from 'lodash';
+import { maxBy, property } from 'lodash-es';
 
 import { Api } from '../api';
 
@@ -30,9 +30,9 @@ export class HeroesComponent implements OnInit {
         if (!this.herostatsAvg.length) {
           return;
         }
-        const prMax = _.maxBy(this.herostatsAvg, _.property('pr'));
+        const prMax = maxBy(this.herostatsAvg, property('pr'));
         this.prMax = prMax.pr;
-        const wrMax = _.maxBy(this.herostatsAvg, _.property('wr'));
+        const wrMax = maxBy(this.herostatsAvg, property('wr'));
         this.wrMax = wrMax.wr;
         this.herostatsWeek = res.week;
         this.sortStats();

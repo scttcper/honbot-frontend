@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PaginationInstance } from 'ngx-pagination';
-import * as _ from 'lodash';
+import { property, filter, maxBy } from 'lodash-es';
 
 import { subWeeks, subMonths, subYears } from 'date-fns';
 import { Api } from '../../api';
@@ -41,7 +41,7 @@ export class MatchesComponent implements OnInit {
         .getPlayerMatches(params['nickname'])
         .subscribe((res) => {
           this.unfiltered = res.matches;
-          const max = _.maxBy(this.matches, _.property('length')) || {};
+          const max = maxBy(this.matches, property('length')) || {};
           this.maxLength = max.length || 0;
           this.applyFilters();
         });
@@ -49,7 +49,7 @@ export class MatchesComponent implements OnInit {
   }
   applyFilters() {
     const date = this.selectedDate();
-    this.matches = _.filter(this.unfiltered, (n) => {
+    this.matches = filter(this.unfiltered, (n) => {
       return this.filterTime(n, date) &&
         this.filterMode(n) &&
         this.filterTeam(n) &&

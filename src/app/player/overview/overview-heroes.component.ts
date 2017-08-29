@@ -1,5 +1,5 @@
 import { Component, OnChanges, Input, SimpleChanges } from '@angular/core';
-import * as _ from 'lodash';
+import { toArray, sortBy, maxBy, property } from 'lodash-es';
 
 const needsSum = [
   'win',
@@ -96,8 +96,8 @@ export class OverviewHeroesComponent implements OnChanges {
         heroes[m.hero_id][n] += m[n];
       });
     });
-    const allHeroes = _.toArray(heroes);
-    this.heroes = _.sortBy(allHeroes, 'matches').reverse().slice(0, 10);
+    const allHeroes = toArray(heroes);
+    this.heroes = sortBy(allHeroes, 'matches').reverse().slice(0, 10);
     this.heroes = this.heroes.map((n) => {
       n.winPercent = (n.win / n.matches) * 100;
       n.kda = (n.kills + n.assists) / n.deaths;
@@ -105,11 +105,11 @@ export class OverviewHeroesComponent implements OnChanges {
       return n;
     });
     needsSum.map((n) => {
-      this.maxHeroes[n] = _.maxBy(this.heroes, _.identity(n))[n];
+      this.maxHeroes[n] = maxBy(this.heroes, property(n))[n];
     });
-    this.maxHeroes.matches = _.maxBy<any>(this.heroes, _.identity('matches')).matches;
-    this.maxHeroes.maxHeroes = _.maxBy<any>(this.heroes, _.identity('winPercent')).winPercent;
-    this.maxHeroes.kda = _.maxBy<any>(this.heroes, _.identity('kda')).kda;
+    this.maxHeroes.matches = maxBy(this.heroes, property('matches')).matches;
+    this.maxHeroes.maxHeroes = maxBy(this.heroes, property('winPercent')).winPercent;
+    this.maxHeroes.kda = maxBy(this.heroes, property('kda')).kda;
   }
 
 }
