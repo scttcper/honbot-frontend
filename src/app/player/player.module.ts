@@ -44,11 +44,13 @@ export const routes: Routes = [{
     CommonModule,
     FormsModule,
     RouterModule.forChild(routes),
+
     NgbModule,
     AdsenseModule,
-    HbUtility,
     NgxPaginationModule,
     TrendModule,
+
+    HbUtility,
   ],
   exports: [RouterModule],
   providers: [Api],

@@ -31,7 +31,7 @@
     "lodash-es": "^4.17.4",
     "ng2-adsense": "^4.0.10",
     "ngx-pagination": "^3.0.1",
-    "ngx-trend": "^2.0.0-beta.1",
+    "ngx-trend": "2.0.0-beta.3",
     "rxjs": "^5.4.3",
     "spinkit": "^1.2.5",
     "web-animations-js": "^2.3.1",
