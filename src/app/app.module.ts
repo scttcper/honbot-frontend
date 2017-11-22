@@ -8,7 +8,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AdsenseModule } from 'ng2-adsense';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
+import { Angulartics2Module } from 'angulartics2';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 
 import { Api } from './api';
 import { AppComponent } from './app.component';
@@ -40,7 +41,7 @@ export const routes: Routes = [
 
     // 3rd party
     NgbModule.forRoot(),
-    Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),
+    Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
     AdsenseModule.forRoot({
       adClient: 'ca-pub-7640562161899788',
       adSlot: 2930227358,

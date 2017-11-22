@@ -51,10 +51,10 @@
       </div>
       <ul class="list-group list-group-flush" *ngIf="recent">
         <li class="list-group-item" *ngFor="let r of recent">
-          <a [routerLink]="['/match', r.id]" >
-            {{ r.id }} - {{ r.date | timeAgo }} -
-            <span class="text-muted ml-1 text-nowrap">{{ r.mode }}</span>
+          <a [routerLink]="['/match', r.id]">
+            {{ r.id }} - {{ r.date | timeAgo }}
           </a>
+          <span class="text-muted ml-1 text-nowrap">{{ r.mode }}</span>
         </li>
       </ul>
     </div>
