@@ -1,24 +1,24 @@
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AdsenseModule } from 'ng2-adsense';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
+import { AdsenseModule } from 'ng2-adsense';
 
 import { Api } from './api';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { HomeComponent } from './home/home.component';
-import { HbUtility } from './util';
-import { PlayerModule } from './player/player.module';
-import { MatchModule } from './match/match.module';
 import { HeroesModule } from './heroes/heroes.module';
+import { HomeComponent } from './home/home.component';
+import { MatchModule } from './match/match.module';
+import { NavbarComponent } from './navbar/navbar.component';
+import { PlayerModule } from './player/player.module';
+import { HbUtility } from './util';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -26,11 +26,7 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    HomeComponent,
-  ],
+  declarations: [AppComponent, NavbarComponent, HomeComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -56,4 +52,4 @@ export const routes: Routes = [
   providers: [Api],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

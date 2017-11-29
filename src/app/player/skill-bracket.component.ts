@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
-import { isRanked } from '../util';
 import { Api } from '../api';
+import { isRanked } from '../util';
 
 @Component({
   selector: 'hb-bracket',

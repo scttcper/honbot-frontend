@@ -1,12 +1,12 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AdsenseModule } from 'ng2-adsense';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AdsenseModule } from 'ng2-adsense';
 
-import { MatchComponent } from './match.component';
 import { HbUtility } from '../util';
+import { MatchComponent } from './match.component';
 
 export const routes: Routes = [{
   path: 'match/:matchId',

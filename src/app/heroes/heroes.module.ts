@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AdsenseModule } from 'ng2-adsense';
 
-import { HeroesComponent } from './heroes.component';
 import { HbUtility } from '../util';
+import { HeroesComponent } from './heroes.component';
 
 export const routes: Routes = [{
   path: 'hero',

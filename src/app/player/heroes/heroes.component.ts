@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { subWeeks, subMonths, subYears, isAfter } from 'date-fns';
+import { isAfter, subMonths, subWeeks, subYears } from 'date-fns';
 import { filter, maxBy, property, sortBy, values } from 'lodash-es';
 
 import { Api } from '../../api';
@@ -182,6 +182,6 @@ export class HeroesComponent implements OnInit {
       return 0;
     }).kda;
     // this.maxDeaths = maxBy<any>(vals, property('deaths')).deaths;
-    return vals
+    return vals;
   }
 }

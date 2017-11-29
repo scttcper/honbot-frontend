@@ -1,5 +1,5 @@
-import { Component, OnChanges, Input, SimpleChanges } from '@angular/core';
-import { toArray, sortBy, maxBy, property } from 'lodash-es';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { maxBy, property, sortBy, toArray } from 'lodash-es';
 
 const needsSum = [
   'win',

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
 
 import { Api } from '../api';
-import { getSkillBracket, getQuality } from '../util';
+import { getQuality, getSkillBracket } from '../util';
 
 const needsTotal = [
   'kills',

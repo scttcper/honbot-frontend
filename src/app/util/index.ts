@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { SkillBracketPipe } from './util';
-import { TimeAgoPipe } from './time-ago.pipe';
-import { LoadingComponent } from './loading.component';
 import { BarComponent } from './bar.component';
+import { LoadingComponent } from './loading.component';
+import { TimeAgoPipe } from './time-ago.pipe';
+import { SkillBracketPipe } from './util';
 
 const all = [
   SkillBracketPipe,
