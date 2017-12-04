@@ -81,8 +81,8 @@
       "check-separator",
       "check-type"
     ],
-    "directive-selector": [true, "attribute", "hb", "camelCase"],
-    "component-selector": [true, "element", "hb", "kebab-case"],
+    "directive-selector": [false, "attribute", "app", "camelCase"],
+    "component-selector": [false, "element", "app", "kebab-case"],
     "angular-whitespace": [true, "check-interpolation"],
     "no-output-on-prefix": true,
     "use-input-property-decorator": true,
@@ -92,7 +92,7 @@
     "no-output-rename": true,
     "use-life-cycle-interface": true,
     "use-pipe-transform-interface": true,
-    "component-class-suffix": true,
+    "component-class-suffix": false,
     "directive-class-suffix": true,
     "no-unused-variable": true,
     "ordered-imports": [
