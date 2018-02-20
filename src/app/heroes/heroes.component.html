@@ -1,59 +1,57 @@
-<div class="row">
-  <div class="col-12 text-center">
-    <ng2-adsense></ng2-adsense>
-  </div>
-</div>
-<div class="row" *ngIf="loading">
-  <div class="col-12 text-center">
-    <hb-loading></hb-loading>
-  </div>
-</div>
-<div class="row" *ngIf="!loading && !herostatsAvg.length">
-  <div class="col-12 p-5 text-center">
-    <h3>Failed to load hero stats</h3>
-  </div>
-</div>
-<div class="row" *ngIf="!loading && herostatsAvg?.length > 0">
-  <div class="col-12">
-    <legend>14 day average from Ranked/Season matches</legend>
-  </div>
-  <div class="col-12 mb-2">
-    <div class="d-flex justify-content-start">
-      <div class="mr-auto">
-        <label class="mr-2">Sort By: </label>
-        <a class="btn btn-secondary mr-2" (click)="sortStats('wr')" [class.active]="sortMethod === 'wr'">
-          Win Rate
-        </a>
-        <a class="btn btn-secondary mr-2" (click)="sortStats('pr')" [class.active]="sortMethod === 'pr'">
-          Pick Rate
-        </a>
-      </div>
-      <div class="mt-2">
-        <code>
-          WR = Win Rate
-          PR = Pick Rate
-        </code>
-      </div>
+<div class="container">
+  <div class="row">
+    <div class="col-12 text-center">
+      <ng2-adsense></ng2-adsense>
     </div>
   </div>
-  <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-2 mt-2" *ngFor="let hero of herostatsAvg">
-    <div class="card">
-      <div class="card-body text-center p-3">
-        <h5 class="card-title p-0 m-0">
-          <img width="60" height="60" src="https://www.heroesofnewerth.com/images/heroes/{{hero.hero_id}}/icon_128.jpg">
-        </h5>
-        <p class="mb-1">
-          WR: {{ hero.wr * 100 | number:'1.2-2' }}%
-        </p>
-        <hb-bar [value]="hero.wr" [max]="wrMax"></hb-bar>
-        <p class="mb-1 mt-1">
-          PR: {{ hero.pr * 100 | number:'1.2-2' }}%
-        </p>
-        <hb-bar [value]="hero.pr" [max]="prMax"></hb-bar>
+  <div class="row">
+    <div class="col-12">
+      <legend>14 day average from Ranked/Season matches</legend>
+    </div>
+    <div class="col-12 mb-2">
+      <div class="d-flex justify-content-start">
+        <div class="mr-auto">
+          <label class="mr-2">Sort By: </label>
+          <a class="btn btn-secondary mr-2" (click)="sortStats('wr')" [class.active]="sortMethod === 'wr'">
+            Win Rate
+          </a>
+          <a class="btn btn-secondary mr-2" (click)="sortStats('pr')" [class.active]="sortMethod === 'pr'">
+            Pick Rate
+          </a>
+        </div>
+        <div class="mt-2">
+          <code>
+            WR = Win Rate
+            PR = Pick Rate
+          </code>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="col-12 text-center">
-    <ng2-adsense></ng2-adsense>
+    <div class="col-12" *ngIf="loading">
+      <hb-loading></hb-loading>
+    </div>
+    <div class="col-12 p-5 text-center" *ngIf="!loading && !herostatsAvg.length">
+      <h3>Failed to load hero stats</h3>
+    </div>
+    <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-2 mt-2" *ngFor="let hero of herostatsAvg">
+      <div class="card">
+        <div class="card-body text-center p-3">
+          <h5 class="card-title p-0 m-0">
+            <img width="60" height="60" src="https://www.heroesofnewerth.com/images/heroes/{{hero.hero_id}}/icon_128.jpg">
+          </h5>
+          <p class="mb-1">
+            WR: {{ hero.wr * 100 | number:'1.2-2' }}%
+          </p>
+          <hb-bar [value]="hero.wr" [max]="wrMax"></hb-bar>
+          <p class="mb-1 mt-1">
+            PR: {{ hero.pr * 100 | number:'1.2-2' }}%
+          </p>
+          <hb-bar [value]="hero.pr" [max]="prMax"></hb-bar>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 text-center">
+      <ng2-adsense></ng2-adsense>
+    </div>
   </div>
 </div>

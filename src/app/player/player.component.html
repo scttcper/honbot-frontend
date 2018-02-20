@@ -1,87 +1,89 @@
-<div class="row">
-  <div class="col-12">
-    <div class="mb-1">
-      <ng2-adsense></ng2-adsense>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="mb-1">
+        <ng2-adsense></ng2-adsense>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="row m-5" *ngIf="playerError">
-  <div class="col-12 text-center">
-    <h2>No data for {{ nickname }} Available</h2>
-    <a class="btn btn-lg btn-secondary" [routerLink]="['']">Home</a>
+  <div class="row m-5" *ngIf="playerError">
+    <div class="col-12 text-center">
+      <h2>No data for {{ nickname }} Available</h2>
+      <a class="btn btn-lg btn-secondary" [routerLink]="['']">Home</a>
+    </div>
   </div>
-</div>
 
-<div class="row statsbar" *ngIf="!playerError">
-  <div class="col-12">
-    <div class="bg-lighter">
-      <div class="row">
-        <div class="col-md-6">
-          <img class="m-2 float-left" [src]="avatar" alt="Avatar" height="70" width="70">
-          <h4 class="mt-2">{{ nickname }}</h4>
-          <div class="text-muted">{{ activePage }}</div>
-        </div>
-        <div class="col-md-6">
-          <div class="float-right mt-1">
-            <div class="d-inline-block m-3">
-              <h6 *ngIf="playerSkill">{{ playerSkill | number:'1.1-1' }}</h6>
-              <h6 *ngIf="!playerSkill">Loading...</h6>
-              <div class="text-muted">honbot rating</div>
-            </div>
-            <div class="d-inline-block m-3">
-              <h6>{{ (lastMatch | timeAgo) || 'Loading...' }}</h6>
-              <div class="text-muted">last match</div>
-            </div>
-            <div class="d-inline-block m-3">
-              <h6>
-                <span class="text-success">{{ wins | number }}</span> -
-                <span class="text-danger">{{ losses | number }}</span>
-              </h6>
-              <div class="text-muted">record</div>
-            </div>
-            <div class="d-inline-block m-3">
-              <h6>{{ winPercent }}%</h6>
-              <div class="text-muted">win rate</div>
+  <div class="row statsbar" *ngIf="!playerError">
+    <div class="col-12">
+      <div class="bg-lighter">
+        <div class="row">
+          <div class="col-md-6">
+            <img class="m-2 float-left" [src]="avatar" alt="Avatar" height="70" width="70">
+            <h4 class="mt-2">{{ nickname }}</h4>
+            <div class="text-muted">{{ activePage }}</div>
+          </div>
+          <div class="col-md-6">
+            <div class="float-right mt-1">
+              <div class="d-inline-block m-3">
+                <h6 *ngIf="playerSkill">{{ playerSkill | number:'1.1-1' }}</h6>
+                <h6 *ngIf="!playerSkill">Loading...</h6>
+                <div class="text-muted">honbot rating</div>
+              </div>
+              <div class="d-inline-block m-3">
+                <h6>{{ (lastMatch | timeAgo) || 'Loading...' }}</h6>
+                <div class="text-muted">last match</div>
+              </div>
+              <div class="d-inline-block m-3">
+                <h6>
+                  <span class="text-success">{{ wins | number }}</span> -
+                  <span class="text-danger">{{ losses | number }}</span>
+                </h6>
+                <div class="text-muted">record</div>
+              </div>
+              <div class="d-inline-block m-3">
+                <h6>{{ winPercent }}%</h6>
+                <div class="text-muted">win rate</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="row mb-3" *ngIf="!playerError">
-  <div class="col-12">
-    <ul class="nav bg-darker">
-      <li class="nav-item">
-        <a class="nav-link"
-          [routerLink]="['/player', nickname]"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }">
-          Overview
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/player/', nickname, 'heroes']" routerLinkActive="active">
-          Heroes
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/player/', nickname, 'matches']" routerLinkActive="active">
-          Matches
-        </a>
-      </li>
-    </ul>
+  <div class="row mb-3" *ngIf="!playerError">
+    <div class="col-12">
+      <ul class="nav bg-darker">
+        <li class="nav-item">
+          <a class="nav-link"
+            [routerLink]="['/player', nickname]"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }">
+            Overview
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/player/', nickname, 'heroes']" routerLinkActive="active">
+            Heroes
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/player/', nickname, 'matches']" routerLinkActive="active">
+            Matches
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
-</div>
 
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 
-<div class="row">
-  <div class="col-12">
-    <div class="mb-1">
-      <ng2-adsense></ng2-adsense>
+  <div class="row">
+    <div class="col-12">
+      <div class="mb-1">
+        <ng2-adsense></ng2-adsense>
+      </div>
     </div>
   </div>
 </div>

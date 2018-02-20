@@ -1,147 +1,149 @@
-<div class="row">
-  <div class="col-12">
-    <div class="mb-1">
-      <ng2-adsense></ng2-adsense>
+  <div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="mb-1">
+        <ng2-adsense></ng2-adsense>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="row m-5" *ngIf="matchError">
-  <div class="col-12 text-center">
-    <h1>Match Unavailable</h1>
-    <a class="btn btn-lg btn-secondary" [routerLink]="['/']">Home</a>
+  <div class="row m-5" *ngIf="matchError">
+    <div class="col-12 text-center">
+      <h1>Match Unavailable</h1>
+      <a class="btn btn-lg btn-secondary" [routerLink]="['/']">Home</a>
+    </div>
   </div>
-</div>
 
-<div *ngIf="!matchError">
-  <div class="row mb-2" *ngIf="match">
-    <div class="col-12 statsbar">
-      <div class="bg-lighter">
-        <div class="row">
-          <div class="col-lg-4">
-            <img class="m-2 float-left" src="/assets/img/maps/{{match.map || 'caldavar'}}.jpg" alt="map thumbnail" height="70" width="70">
-            <h4 class="mt-2">Match {{ matchId }}</h4>
-            <div class="text-muted">Overview</div>
-          </div>
-          <div class="col-lg-8">
-            <div class="float-lg-right mt-1">
-              <div class="d-inline-block m-3" *ngIf="skillBracket">
-                <h6>{{ skillBracket }}</h6>
-                <div class="text-muted">Skill Bracket</div>
-              </div>
-              <div class="d-inline-block m-3" *ngIf="skillBracket">
-                <h6>{{ quality }}</h6>
-                <div class="text-muted">Team Balance</div>
-              </div>
-              <div class="d-inline-block m-3">
-                <h6>{{ match.mode }}</h6>
-                <div class="text-muted">Game Mode</div>
-              </div>
-              <div class="d-inline-block m-3">
-                <h6>{{ match.duration }}</h6>
-                <div class="text-muted">Duration</div>
-              </div>
-              <div class="d-inline-block m-3">
-                <h6 [ngbTooltip]="match.date | date:'medium'">{{ match.date | timeAgo }}</h6>
-                <div class="text-muted">Date Played</div>
-              </div>
-              <div class="d-inline-block m-3">
-                <h6>{{ match.version }}</h6>
-                <div class="text-muted">Version</div>
+  <div *ngIf="!matchError">
+    <div class="row mb-2" *ngIf="match">
+      <div class="col-12 statsbar">
+        <div class="bg-lighter">
+          <div class="row">
+            <div class="col-lg-4">
+              <img class="m-2 float-left" src="/assets/img/maps/{{match.map || 'caldavar'}}.jpg" alt="map thumbnail" height="70" width="70">
+              <h4 class="mt-2">Match {{ matchId }}</h4>
+              <div class="text-muted">Overview</div>
+            </div>
+            <div class="col-lg-8">
+              <div class="float-lg-right mt-1">
+                <div class="d-inline-block m-3" *ngIf="skillBracket">
+                  <h6>{{ skillBracket }}</h6>
+                  <div class="text-muted">Skill Bracket</div>
+                </div>
+                <div class="d-inline-block m-3" *ngIf="skillBracket">
+                  <h6>{{ quality }}</h6>
+                  <div class="text-muted">Team Balance</div>
+                </div>
+                <div class="d-inline-block m-3">
+                  <h6>{{ match.mode }}</h6>
+                  <div class="text-muted">Game Mode</div>
+                </div>
+                <div class="d-inline-block m-3">
+                  <h6>{{ match.duration }}</h6>
+                  <div class="text-muted">Duration</div>
+                </div>
+                <div class="d-inline-block m-3">
+                  <h6 [ngbTooltip]="match.date | date:'medium'">{{ match.date | timeAgo }}</h6>
+                  <div class="text-muted">Date Played</div>
+                </div>
+                <div class="d-inline-block m-3">
+                  <h6>{{ match.version }}</h6>
+                  <div class="text-muted">Version</div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
+
+    <div class="row">
+      <div class="col-12 text-center">
+        <h4 class="{{teamNames[winner]}}">{{ teamNames[winner] }} Wins</h4>
+      </div>
+    </div>
+
+    <div class="row mb-2">
+      <div class="col-12 text-center">
+        <h4>
+          <span class="mr-2 Legion">{{ teamTotals[0].kills }}</span>
+          <small class="text-muted">{{ match.duration }}</small>
+          <span class="ml-2 Hellbourne">{{ teamTotals[1].kills }}</span>
+        </h4>
+      </div>
+    </div>
+
+    <div class="row" *ngFor="let team of [team1, team2]; let i = index;">
+      <div class="col-12 table-responsive">
+        <table class="table table-sm table-striped" style="min-width: 600px">
+          <thead>
+            <tr>
+              <th width="200" style="min-width: 200px">Player</th>
+              <th width="220" style="min-width: 230px">Items</th>
+              <th class="text-center">K</th>
+              <th class="text-center">D</th>
+              <th class="text-center">A</th>
+              <th class="text-center">KDR</th>
+              <th class="text-right">CK</th>
+              <th class="text-right">CD</th>
+              <th class="gold text-right">GPM</th>
+              <th class="text-right">XPM</th>
+              <th class="text-right">APM</th>
+              <th class="text-right">Wards</th>
+              <th class="text-right">HD</th>
+              <th class="text-right">TD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let p of team" class="player-{{p.position + 1}}">
+              <th scope="row">
+                <img width="32" height="32" src="https://www.heroesofnewerth.com/images/heroes/{{p.hero_id}}/icon_128.jpg">
+                <a class="pl-1" [routerLink]="['/player', p.nickname || '']">{{ p.nickname }}</a>
+              </th>
+              <td>
+                <img width="32" height="32" *ngFor="let i of p.items" src="/assets/img/items/{{ i }}.jpg">
+              </td>
+              <td class="text-center">{{ p.kills }}</td>
+              <td class="text-center">{{ p.deaths }}</td>
+              <td class="text-center">{{ p.assists }}</td>
+              <td class="text-center">{{ p.kdr | number:'1.2-2' }}</td>
+              <td class="text-right">{{ p.cs }}</td>
+              <td class="text-right">{{ p.denies }}</td>
+              <td class="gold text-right">{{ p.gpm | number:'1.0-0' }}</td>
+              <td class="text-right">{{ p.xpm | number:'1.0-0' }}</td>
+              <td class="text-right">{{ p.apm | number:'1.0-0' }}</td>
+              <td class="text-right">{{ p.wards | number }}</td>
+              <td class="text-right">{{ p.herodmg | number }}</td>
+              <td class="text-right">{{ p.bdmg | number }}</td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <h6 class="mt-1">Total</h6>
+              </th>
+              <td></td>
+              <td class="text-center">{{ teamTotals[i].kills }}</td>
+              <td class="text-center">{{ teamTotals[i].deaths }}</td>
+              <td class="text-center">{{ teamTotals[i].assists }}</td>
+              <td></td>
+              <td class="text-right">{{ teamTotals[i].cs }}</td>
+              <td class="text-right">{{ teamTotals[i].denies }}</td>
+              <td class="gold text-right">{{ teamTotals[i].gpm | number:'1.0-0' }}</td>
+              <td class="text-right">{{ teamTotals[i].xpm | number:'1.0-0' }}</td>
+              <td class="text-right">{{ teamTotals[i].apm | number:'1.0-0' }}</td>
+              <td class="text-right">{{ teamTotals[i].wards | number }}</td>
+              <td class="text-right">{{ teamTotals[i].herodmg | number }}</td>
+              <td class="text-right">{{ teamTotals[i].bdmg | number }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 
   <div class="row">
-    <div class="col-12 text-center">
-      <h4 class="{{teamNames[winner]}}">{{ teamNames[winner] }} Wins</h4>
+    <div class="col-12">
+      <ng2-adsense></ng2-adsense>
     </div>
-  </div>
-
-  <div class="row mb-2">
-    <div class="col-12 text-center">
-      <h4>
-        <span class="mr-2 Legion">{{ teamTotals[0].kills }}</span>
-        <small class="text-muted">{{ match.duration }}</small>
-        <span class="ml-2 Hellbourne">{{ teamTotals[1].kills }}</span>
-      </h4>
-    </div>
-  </div>
-
-  <div class="row" *ngFor="let team of [team1, team2]; let i = index;">
-    <div class="col-12 table-responsive">
-      <table class="table table-sm table-striped" style="min-width: 600px">
-        <thead>
-          <tr>
-            <th width="200" style="min-width: 200px">Player</th>
-            <th width="220" style="min-width: 230px">Items</th>
-            <th class="text-center">K</th>
-            <th class="text-center">D</th>
-            <th class="text-center">A</th>
-            <th class="text-center">KDR</th>
-            <th class="text-right">CK</th>
-            <th class="text-right">CD</th>
-            <th class="gold text-right">GPM</th>
-            <th class="text-right">XPM</th>
-            <th class="text-right">APM</th>
-            <th class="text-right">Wards</th>
-            <th class="text-right">HD</th>
-            <th class="text-right">TD</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let p of team" class="player-{{p.position + 1}}">
-            <th scope="row">
-              <img width="32" height="32" src="https://www.heroesofnewerth.com/images/heroes/{{p.hero_id}}/icon_128.jpg">
-              <a class="pl-1" [routerLink]="['/player', p.nickname || '']">{{ p.nickname }}</a>
-            </th>
-            <td>
-              <img width="32" height="32" *ngFor="let i of p.items" src="/assets/img/items/{{ i }}.jpg">
-            </td>
-            <td class="text-center">{{ p.kills }}</td>
-            <td class="text-center">{{ p.deaths }}</td>
-            <td class="text-center">{{ p.assists }}</td>
-            <td class="text-center">{{ p.kdr | number:'1.2-2' }}</td>
-            <td class="text-right">{{ p.cs }}</td>
-            <td class="text-right">{{ p.denies }}</td>
-            <td class="gold text-right">{{ p.gpm | number:'1.0-0' }}</td>
-            <td class="text-right">{{ p.xpm | number:'1.0-0' }}</td>
-            <td class="text-right">{{ p.apm | number:'1.0-0' }}</td>
-            <td class="text-right">{{ p.wards | number }}</td>
-            <td class="text-right">{{ p.herodmg | number }}</td>
-            <td class="text-right">{{ p.bdmg | number }}</td>
-          </tr>
-          <tr>
-            <th scope="row">
-              <h6 class="mt-1">Total</h6>
-            </th>
-            <td></td>
-            <td class="text-center">{{ teamTotals[i].kills }}</td>
-            <td class="text-center">{{ teamTotals[i].deaths }}</td>
-            <td class="text-center">{{ teamTotals[i].assists }}</td>
-            <td></td>
-            <td class="text-right">{{ teamTotals[i].cs }}</td>
-            <td class="text-right">{{ teamTotals[i].denies }}</td>
-            <td class="gold text-right">{{ teamTotals[i].gpm | number:'1.0-0' }}</td>
-            <td class="text-right">{{ teamTotals[i].xpm | number:'1.0-0' }}</td>
-            <td class="text-right">{{ teamTotals[i].apm | number:'1.0-0' }}</td>
-            <td class="text-right">{{ teamTotals[i].wards | number }}</td>
-            <td class="text-right">{{ teamTotals[i].herodmg | number }}</td>
-            <td class="text-right">{{ teamTotals[i].bdmg | number }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-12">
-    <ng2-adsense></ng2-adsense>
   </div>
 </div>

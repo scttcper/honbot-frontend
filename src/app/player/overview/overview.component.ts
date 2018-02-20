@@ -9,34 +9,36 @@ import { Api } from '../../api';
 @Component({
   selector: 'hb-overview',
   template: `
-  <div class="row" *ngIf="!playerError">
-    <div class="col-lg-8">
-      <hb-overview-heroes [matches]="matches"></hb-overview-heroes>
-      <hb-overview-matches [matches]="matches"></hb-overview-matches>
-    </div>
-    <div class="col-lg-4">
-      <legend class="mt-2">
-        Activity
-        <small class="mt-3">30 Days</small>
-      </legend>
-      <ngx-trend *ngIf="activity"
-        [data]="activity"
-        [gradient]="gradient"
-        [smooth]="true"
-        [strokeWidth]="2"
-        [height]="200"
-        [padding]="5"
-      >
-      </ngx-trend>
+  <div class="container">
+    <div class="row" *ngIf="!playerError">
+      <div class="col-lg-8">
+        <hb-overview-heroes [matches]="matches"></hb-overview-heroes>
+        <hb-overview-matches [matches]="matches"></hb-overview-matches>
+      </div>
+      <div class="col-lg-4">
+        <legend class="mt-2">
+          Activity
+          <small class="mt-3">30 Days</small>
+        </legend>
+        <ngx-trend *ngIf="activity"
+          [data]="activity"
+          [gradient]="gradient"
+          [smooth]="true"
+          [strokeWidth]="2"
+          [height]="200"
+          [padding]="5"
+        >
+        </ngx-trend>
 
-      <div class="row adsbygoogle">
-        <div class="col-12">
-          <div class="mt-3 text-center">
-            <ng2-adsense></ng2-adsense>
+        <div class="row adsbygoogle">
+          <div class="col-12">
+            <div class="mt-3 text-center">
+              <ng2-adsense></ng2-adsense>
+            </div>
           </div>
         </div>
+        <hb-overview-competition></hb-overview-competition>
       </div>
-      <hb-overview-competition></hb-overview-competition>
     </div>
   </div>
   `,

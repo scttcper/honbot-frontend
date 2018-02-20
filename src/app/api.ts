@@ -2,6 +2,10 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
+import { _throw } from 'rxjs/observable/throw';
+import { catchError } from 'rxjs/operators/catchError';
+import { publishReplay } from 'rxjs/operators/publishReplay';
+import { refCount } from 'rxjs/operators/refCount';
 
 import { environment } from '../environments/environment';
 
@@ -17,64 +21,66 @@ export class Api {
     if (!this.playerCache[nickname]) {
       this.playerCache[nickname] = this.http
         .get(`${this.url}/playerMatches/${nickname}`)
-        .catch((err) => {
-          console.error(`Player: ${nickname} not found`);
-          this.playerCache[nickname] = undefined;
-          return Observable.throw(err);
-        })
-        .publishReplay()
-        .refCount()
-        ;
+        .pipe(
+          catchError((err) => {
+            console.error(`Player: ${nickname} not found`);
+            this.playerCache[nickname] = undefined;
+            return _throw(err);
+          }),
+          publishReplay(),
+          refCount(),
+        );
     }
     return this.playerCache[nickname];
   }
   getPlayerCompetition(nickname: string) {
     return this.http
       .get(`${this.url}/playerCompetition/${nickname}`)
-      .catch(this.handleError);
+      .pipe(catchError(this.handleError));
   }
   getAvatar(accountId: number): Observable<string> {
     return this.http
       .get(`https://hon-avatar.now.sh/${accountId}`, { responseType: 'text' })
-      .catch(this.handleError);
+      .pipe(catchError(this.handleError));
   }
   getMatch(matchId: string | number) {
     return this.http
       .get(`${this.url}/match/${matchId}`)
-      .catch(this.handleError);
+      .pipe(catchError(this.handleError));
   }
   getPlayerSkill(accountId: number): Observable<PlayerSkill> {
     return this.http
       .get(`${this.url}/playerSkill/${accountId}`)
-      .catch(this.handleError);
+      .pipe(catchError(this.handleError));
   }
   getMatchSkill(matchId: string | number) {
     return this.http
       .get(`${this.url}/matchSkill/${matchId}`)
-      .catch(this.handleError);
+      .pipe(catchError(this.handleError));
   }
   getTwitchStreams() {
     return this.http
       .get(`${this.url}/twitchStreams`)
-      .catch(this.handleError);
+      .pipe(catchError(this.handleError));
   }
   getServerStats() {
     return this.http
       .get(`${this.url}/stats`)
-      .catch(this.handleError);
+      .pipe(catchError(this.handleError));
   }
   getLatestMatches() {
     return this.http
       .get(`${this.url}/latestMatches`)
-      .catch(this.handleError);
+      .pipe(catchError(this.handleError));
   }
   getHeroStats() {
     if (!this.herostatsCache) {
       this.herostatsCache = this.http
         .get(`${this.url}/herostats`)
-        .publishReplay()
-        .refCount()
-        ;
+        .pipe(
+          publishReplay(),
+          refCount(),
+        );
     }
     return this.herostatsCache;
   }
@@ -87,7 +93,7 @@ export class Api {
       errMsg = error.error ? error.error : error.toString();
     }
     console.error(errMsg);
-    return Observable.throw(errMsg);
+    return _throw(errMsg);
   }
 }
 

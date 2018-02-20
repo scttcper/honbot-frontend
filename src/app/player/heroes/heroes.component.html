@@ -1,193 +1,195 @@
-<hb-loading *ngIf="loading"></hb-loading>
-<div class="row adsbygoogle mb-3">
-  <div class="col-12">
-    <div class="text-center">
-      <ng2-adsense></ng2-adsense>
-    </div>
-  </div>
-</div>
-<div class="row mb-3" *ngIf="!loading">
-  <div class="col-12">
-    <form class="form-inline">
-      <label class="mr-2">Filter:</label>
-      <div class="form-group mr-2">
-        <select class="form-control" name="timeSelect" [(ngModel)]="time" (ngModelChange)="applyFilters()">
-          <option selected="selected" disabled="disabled" value="">Time</option>
-          <option value="all">All Time</option>
-          <option value="week">This Week</option>
-          <option value="month">This Month</option>
-          <option value="3month">Last 3 Months</option>
-          <option value="6month">Last 6 Months</option>
-          <option value="year">Last 12 Months</option>
-        </select>
-      </div>
-      <div class="form-group mr-2">
-        <select class="form-control" name="modeSelect" [(ngModel)]="mode" (ngModelChange)="applyFilters()">
-          <option selected="selected" disabled="disabled" value="">Mode</option>
-          <option value="all">All</option>
-          <option value="Season 5">Season 5</option>
-          <option value="Season 3">Season 3</option>
-          <option value="Season 2">Season 2</option>
-          <option value="Season 1">Season 1</option>
-          <option value="Ranked">Ranked</option>
-          <option value="Unknown">Unknown</option>
-        </select>
-      </div>
-      <div class="form-group mr-2">
-        <select class="form-control" name="lobbySelect" [(ngModel)]="lobby" (ngModelChange)="applyFilters()">
-          <option selected="selected" disabled="disabled" value="">Lobby</option>
-          <option value="all">All</option>
-          <option value="season">Season</option>
-          <option value="ranked">Ranked</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-      <div class="form-group mr-2">
-        <select class="form-control" name="teamSelect" [(ngModel)]="team" (ngModelChange)="applyFilters()">
-          <option selected="selected" disabled="disabled" value="">Team</option>
-          <option value="all">All</option>
-          <option value="legion">Legion</option>
-          <option value="hellbourne">Hellbourne</option>
-        </select>
-      </div>
-      <!-- <div class="form-group mr-2">
-        <select class="form-control" name="timeSelect" [(ngModel)]="length" (ngModelChange)="applyFilters()">
-          <option selected="selected" disabled="disabled" value="">Length</option>
-          <option value="all">All Time</option>
-          <option value="week">This Week</option>
-          <option value="month">This Month</option>
-        </select>
-      </div> -->
-    </form>
-  </div>
-</div>
-<div class="row">
-  <div class="col-6 col-md-4 col-lg-3">
-    <div class="card mb-3">
-      <div class="card-body pb-1 pt-2">
-        <h4 class="card-title">Matches</h4>
-        <h6 class="card-subtitle mb-2 text-muted">{{ totalMatches | number }}</h6>
+<div class="container">
+  <hb-loading *ngIf="loading"></hb-loading>
+  <div class="row adsbygoogle mb-3">
+    <div class="col-12">
+      <div class="text-center">
+        <ng2-adsense></ng2-adsense>
       </div>
     </div>
   </div>
-  <div class="col-6 col-md-4 col-lg-3">
-    <div class="card mb-3">
-      <div class="card-body pb-1 pt-2">
-        <h4 class="card-title">Win Percent</h4>
-        <h6 class="card-subtitle mb-2 text-muted">{{ totalPercent | number:'1.0-0' }}%</h6>
+  <div class="row mb-3" *ngIf="!loading">
+    <div class="col-12">
+      <form class="form-inline">
+        <label class="mr-2">Filter:</label>
+        <div class="form-group mr-2">
+          <select class="form-control" name="timeSelect" [(ngModel)]="time" (ngModelChange)="applyFilters()">
+            <option selected="selected" disabled="disabled" value="">Time</option>
+            <option value="all">All Time</option>
+            <option value="week">This Week</option>
+            <option value="month">This Month</option>
+            <option value="3month">Last 3 Months</option>
+            <option value="6month">Last 6 Months</option>
+            <option value="year">Last 12 Months</option>
+          </select>
+        </div>
+        <div class="form-group mr-2">
+          <select class="form-control" name="modeSelect" [(ngModel)]="mode" (ngModelChange)="applyFilters()">
+            <option selected="selected" disabled="disabled" value="">Mode</option>
+            <option value="all">All</option>
+            <option value="Season 5">Season 5</option>
+            <option value="Season 3">Season 3</option>
+            <option value="Season 2">Season 2</option>
+            <option value="Season 1">Season 1</option>
+            <option value="Ranked">Ranked</option>
+            <option value="Unknown">Unknown</option>
+          </select>
+        </div>
+        <div class="form-group mr-2">
+          <select class="form-control" name="lobbySelect" [(ngModel)]="lobby" (ngModelChange)="applyFilters()">
+            <option selected="selected" disabled="disabled" value="">Lobby</option>
+            <option value="all">All</option>
+            <option value="season">Season</option>
+            <option value="ranked">Ranked</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group mr-2">
+          <select class="form-control" name="teamSelect" [(ngModel)]="team" (ngModelChange)="applyFilters()">
+            <option selected="selected" disabled="disabled" value="">Team</option>
+            <option value="all">All</option>
+            <option value="legion">Legion</option>
+            <option value="hellbourne">Hellbourne</option>
+          </select>
+        </div>
+        <!-- <div class="form-group mr-2">
+          <select class="form-control" name="timeSelect" [(ngModel)]="length" (ngModelChange)="applyFilters()">
+            <option selected="selected" disabled="disabled" value="">Length</option>
+            <option value="all">All Time</option>
+            <option value="week">This Week</option>
+            <option value="month">This Month</option>
+          </select>
+        </div> -->
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 col-md-4 col-lg-3">
+      <div class="card mb-3">
+        <div class="card-body pb-1 pt-2">
+          <h4 class="card-title">Matches</h4>
+          <h6 class="card-subtitle mb-2 text-muted">{{ totalMatches | number }}</h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-md-4 col-lg-3">
+      <div class="card mb-3">
+        <div class="card-body pb-1 pt-2">
+          <h4 class="card-title">Win Percent</h4>
+          <h6 class="card-subtitle mb-2 text-muted">{{ totalPercent | number:'1.0-0' }}%</h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-md-4 col-lg-3">
+      <div class="card mb-3">
+        <div class="card-body pb-1 pt-2">
+          <h4 class="card-title">Kills</h4>
+          <h6 class="card-subtitle mb-2 text-muted">{{ totalKills | number }}</h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-md-4 col-lg-3">
+      <div class="card mb-3">
+        <div class="card-body pb-1 pt-2">
+          <h4 class="card-title">Deaths</h4>
+          <h6 class="card-subtitle mb-2 text-muted">{{ totalDeaths | number }}</h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-md-4 col-lg-3">
+      <div class="card mb-3">
+        <div class="card-body pb-1 pt-2">
+          <h4 class="card-title">GPM</h4>
+          <h6 class="card-subtitle mb-2 text-muted">{{ avgGpm | number:'1.0-0' }}</h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-md-4 col-lg-3">
+      <div class="card mb-3">
+        <div class="card-body pb-1 pt-2">
+          <h4 class="card-title">APM</h4>
+          <h6 class="card-subtitle mb-2 text-muted">{{ avgApm | number:'1.0-0' }}</h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-md-4 col-lg-3">
+      <div class="card mb-3">
+        <div class="card-body pb-1 pt-2">
+          <h4 class="card-title">XPM</h4>
+          <h6 class="card-subtitle mb-2 text-muted">{{ avgXpm | number:'1.0-0' }}</h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-md-4 col-lg-3">
+      <div class="card mb-3">
+        <div class="card-body pb-1 pt-2">
+          <h4 class="card-title">KDA</h4>
+          <h6 class="card-subtitle mb-2 text-muted">{{ avgKda | number:'1.0-2' }}</h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-md-4 col-lg-3">
+      <div class="card mb-3">
+        <div class="card-body pb-1 pt-2">
+          <h4 class="card-title">Wards</h4>
+          <h6 class="card-subtitle mb-2 text-muted">{{ totalWards | number }}</h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-md-4 col-lg-3">
+      <div class="card mb-3">
+        <div class="card-body pb-1 pt-2">
+          <h4 class="card-title">Smackdowns</h4>
+          <h6 class="card-subtitle mb-2 text-muted">{{ totalSmackdown | number }}</h6>
+        </div>
       </div>
     </div>
   </div>
-  <div class="col-6 col-md-4 col-lg-3">
-    <div class="card mb-3">
-      <div class="card-body pb-1 pt-2">
-        <h4 class="card-title">Kills</h4>
-        <h6 class="card-subtitle mb-2 text-muted">{{ totalKills | number }}</h6>
-      </div>
+  <div class="row" *ngIf="!loading">
+    <div class="col-12">
+      <table class="table">
+        <thead class="bg-darker">
+          <tr>
+            <th>Hero</th>
+            <th>Matches</th>
+            <th>Win%</th>
+            <th>KDA</th>
+            <th>GPM</th>
+            <th>XPM</th>
+            <th>Wards</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let hero of heroes">
+            <th>
+              <img width="45" height="45" alt="hero icon" src="https://www.heroesofnewerth.com/images/heroes/{{ hero.hero_id }}/icon_128.jpg">
+              {{ hero.lastMatch | timeAgo }}
+            </th>
+            <td>
+              {{ hero.matches }}
+              <hb-bar [value]="hero.matches" [max]="maxMatches"></hb-bar>
+            </td>
+            <td>
+              {{ hero.winPercent | number:'1.0-0' }}%
+            </td>
+            <td>
+              {{ hero.kda | number:'1.0-2' }}
+              <hb-bar [value]="hero.kda" [max]="maxKda"></hb-bar>
+            </td>
+            <td>
+              {{ hero.gpm | number:'1.0-0' }}
+              <hb-bar [value]="hero.gpm" [max]="maxGpm"></hb-bar>
+            </td>
+            <td>
+              {{ hero.xpm | number:'1.0-0' }}
+              <hb-bar [value]="hero.xpm" [max]="maxXpm"></hb-bar>
+            </td>
+            <td>
+              {{ hero.wards | number:'1.2-2' }}
+              <hb-bar [value]="hero.wards" [max]="maxWards"></hb-bar>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-  </div>
-  <div class="col-6 col-md-4 col-lg-3">
-    <div class="card mb-3">
-      <div class="card-body pb-1 pt-2">
-        <h4 class="card-title">Deaths</h4>
-        <h6 class="card-subtitle mb-2 text-muted">{{ totalDeaths | number }}</h6>
-      </div>
-    </div>
-  </div>
-  <div class="col-6 col-md-4 col-lg-3">
-    <div class="card mb-3">
-      <div class="card-body pb-1 pt-2">
-        <h4 class="card-title">GPM</h4>
-        <h6 class="card-subtitle mb-2 text-muted">{{ avgGpm | number:'1.0-0' }}</h6>
-      </div>
-    </div>
-  </div>
-  <div class="col-6 col-md-4 col-lg-3">
-    <div class="card mb-3">
-      <div class="card-body pb-1 pt-2">
-        <h4 class="card-title">APM</h4>
-        <h6 class="card-subtitle mb-2 text-muted">{{ avgApm | number:'1.0-0' }}</h6>
-      </div>
-    </div>
-  </div>
-  <div class="col-6 col-md-4 col-lg-3">
-    <div class="card mb-3">
-      <div class="card-body pb-1 pt-2">
-        <h4 class="card-title">XPM</h4>
-        <h6 class="card-subtitle mb-2 text-muted">{{ avgXpm | number:'1.0-0' }}</h6>
-      </div>
-    </div>
-  </div>
-  <div class="col-6 col-md-4 col-lg-3">
-    <div class="card mb-3">
-      <div class="card-body pb-1 pt-2">
-        <h4 class="card-title">KDA</h4>
-        <h6 class="card-subtitle mb-2 text-muted">{{ avgKda | number:'1.0-2' }}</h6>
-      </div>
-    </div>
-  </div>
-  <div class="col-6 col-md-4 col-lg-3">
-    <div class="card mb-3">
-      <div class="card-body pb-1 pt-2">
-        <h4 class="card-title">Wards</h4>
-        <h6 class="card-subtitle mb-2 text-muted">{{ totalWards | number }}</h6>
-      </div>
-    </div>
-  </div>
-  <div class="col-6 col-md-4 col-lg-3">
-    <div class="card mb-3">
-      <div class="card-body pb-1 pt-2">
-        <h4 class="card-title">Smackdowns</h4>
-        <h6 class="card-subtitle mb-2 text-muted">{{ totalSmackdown | number }}</h6>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row" *ngIf="!loading">
-  <div class="col-12">
-    <table class="table">
-      <thead class="bg-darker">
-        <tr>
-          <th>Hero</th>
-          <th>Matches</th>
-          <th>Win%</th>
-          <th>KDA</th>
-          <th>GPM</th>
-          <th>XPM</th>
-          <th>Wards</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let hero of heroes">
-          <th>
-            <img width="45" height="45" alt="hero icon" src="https://www.heroesofnewerth.com/images/heroes/{{ hero.hero_id }}/icon_128.jpg">
-            {{ hero.lastMatch | timeAgo }}
-          </th>
-          <td>
-            {{ hero.matches }}
-            <hb-bar [value]="hero.matches" [max]="maxMatches"></hb-bar>
-          </td>
-          <td>
-            {{ hero.winPercent | number:'1.0-0' }}%
-          </td>
-          <td>
-            {{ hero.kda | number:'1.0-2' }}
-            <hb-bar [value]="hero.kda" [max]="maxKda"></hb-bar>
-          </td>
-          <td>
-            {{ hero.gpm | number:'1.0-0' }}
-            <hb-bar [value]="hero.gpm" [max]="maxGpm"></hb-bar>
-          </td>
-          <td>
-            {{ hero.xpm | number:'1.0-0' }}
-            <hb-bar [value]="hero.xpm" [max]="maxXpm"></hb-bar>
-          </td>
-          <td>
-            {{ hero.wards | number:'1.2-2' }}
-            <hb-bar [value]="hero.wards" [max]="maxWards"></hb-bar>
-          </td>
-        </tr>
-      </tbody>
-    </table>
   </div>
 </div>

@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 import { BarComponent } from './bar.component';
 import { LoadingComponent } from './loading.component';
 import { TimeAgoPipe } from './time-ago.pipe';
@@ -12,6 +14,7 @@ const all = [
 ];
 
 @NgModule({
+  imports: [MatProgressSpinnerModule],
   declarations: all,
   exports: all,
 })
