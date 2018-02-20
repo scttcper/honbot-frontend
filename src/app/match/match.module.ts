@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdsenseModule } from 'ng2-adsense';
 
 import { HbUtility } from '../util';
@@ -19,7 +19,7 @@ export const routes: Routes = [{
     RouterModule.forChild(routes),
 
     AdsenseModule,
-    NgbModule,
+    NgbTooltipModule.forRoot(),
 
     HbUtility,
   ],

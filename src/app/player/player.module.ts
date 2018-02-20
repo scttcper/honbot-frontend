@@ -2,7 +2,8 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdsenseModule } from 'ng2-adsense';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { TrendModule } from 'ngx-trend';
@@ -45,7 +46,7 @@ export const routes: Routes = [{
     FormsModule,
     RouterModule.forChild(routes),
 
-    NgbModule,
+    NgbTooltipModule.forRoot(),
     AdsenseModule,
     NgxPaginationModule,
     TrendModule,
