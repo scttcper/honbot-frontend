@@ -1,15 +1,10 @@
 /* tslint:disable:no-access-missing-member*/
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
-import subMonths = require('date-fns/subMonths');
-import subWeeks = require('date-fns/subWeeks');
-import subYears = require('date-fns/subYears');
-import filter = require('lodash/filter');
-import maxBy = require('lodash/maxBy');
-import property = require('lodash/property');
+import { filter, maxBy, property } from 'lodash-es';
 import { PaginationInstance } from 'ngx-pagination';
 
+import { subMonths, subWeeks, subYears } from 'date-fns';
 import { Api } from '../../api';
 
 @Component({
