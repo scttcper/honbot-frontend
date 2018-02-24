@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { maxBy, property } from 'lodash-es';
+
+import maxBy = require('lodash/maxBy');
+import property = require('lodash/property');
 
 import { Api } from '../api';
 

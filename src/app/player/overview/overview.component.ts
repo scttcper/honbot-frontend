@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { differenceInDays } from 'date-fns';
-import { fill } from 'lodash-es';
+
+import differenceInDays = require('date-fns/differenceInDays');
+import fill = require('lodash/fill');
 
 import { Api } from '../../api';
 

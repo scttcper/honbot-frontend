@@ -1,8 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { isAfter, subMonths, subWeeks, subYears } from 'date-fns';
-import { filter, maxBy, property, sortBy, values } from 'lodash-es';
+import isAfter = require('date-fns/isAfter');
+import subMonths = require('date-fns/subMonths');
+import subWeeks = require('date-fns/subWeeks');
+import subYears = require('date-fns/subYears');
+import filter = require('lodash/filter');
+import maxBy = require('lodash/maxBy');
+import property = require('lodash/property');
+import sortBy = require('lodash/sortBy');
+import values = require('lodash/values');
 
 import { Api } from '../../api';
 

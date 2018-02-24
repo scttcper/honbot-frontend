@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { formatDistanceStrict } from 'date-fns';
+
+import formatDistanceStrict = require('date-fns/formatDistanceStrict');
 
 @Pipe({ name: 'timeAgo' })
 export class TimeAgoPipe implements PipeTransform {
