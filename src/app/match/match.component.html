@@ -17,42 +17,39 @@
   <div *ngIf="!matchError">
     <div class="row mb-2" *ngIf="match">
       <div class="col-12 statsbar">
-        <div class="bg-lighter">
-          <div class="row">
-            <div class="col-lg-4">
-              <img class="m-2 float-left" src="/assets/img/maps/{{match.map || 'caldavar'}}.jpg" alt="map thumbnail" height="70" width="70">
-              <h4 class="mt-2">Match {{ matchId }}</h4>
-              <div class="text-muted">Overview</div>
-            </div>
-            <div class="col-lg-8">
-              <div class="float-lg-right mt-1">
-                <div class="d-inline-block m-3" *ngIf="skillBracket">
-                  <h6>{{ skillBracket }}</h6>
-                  <div class="text-muted">Skill Bracket</div>
-                </div>
-                <div class="d-inline-block m-3" *ngIf="skillBracket">
-                  <h6>{{ quality }}</h6>
-                  <div class="text-muted">Team Balance</div>
-                </div>
-                <div class="d-inline-block m-3">
-                  <h6>{{ match.mode }}</h6>
-                  <div class="text-muted">Game Mode</div>
-                </div>
-                <div class="d-inline-block m-3">
-                  <h6>{{ match.duration }}</h6>
-                  <div class="text-muted">Duration</div>
-                </div>
-                <div class="d-inline-block m-3">
-                  <h6 [ngbTooltip]="match.date | date:'medium'">{{ match.date | timeAgo }}</h6>
-                  <div class="text-muted">Date Played</div>
-                </div>
-                <div class="d-inline-block m-3">
-                  <h6>{{ match.version }}</h6>
-                  <div class="text-muted">Version</div>
-                </div>
-              </div>
-            </div>
+        <div class="bg-lighter d-flex flex-row justify-content-between flex-wrap">
+
+          <div class="text-nowrap" style="width: 270px;">
+            <img class="m-2 float-left" src="/assets/img/maps/{{match.map || 'caldavar'}}.jpg" alt="map thumbnail" height="70" width="70">
+            <h4 class="mt-2 mid">Match {{ matchId }}</h4>
+            <div class="text-muted">Overview</div>
           </div>
+
+
+            <div class="p-3" *ngIf="skillBracket">
+              <h6>{{ skillBracket }}</h6>
+              <div class="text-muted">Skill Bracket</div>
+            </div>
+            <div class="p-3" *ngIf="skillBracket">
+              <h6>{{ quality }}</h6>
+              <div class="text-muted">Team Balance</div>
+            </div>
+            <div class="p-3">
+              <h6>{{ match.mode }}</h6>
+              <div class="text-muted">Game Mode</div>
+            </div>
+            <div class="p-3">
+              <h6>{{ match.duration }}</h6>
+              <div class="text-muted">Duration</div>
+            </div>
+            <div class="p-3">
+              <h6 [ngbTooltip]="match.date | date:'medium'">{{ match.date | timeAgo }}</h6>
+              <div class="text-muted">Date Played</div>
+            </div>
+            <div class="p-3">
+              <h6>{{ match.version }}</h6>
+              <div class="text-muted">Version</div>
+            </div>
         </div>
       </div>
     </div>
