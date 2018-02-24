@@ -1,7 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core';
 
-import maxBy = require('lodash/maxBy');
-import property = require('lodash/property');
+import { maxBy, property } from 'lodash-es';
 
 @Component({
   selector: 'hb-overview-matches',
