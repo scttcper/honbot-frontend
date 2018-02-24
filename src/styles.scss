@@ -111,10 +111,13 @@ $player-10: #562507;
   border-left: $player-10 2px solid;
 }
 .Hellbourne {
-  color: $red;
+  color: #C23C2A;
 }
 .Legion {
-  color: $green;
+  color: #92A525;
+}
+.mid {
+  color: #A9CF54;
 }
 
 .nav-item > .active {
@@ -122,12 +125,11 @@ $player-10: #562507;
   border-bottom: 1px $white solid;
   color: $body-color;
 }
-a > .navbar-brand {
+.navbar-brand {
   color: $body-color;
+  font-weight: 500;
 }
-.navbar-brand > span {
-  color: $blue;
-}
+
 .bg-darker {
   background-color: darken($body-bg, 2%);
 }

@@ -32,7 +32,7 @@ $font-size-base: .9rem;
 //   lg: 992px,
 //   xl: 1200px
 // );
-$body-bg: #222b34;
+$body-bg: #1d252e;
 $body-color: #e5e5e5;
 $text-muted: darken($body-color, 30%);
 $btn-secondary-bg: lighten($body-bg, 15%);
@@ -42,7 +42,8 @@ $btn-secondary-border: lighten($body-bg, 15%);
 $table-border-color: darken($body-bg, 5%);
 $table-cell-padding: .55rem;
 $table-sm-cell-padding: 0.1rem;
-$table-bg-accent: rgba($black,.1);
+$table-bg: lighten($body-bg, 4%);
+// $table-accent-bg: #212932;
 
 // Links
 //

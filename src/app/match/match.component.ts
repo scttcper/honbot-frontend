@@ -74,8 +74,7 @@ export class MatchComponent implements OnInit {
     match.duration = new Date(match.length * 1000).toISOString().substr(11, 8);
     match.players = match.players.sort((a, b) => a.position - b.position);
     match.players.map((p) => {
-      const key = `team${p.team}`;
-      this[key].push(p);
+      this[`team${p.team}`].push(p);
       const tt = this.teamTotals[p.team - 1];
       needsTotal.map((v) => {
         if (tt[v] === undefined) {

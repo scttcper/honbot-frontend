@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
+import maxBy = require('lodash/maxBy');
+import property = require('lodash/property');
+
 import { Api } from '../api';
 
 @Component({
@@ -15,6 +18,9 @@ export class HomeComponent implements OnInit {
   recent: any[];
   matches: any;
   loadedLastDay: any;
+  teamNames = ['Legion', 'Hellbourne'];
+  latestMatchesLoading = true;
+  maxLength = 0;
   constructor(
     private router: Router,
     private api: Api,
@@ -32,7 +38,31 @@ export class HomeComponent implements OnInit {
       this.twitch = res;
     });
     this.api.getLatestMatches().subscribe((res) => {
-      this.recent = res;
+      this.latestMatchesLoading = false;
+      // console.log(res)
+      this.recent = res.map((match) => {
+        match.team1 = [];
+        match.team2 = [];
+        match.teamTotals = [{}, {}];
+        match.players = match.players.sort((a, b) => a.position - b.position);
+        for (const p of match.players) {
+          match[`team${p.team}`].push(p);
+          ['win'].map((v) => {
+            const tt = match.teamTotals[p.team - 1];
+            if (tt[v] === undefined) {
+              tt[v] = 0;
+            }
+            tt[v] += p[v];
+          });
+        }
+        match.duration = new Date(match.length * 1000).toISOString().substr(11, 8);
+        match.players = match.players.sort((a, b) => a.position - b.position);
+        match.winner = Number(match.teamTotals[0].win < match.teamTotals[1].win);
+        return match;
+      });
+      const max = maxBy<any>(this.recent, property('length'));
+      this.maxLength = max ? max.length : 0;
+      console.log(this.maxLength)
     });
   }
 

@@ -1,81 +1,105 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12 col-lg-8">
-      <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-6 mt-1">
-          <form class="input-group mb-3" (ngSubmit)="goPlayer()">
-            <input [(ngModel)]="search" name="search" type="text" class="form-control" placeholder="nickname"
-              autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-            <div class="input-group-append">
-              <button class="btn btn-secondary" type="submit">Go</button>
-            </div>
-          </form>
+
+
+    <div class="col-12 col-md-6 mt-1 mt-md-2">
+      <form class="mb-3" (ngSubmit)="goPlayer()">
+        <label for="search">View Player</label>
+        <div class="input-group">
+          <input [(ngModel)]="search" name="search" id="search" type="text" class="form-control" placeholder="Username"
+            autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+          <div class="input-group-append">
+            <button class="btn btn-secondary" type="submit">Go</button>
+          </div>
         </div>
-        <div class="col-sm-12 col-md-6 col-lg-6 mt-1 mb-3">
-          <form class="input-group mb-3" (ngSubmit)="goMatch()">
-            <input [(ngModel)]="match" name="match" type="text" class="form-control" placeholder="match id"
-              autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-            <div class="input-group-append">
-              <button class="btn btn-secondary" type="submit">Go</button>
-            </div>
-          </form>
-        </div>
-      </div>
-      <ng2-adsense class="mb-3 adsbygoogle"></ng2-adsense>
-      <div class="row mt-1 mb-1">
-        <div class="col-lg-12 text-center text-md-left">
-          <legend>Live on Twitch</legend>
-        </div>
-        <hb-loading *ngIf="!twitch"></hb-loading>
-        <div class="col-6 mb-3 text-center text-md-left" *ngFor="let t of twitch">
-          <a [href]="t.channel.url" target="_blank">
-            <img [src]="t.preview.medium" class="img-fluid" [alt]="t.channel.display_name">
-          </a>
-          <h5 class="p-0 m-0 pt-1 text-truncate">
-            <a [href]="t.channel.url" target="_blank">{{ t.channel.status }}</a>
-          </h5>
-          <span class="text-warning">{{ t.viewers }}</span> viewers on
-          <a [href]="t.channel._links.self">{{ t.channel.display_name }}</a>
-        </div>
-      </div>
-      <ng2-adsense></ng2-adsense>
+      </form>
     </div>
-    <div class="col-md-12 col-lg-4">
-      <div class="card mb-3">
-        <div class="card-body pb-1">
-          <h4 class="card-title pb-0">Recent Matches</h4>
-        </div>
-        <div class="card-body" *ngIf="!recent">
-          <hb-loading></hb-loading>
-        </div>
-        <ul class="list-group list-group-flush" *ngIf="recent">
-          <li class="list-group-item" *ngFor="let r of recent">
-            <a [routerLink]="['/match', r.id]">
-              {{ r.id }} - {{ r.date | timeAgo }}
-            </a>
-            <span class="text-muted ml-1 text-nowrap">{{ r.mode }}</span>
-          </li>
-        </ul>
-      </div>
 
+    <div class="col-12 col-md-6 mt-1 mt-md-2 mb-2">
+      <form class="mb-3" (ngSubmit)="goMatch()">
+        <label for="match">View Match</label>
+        <div class="input-group">
+          <input [(ngModel)]="match" name="match" id="match" type="text" class="form-control" placeholder="Match ID"
+            autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+          <div class="input-group-append">
+            <button class="btn btn-secondary" type="submit">Go</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <ng2-adsense class="mb-3 adsbygoogle"></ng2-adsense>
+
+    <div class="col-12 mb-3">
+      <div class="d-flex">
+        <div class="h6 mr-auto">Live on Twitch</div>
+        <div><small><a href="https://www.twitch.tv/directory/game/Heroes%20of%20Newerth" target="_blank">More</a></small></div>
+      </div>
       <div class="card">
-        <div class="card-body pb-1">
-          <h4 class="card-title pb-0">Stats</h4>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-6 col-md-3"
+              *ngFor="let t of twitch; let idx = index;"
+              [class.d-none]="idx >= 2" [class.d-md-block]="idx >= 2">
+              <a [href]="t.channel.url" target="_blank">
+                <img [src]="t.preview.medium" class="img-fluid" [alt]="t.channel.display_name">
+              </a>
+              <h5 class="p-0 m-0 pt-1 text-truncate">
+                <a [href]="t.channel.url" target="_blank">{{ t.channel.status }}</a>
+              </h5>
+              <span class="text-warning">{{ t.viewers }}</span> watching
+              <a [href]="t.channel._links.self">{{ t.channel.display_name }}</a>
+            </div>
+          </div>
         </div>
-        <div class="card-body" *ngIf="!matches">
-          <hb-loading></hb-loading>
-        </div>
-        <ul class="list-group list-group-flush" *ngIf="matches">
-          <li class="list-group-item">
-            <strong class="mr-1">total matches:</strong> {{ matches }}m
-          </li>
-          <li class="list-group-item">
-            <strong class="mr-1">Loaded 24 hrs:</strong> {{ loadedLastDay | number }}
-          </li>
-        </ul>
       </div>
+    </div>
 
+    <ng2-adsense></ng2-adsense>
 
+    <div class="col-12 mb-3">
+      <h6>Recent Matches</h6>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Match ID</th>
+            <th scope="col">Game Mode</th>
+            <th scope="col">Result</th>
+            <th scope="col">Duration</th>
+            <th scope="col">Hellbourne</th>
+            <th scope="col">Legion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="latestMatchesLoading"><th colspan="6"><hb-loading></hb-loading></th></tr>
+          <tr *ngFor="let r of recent">
+            <th>
+              <div style="height: 13px;line-height: 13px"><small><a class="mid" [routerLink]="['/match', r.id]">{{ r.id }}</a></small></div>
+              <div style="height: 13px;line-height: 13px"><small>{{ r.date | timeAgo }}</small></div>
+            </th>
+            <td>{{ r.mode }}</td>
+            <td [class]="teamNames[r.winner]">{{ teamNames[r.winner] }}</td>
+            <td>
+              {{ r.length / 60 | number:'1.0-0' }} Minutes
+              <hb-bar [value]="r.length" [max]="maxLength"></hb-bar>
+            </td>
+            <td><img *ngFor="let p of r.team1" width="32" height="32" src="https://www.heroesofnewerth.com/images/heroes/{{ p.hero_id }}/icon_128.jpg"></td>
+            <td><img *ngFor="let p of r.team2" width="32" height="32" src="https://www.heroesofnewerth.com/images/heroes/{{ p.hero_id }}/icon_128.jpg"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-md-12 col-lg-3">
+      <h6>Match Stats</h6>
+      <ul class="list-unstyled" *ngIf="matches">
+        <li>
+          <strong class="mr-1">Total:</strong> {{ matches }}m
+        </li>
+        <li>
+          <strong class="mr-1">Loaded 24 hrs:</strong> {{ loadedLastDay | number }}
+        </li>
+      </ul>
     </div>
   </div>
 </div>
