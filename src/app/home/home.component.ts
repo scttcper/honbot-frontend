@@ -61,7 +61,6 @@ export class HomeComponent implements OnInit {
       });
       const max = maxBy<any>(this.recent, property('length'));
       this.maxLength = max ? max.length : 0;
-      console.log(this.maxLength)
     });
   }
 

@@ -27,11 +27,10 @@ export class NavbarComponent {
   isCollapsed = false;
   search = '';
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   onSubmit() {
     this.router.navigate(['/player', this.search]);
     this.search = '';
   }
-
 }

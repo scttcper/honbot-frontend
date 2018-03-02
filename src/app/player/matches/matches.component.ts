@@ -30,30 +30,27 @@ export class MatchesComponent implements OnInit {
     currentPage: 1,
   };
 
-  constructor(
-    private route: ActivatedRoute,
-    private api: Api,
-  ) { }
+  constructor(private route: ActivatedRoute, private api: Api) {}
 
   ngOnInit() {
-    this.route.parent.params.subscribe((params) => {
-      this.api
-        .getPlayerMatches(params['nickname'])
-        .subscribe((res) => {
-          this.unfiltered = res.matches;
-          const max = maxBy(this.matches, property('length')) || {};
-          this.maxLength = max.length || 0;
-          this.applyFilters();
-        });
+    this.route.parent.params.subscribe(params => {
+      this.api.getPlayerMatches(params['nickname']).subscribe(res => {
+        this.unfiltered = res.matches;
+        const max = maxBy(this.matches, property('length')) || {};
+        this.maxLength = max.length || 0;
+        this.applyFilters();
+      });
     });
   }
   applyFilters() {
     const date = this.selectedDate();
-    this.matches = filter(this.unfiltered, (n) => {
-      return this.filterTime(n, date) &&
+    this.matches = filter(this.unfiltered, n => {
+      return (
+        this.filterTime(n, date) &&
         this.filterMode(n) &&
         this.filterTeam(n) &&
-        this.filterLobby(n);
+        this.filterLobby(n)
+      );
     });
   }
   selectedDate() {
@@ -93,5 +90,4 @@ export class MatchesComponent implements OnInit {
     const t = this.team === 'legion' ? 1 : 2;
     return match.team === t;
   }
-
 }

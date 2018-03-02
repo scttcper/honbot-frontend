@@ -38,33 +38,34 @@ export class HeroesComponent implements OnInit {
   team = '';
   length = '';
 
-  constructor(
-    private route: ActivatedRoute,
-    private api: Api,
-  ) { }
+  constructor(private route: ActivatedRoute, private api: Api) {}
 
   ngOnInit() {
     this.loading = true;
-    this.route.parent.params.subscribe((params) => {
-      this.api
-        .getPlayerMatches(params['nickname'])
-        .subscribe((res) => {
+    this.route.parent.params.subscribe(params => {
+      this.api.getPlayerMatches(params['nickname']).subscribe(
+        res => {
           this.unfiltered = res.matches;
           this.applyFilters();
         },
-        () => this.loading = false,
-        () => this.loading = false);
+        () => (this.loading = false),
+        () => (this.loading = false),
+      );
     });
   }
 
   applyFilters() {
     const date = this.selectedDate();
-    this.heroes = this.groupByHero(filter(this.unfiltered, (n) => {
-      return this.filterTime(n, date) &&
-        this.filterMode(n) &&
-        this.filterTeam(n) &&
-        this.filterLobby(n);
-    }));
+    this.heroes = this.groupByHero(
+      filter(this.unfiltered, n => {
+        return (
+          this.filterTime(n, date) &&
+          this.filterMode(n) &&
+          this.filterTeam(n) &&
+          this.filterLobby(n)
+        );
+      }),
+    );
   }
   selectedDate() {
     switch (this.time) {
@@ -118,7 +119,7 @@ export class HeroesComponent implements OnInit {
     this.avgKda = 0;
     let totalWin = 0;
     const res: any = {};
-    matches.map((n) => {
+    matches.map(n => {
       if (!res[n.hero_id]) {
         res[n.hero_id] = {
           matches: 0,
@@ -158,7 +159,7 @@ export class HeroesComponent implements OnInit {
     const vals = sortBy(values(res), property('matches'))
       .reverse()
       .map((n: any) => {
-        n.winPercent = (n.win / n.matches) * 100;
+        n.winPercent = n.win / n.matches * 100;
         n.kda = (n.kills + n.assists) / n.deaths;
         n.gpm = n.gpm / n.matches;
         n.xpm = n.xpm / n.matches;
@@ -169,13 +170,13 @@ export class HeroesComponent implements OnInit {
     this.avgApm = this.avgApm / matches.length;
     this.avgXpm = this.avgXpm / matches.length;
     this.avgKda = this.totalKills / this.totalDeaths;
-    this.totalPercent = (totalWin / matches.length) * 100;
+    this.totalPercent = totalWin / matches.length * 100;
     this.maxMatches = vals[0].matches;
     // this.maxWinPercent = maxBy(vals, property('winPercent')).winPercent;
     this.maxGpm = maxBy(vals, property('gpm')).gpm;
     this.maxWards = maxBy(vals, property('wards')).wards;
     this.maxXpm = maxBy(vals, property('xpm')).xpm;
-    this.maxKda = maxBy(vals, (n) => {
+    this.maxKda = maxBy(vals, n => {
       if (isFinite(n.kda)) {
         return n.kda;
       }
