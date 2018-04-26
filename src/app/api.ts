@@ -1,28 +1,25 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { Observable } from 'rxjs/Observable';
-import { _throw } from 'rxjs/observable/throw';
-import { catchError } from 'rxjs/operators/catchError';
-import { publishReplay } from 'rxjs/operators/publishReplay';
-import { refCount } from 'rxjs/operators/refCount';
+import { Observable, throwError as _throw } from 'rxjs';
+import { catchError, publishReplay, refCount } from 'rxjs/operators';
 
 import { environment } from '../environments/environment';
 
 @Injectable()
 export class Api {
-  playerCache = {};
+  playerCache: any = {};
   herostatsCache: Observable<any>;
   private url = environment.backendUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getPlayerMatches(nickname: string): Observable<PlayerMatches> {
     if (!this.playerCache[nickname]) {
       this.playerCache[nickname] = this.http
-        .get(`${this.url}/playerMatches/${nickname}`)
+        .get<PlayerMatches>(`${this.url}/playerMatches/${nickname}`)
         .pipe(
-          catchError((err) => {
+          catchError(err => {
             console.error(`Player: ${nickname} not found`);
             this.playerCache[nickname] = undefined;
             return _throw(err);
@@ -35,52 +32,49 @@ export class Api {
   }
   getPlayerCompetition(nickname: string) {
     return this.http
-      .get(`${this.url}/playerCompetition/${nickname}`)
+      .get<any>(`${this.url}/playerCompetition/${nickname}`)
       .pipe(catchError(this.handleError));
   }
-  getAvatar(accountId: number): Observable<string> {
+  getAvatar(accountId: number) {
     return this.http
       .get(`https://hon-avatar.now.sh/${accountId}`, { responseType: 'text' })
       .pipe(catchError(this.handleError));
   }
   getMatch(matchId: string | number) {
     return this.http
-      .get(`${this.url}/match/${matchId}`)
+      .get(<any>`${this.url}/match/${matchId}`)
       .pipe(catchError(this.handleError));
   }
-  getPlayerSkill(accountId: number): Observable<PlayerSkill> {
+  getPlayerSkill(accountId: number) {
     return this.http
-      .get(`${this.url}/playerSkill/${accountId}`)
+      .get<PlayerSkill>(`${this.url}/playerSkill/${accountId}`)
       .pipe(catchError(this.handleError));
   }
   getMatchSkill(matchId: string | number) {
     return this.http
-      .get(`${this.url}/matchSkill/${matchId}`)
+      .get<any>(`${this.url}/matchSkill/${matchId}`)
       .pipe(catchError(this.handleError));
   }
   getTwitchStreams() {
     return this.http
-      .get(`${this.url}/twitchStreams`)
+      .get<any>(`${this.url}/twitchStreams`)
       .pipe(catchError(this.handleError));
   }
   getServerStats() {
     return this.http
-      .get(`${this.url}/stats`)
+      .get<any>(`${this.url}/stats`)
       .pipe(catchError(this.handleError));
   }
   getLatestMatches() {
     return this.http
-      .get(`${this.url}/latestMatches`)
+      .get<any>(`${this.url}/latestMatches`)
       .pipe(catchError(this.handleError));
   }
   getHeroStats() {
     if (!this.herostatsCache) {
       this.herostatsCache = this.http
-        .get(`${this.url}/herostats`)
-        .pipe(
-          publishReplay(),
-          refCount(),
-        );
+        .get<any>(`${this.url}/herostats`)
+        .pipe(publishReplay(), refCount());
     }
     return this.herostatsCache;
   }
