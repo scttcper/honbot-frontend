@@ -2,8 +2,7 @@
   X-Frame-Options: DENY
   X-XSS-Protection: 1; mode=block
   Referrer-Policy: no-referrer-when-downgrade
-  Content-Security-Policy: default-src https:;
-  Feature-Policy: geolocation 'self'; notifications 'self'; push 'self'; microphone 'self'; camera 'self'
-  Strict-Transport-Security: max-age=31536000
+  Feature-Policy: geolocation 'self'; microphone 'self'; camera 'self'
+  Strict-Transport-Security: max-age=2592000
   X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN
