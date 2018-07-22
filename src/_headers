@@ -4,5 +4,4 @@
   Referrer-Policy: no-referrer-when-downgrade
   Feature-Policy: geolocation 'self'; microphone 'self'; camera 'self'
   Strict-Transport-Security: max-age=2592000
-  X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN
