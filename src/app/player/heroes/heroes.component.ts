@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { isAfter, subMonths, subWeeks, subYears } from 'date-fns';
-import { filter, maxBy, property, sortBy, values } from 'lodash-es';
+import { filter, maxBy, property, sortBy, uniq, values } from 'lodash-es';
 
 import { Api } from '../../api';
 
@@ -14,6 +14,7 @@ export class HeroesComponent implements OnInit {
   loading = true;
   unfiltered: any[];
   heroes: any[];
+  modes: string[] = [];
   maxMatches = 0;
   // maxWinPercent = 0;
   maxGpm = 0;
@@ -113,13 +114,15 @@ export class HeroesComponent implements OnInit {
     this.totalKills = 0;
     this.totalDeaths = 0;
     this.totalWards = 0;
+    this.totalSmackdown = 0;
     this.avgGpm = 0;
     this.avgApm = 0;
     this.avgXpm = 0;
     this.avgKda = 0;
     let totalWin = 0;
     const res: any = {};
-    matches.map(n => {
+    matches.forEach(n => {
+      this.modes.push(n.mode);
       if (!res[n.hero_id]) {
         res[n.hero_id] = {
           matches: 0,
@@ -156,6 +159,7 @@ export class HeroesComponent implements OnInit {
       this.avgApm += n.apm;
       totalWin += n.win ? 1 : 0;
     });
+    this.modes = uniq(this.modes).sort();
     const vals = sortBy(values(res), property('matches'))
       .reverse()
       .map((n: any) => {

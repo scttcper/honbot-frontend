@@ -27,7 +27,7 @@
       </form>
     </div>
 
-    <ng2-adsense class="mb-3 adsbygoogle"></ng2-adsense>
+    <ng-adsense class="mb-3 adsbygoogle"></ng-adsense>
 
     <div class="col-12 mb-3">
       <div class="d-flex">
@@ -54,7 +54,7 @@
       </div>
     </div>
 
-    <ng2-adsense></ng2-adsense>
+    <ng-adsense></ng-adsense>
 
     <div class="col-12 mb-3">
       <h6>Recent Matches</h6>
@@ -76,7 +76,7 @@
               <div style="height: 13px;line-height: 13px"><small><a class="mid" [routerLink]="['/match', r.id]">{{ r.id }}</a></small></div>
               <div style="height: 13px;line-height: 13px"><small>{{ r.date | timeAgo }}</small></div>
             </th>
-            <td>{{ r.mode }}</td>
+            <td class="text-nowrap">{{ r.mode }}</td>
             <td [class]="teamNames[r.winner]">{{ teamNames[r.winner] }}</td>
             <td>
               {{ r.length / 60 | number:'1.0-0' }} min
@@ -107,6 +107,6 @@
   </div>
 
   <div class="col-12">
-    <ng2-adsense class="mb-3 adsbygoogle"></ng2-adsense>
+    <ng-adsense class="mb-3 adsbygoogle"></ng-adsense>
   </div>
 </div>

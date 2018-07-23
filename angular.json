@@ -74,7 +74,7 @@
               "browserTarget": "honbot:build:production"
             },
             "localprod": {
-              "browserTarget": "honbot:build:production"
+              "browserTarget": "honbot:build:localprod"
             }
           }
         },

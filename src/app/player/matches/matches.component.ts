@@ -1,10 +1,10 @@
 /* tslint:disable:no-access-missing-member*/
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { filter, maxBy, property } from 'lodash-es';
+import { subMonths, subWeeks, subYears } from 'date-fns';
+import { filter, maxBy, property, uniq } from 'lodash-es';
 import { PaginationInstance } from 'ngx-pagination';
 
-import { subMonths, subWeeks, subYears } from 'date-fns';
 import { Api } from '../../api';
 
 @Component({
@@ -16,6 +16,7 @@ export class MatchesComponent implements OnInit {
   loading = false;
   matches: any[];
   unfiltered: any[];
+  modes: string[] = [];
   maxLength = 0;
 
   time = '';
@@ -38,6 +39,7 @@ export class MatchesComponent implements OnInit {
         this.unfiltered = res.matches;
         const max = maxBy(this.matches, property('length')) || {};
         this.maxLength = max.length || 0;
+        this.modes = uniq(res.matches.map(n => n.mode)).sort();
         this.applyFilters();
       });
     });

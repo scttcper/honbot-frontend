@@ -104,7 +104,7 @@ export class OverviewHeroesComponent implements OnChanges {
       n.gpm = n.gpm / n.matches;
       return n;
     });
-    needsSum.map((n) => {
+    needsSum.forEach((n) => {
       this.maxHeroes[n] = maxBy(this.heroes, property(n))[n];
     });
     this.maxHeroes.matches = maxBy(this.heroes, property('matches')).matches;

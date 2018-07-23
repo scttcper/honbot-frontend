@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { Observable, throwError as _throw } from 'rxjs';
+import { throwError as _throw, Observable } from 'rxjs';
 import { catchError, publishReplay, refCount } from 'rxjs/operators';
 
 import { environment } from '../environments/environment';

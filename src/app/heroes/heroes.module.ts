@@ -7,11 +7,12 @@ import { AdsenseModule } from 'ng2-adsense';
 import { HbUtility } from '../util';
 import { HeroesComponent } from './heroes.component';
 
-export const routes: Routes = [{
-  path: 'hero',
-  component: HeroesComponent,
-}];
-
+export const routes: Routes = [
+  {
+    path: 'hero',
+    component: HeroesComponent,
+  },
+];
 
 @NgModule({
   imports: [
@@ -22,8 +23,6 @@ export const routes: Routes = [{
 
     HbUtility,
   ],
-  declarations: [
-    HeroesComponent,
-  ],
+  declarations: [HeroesComponent],
 })
-export class HeroesModule { }
+export class HeroesModule {}

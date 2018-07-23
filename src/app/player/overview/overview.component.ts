@@ -33,7 +33,7 @@ import { Api } from '../../api';
         <div class="row adsbygoogle">
           <div class="col-12">
             <div class="mt-3 text-center">
-              <ng2-adsense></ng2-adsense>
+              <ng-adsense></ng-adsense>
             </div>
           </div>
         </div>
@@ -70,7 +70,7 @@ export class OverviewComponent implements OnInit {
           (res) => {
             this.matches = res.matches;
             const now = new Date();
-            this.matches.map((n) => {
+            this.matches.forEach((n) => {
               const date = new Date(n.date);
               const diff = differenceInDays(date, now);
               if (diff > -30) {
