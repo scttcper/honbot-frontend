@@ -1,7 +1,3 @@
 /*
   X-Frame-Options: DENY
-  X-XSS-Protection: 1; mode=block
-  Referrer-Policy: no-referrer-when-downgrade
   Feature-Policy: geolocation 'self'; microphone 'self'; camera 'self'
-  Strict-Transport-Security: max-age=2592000
-  X-Frame-Options: SAMEORIGIN
