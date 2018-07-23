@@ -138,6 +138,55 @@
     </div>
   </div>
 
+  <div class="row adsbygoogle">
+    <div class="col-12 mb-3 adsbygoogle">
+      <ng-adsense></ng-adsense>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6 col-md-4 col-lg-3">
+      <div class="bg-darker mb-3 pb-3">
+        <team-graph title="kills" [legion]="teamTotals[0].kills" [hellbourne]="teamTotals[1].kills"></team-graph>
+      </div>
+    </div>
+    <div class="col-6 col-md-4 col-lg-3">
+      <div class="bg-darker mb-3 pb-3">
+        <team-graph title="deaths" [legion]="teamTotals[0].deaths" [hellbourne]="teamTotals[1].deaths"></team-graph>
+      </div>
+    </div>
+    <div class="col-6 col-md-4 col-lg-3">
+      <div class="bg-darker mb-3 pb-3">
+        <team-graph title="gpm" [legion]="teamTotals[0].gpm" [hellbourne]="teamTotals[1].gpm"></team-graph>
+      </div>
+    </div>
+    <div class="col-6 col-md-4 col-lg-3">
+      <div class="bg-darker mb-3 pb-3">
+        <team-graph title="xpm" [legion]="teamTotals[0].xpm" [hellbourne]="teamTotals[1].xpm"></team-graph>
+      </div>
+    </div>
+    <div class="col-6 col-md-4 col-lg-3">
+      <div class="bg-darker mb-3 pb-3">
+        <team-graph title="apm" [legion]="teamTotals[0].apm" [hellbourne]="teamTotals[1].apm"></team-graph>
+      </div>
+    </div>
+    <div class="col-6 col-md-4 col-lg-3">
+      <div class="bg-darker mb-3 pb-3">
+        <team-graph title="wards" [legion]="teamTotals[0].wards" [hellbourne]="teamTotals[1].wards"></team-graph>
+      </div>
+    </div>
+    <div class="col-6 col-md-4 col-lg-3">
+      <div class="bg-darker mb-3 pb-3">
+        <team-graph title="creeps" [legion]="teamTotals[0].cs" [hellbourne]="teamTotals[1].cs"></team-graph>
+      </div>
+    </div>
+    <div class="col-6 col-md-4 col-lg-3">
+      <div class="bg-darker mb-3 pb-3">
+        <team-graph title="denies" [legion]="teamTotals[0].denies" [hellbourne]="teamTotals[1].denies"></team-graph>
+      </div>
+    </div>
+  </div>
+
   <div class="row">
     <div class="col-12">
       <ng-adsense></ng-adsense>

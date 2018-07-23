@@ -24,11 +24,13 @@ const needsTotal = [
 @Component({
   selector: 'hb-match',
   templateUrl: './match.component.html',
-  styles: [`
-  td {
-    line-height: 2.1rem;
-  }
-  `]
+  styles: [
+    `
+      td {
+        line-height: 2.1rem;
+      }
+    `,
+  ],
 })
 export class MatchComponent implements OnInit {
   match: any = {};
@@ -47,25 +49,24 @@ export class MatchComponent implements OnInit {
     private route: ActivatedRoute,
     private api: Api,
     private title: Title,
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.route.params.subscribe((params) => {
+    this.route.params.subscribe(params => {
       this.matchError = false;
       this.loading = true;
       this.matchId = params['matchId'];
-      this.title.setTitle(`Match: ${this.matchId} - honbot.com`);
+      this.title.setTitle(
+        `Match: ${this.matchId} - honbot.com heroes of newerth match stats`,
+      );
       this.api
         .getMatch(this.matchId)
-        .subscribe(
-          (m) => this.setupMatch(m),
-          (err) => this.matchError = true,
-        );
+        .subscribe(m => this.setupMatch(m), err => (this.matchError = true));
       this.api
         .getMatchSkill(this.matchId)
         .subscribe(
-          (m) => this.setupSkill(m),
-          (err) => console.log('skill not found'),
+          m => this.setupSkill(m),
+          () => console.error('skill not found'),
         );
     });
   }
@@ -73,10 +74,10 @@ export class MatchComponent implements OnInit {
     this.loading = false;
     match.duration = new Date(match.length * 1000).toISOString().substr(11, 8);
     match.players = match.players.sort((a, b) => a.position - b.position);
-    match.players.forEach((p) => {
+    match.players.forEach(p => {
       this[`team${p.team}`].push(p);
       const tt = this.teamTotals[p.team - 1];
-      needsTotal.forEach((v) => {
+      needsTotal.forEach(v => {
         if (tt[v] === undefined) {
           tt[v] = 0;
         }
