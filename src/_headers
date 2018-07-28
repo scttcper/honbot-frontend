@@ -1,3 +1,0 @@
-/*
-  X-Frame-Options: DENY
-  Feature-Policy: geolocation 'self'; microphone 'self'; camera 'self'
