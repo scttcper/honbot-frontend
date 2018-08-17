@@ -36,7 +36,7 @@ export const routes: Routes = [
     RouterModule.forRoot(routes),
 
     // 3rd party
-    NgbCollapseModule.forRoot(),
+    NgbCollapseModule,
     Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
     AdsenseModule.forRoot({
       adClient: 'ca-pub-7640562161899788',

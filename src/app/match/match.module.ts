@@ -21,7 +21,7 @@ export const routes: Routes = [{
     RouterModule.forChild(routes),
 
     AdsenseModule,
-    NgbTooltipModule.forRoot(),
+    NgbTooltipModule,
     ChartjsModule,
 
     HbUtility,

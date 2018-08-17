@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { differenceInDays } from 'date-fns';
+import { format } from 'date-fns';
 import { fill } from 'lodash-es';
 
 import { Api } from '../../api';
-
 
 @Component({
   selector: 'hb-overview',
@@ -20,15 +20,7 @@ import { Api } from '../../api';
           Activity
           <small class="mt-3">30 Days</small>
         </legend>
-        <ngx-trend *ngIf="activity"
-          [data]="activity"
-          [gradient]="gradient"
-          [smooth]="true"
-          [strokeWidth]="2"
-          [height]="200"
-          [padding]="5"
-        >
-        </ngx-trend>
+        <ngx-chartjs type="bar" [data]="data" height="200" [options]="options"></ngx-chartjs>
 
         <div class="row adsbygoogle">
           <div class="col-12">
@@ -49,40 +41,72 @@ export class OverviewComponent implements OnInit {
   heroes: any[];
   maxHeroes: any = {};
   playerError = false;
-  activity: number[];
   gradient = ['grey', 'lightgreen', 'green'];
 
-  constructor(
-    private route: ActivatedRoute,
-    private api: Api,
-  ) { }
+  data: any = {};
+  options = {
+    maintainAspectRatio: false,
+    scales: {
+      yAxes: [
+        {
+          display: false,
+          gridLines: { display: false },
+          ticks: { beginAtZero: true },
+        },
+      ],
+      xAxes: [
+        {
+          display: false,
+          gridLines: { display: false },
+          ticks: { beginAtZero: true },
+        },
+      ],
+    },
+    legend: { display: false },
+  };
+
+  constructor(private route: ActivatedRoute, private api: Api) {}
 
   ngOnInit() {
-    this.route.parent.params.subscribe((params) => {
-      this.playerError = false;
-      this.loading = true;
-      this.matches = undefined;
-      this.heroes = undefined;
-      const activity = fill(Array(30), 0);
-      this.api
-        .getPlayerMatches(params['nickname'])
-        .subscribe(
-          (res) => {
-            this.matches = res.matches;
-            const now = new Date();
-            this.matches.forEach((n) => {
-              const date = new Date(n.date);
-              const diff = differenceInDays(date, now);
-              if (diff > -30) {
-                activity[29 + diff] += 1;
-              }
-            });
-            this.activity = activity;
-          },
-          () => this.playerError = true,
-          () => this.loading = false,
-        );
+    this.route.parent.params.subscribe(params => {
+      this.setup(params['nickname']);
     });
   }
-
+  setup(nickname: string) {
+    this.playerError = false;
+    this.loading = true;
+    this.matches = undefined;
+    this.heroes = undefined;
+    const data = {
+      labels: fill(Array(30), ''),
+      datasets: [
+        {
+          label: 'Plays',
+          data: fill(Array(30), 0),
+          fill: false,
+          backgroundColor: '#999898',
+          borderWidth: 1,
+        },
+      ],
+    };
+    this.api.getPlayerMatches(nickname).subscribe(
+      res => {
+        this.matches = res.matches;
+        const now = new Date();
+        data.datasets[0].data.shift();
+        // data.labels = playsByDay.map(n => format(new Date(n.day), 'MM/d'));
+        this.matches.forEach(n => {
+          const date = new Date(n.date);
+          const diff = differenceInDays(date, now);
+          if (diff > -30) {
+            data.datasets[0].data[29 + diff] += 1;
+            data.labels[29 + diff] = format(date, 'MM/dd');
+          }
+        });
+        this.data = data;
+      },
+      () => (this.playerError = true),
+      () => (this.loading = false),
+    );
+  }
 }

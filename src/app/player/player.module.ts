@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
+import { ChartjsModule } from '@ctrl/ngx-chartjs';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdsenseModule } from 'ng2-adsense';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { TrendModule } from 'ngx-trend';
 
 import { Api } from '../api';
 import { HbUtility } from '../util';
@@ -46,10 +46,10 @@ export const routes: Routes = [{
     FormsModule,
     RouterModule.forChild(routes),
 
-    NgbTooltipModule.forRoot(),
+    NgbTooltipModule,
     AdsenseModule,
     NgxPaginationModule,
-    TrendModule,
+    ChartjsModule,
 
     HbUtility,
   ],
