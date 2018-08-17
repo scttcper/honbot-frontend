@@ -41,7 +41,6 @@ export class OverviewComponent implements OnInit {
   heroes: any[];
   maxHeroes: any = {};
   playerError = false;
-  gradient = ['grey', 'lightgreen', 'green'];
 
   data: any = {};
   options = {
