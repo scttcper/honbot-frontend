@@ -8,7 +8,7 @@ import { Api } from '../../api';
   template: `
   <legend class="mt-2">
     Friends
-    <small class="mt-3">This Week</small>
+    <small class="mt-3">30 days</small>
   </legend>
   <table class="table table-striped">
     <thead>
@@ -36,7 +36,7 @@ import { Api } from '../../api';
   </table>
   <legend class="mt-2">
     Opponents
-    <small class="mt-3">This Week</small>
+    <small class="mt-3">30 days</small>
   </legend>
   <table class="table table-striped">
     <thead>
