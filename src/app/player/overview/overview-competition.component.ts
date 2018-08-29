@@ -27,7 +27,7 @@ import { Api } from '../../api';
       <tr class="text-center" *ngIf="with && with.length === 0">
         <td colspan="3">None</td>
       </tr>
-      <tr *ngFor="let p of with | slice:0:8">
+      <tr *ngFor="let p of with | slice:0:15">
         <th scope="row"><a [routerLink]="['/player', p.nickname]">{{ p.nickname }}</a></th>
         <td>{{ p.t }}</td>
         <td>{{ p.w / p.t * 100 | number:'1.1-1' }}%</td>
@@ -55,7 +55,7 @@ import { Api } from '../../api';
       <tr class="text-center" *ngIf="against && against.length === 0">
         <td colspan="3">None</td>
       </tr>
-      <tr *ngFor="let p of against | slice:0:8">
+      <tr *ngFor="let p of against | slice:0:15">
         <th scope="row"><a [routerLink]="['/player', p.nickname]">{{ p.nickname }}</a></th>
         <td>{{ p.t }}</td>
         <td>{{ p.w / p.t * 100 | number:'1.1-1' }}%</td>
