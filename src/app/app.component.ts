@@ -18,5 +18,7 @@ import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
   `,
 })
 export class AppComponent {
-  constructor(angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics) {}
+  constructor(googleAnalytics: Angulartics2GoogleAnalytics) {
+    googleAnalytics.startTracking();
+  }
 }

@@ -37,7 +37,7 @@ export const routes: Routes = [
 
     // 3rd party
     NgbCollapseModule,
-    Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
+    Angulartics2Module.forRoot(),
     AdsenseModule.forRoot({
       adClient: 'ca-pub-7640562161899788',
       adSlot: 2930227358,
