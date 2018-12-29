@@ -8,7 +8,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { AdsenseModule } from 'ng2-adsense';
 
 import { Api } from './api';
