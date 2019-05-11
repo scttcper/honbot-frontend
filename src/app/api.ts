@@ -42,7 +42,7 @@ export class Api {
   }
   getMatch(matchId: string | number) {
     return this.http
-      .get(<any>`${this.url}/match/${matchId}`)
+      .get(`${this.url}/match/${matchId}` as any)
       .pipe(catchError(this.handleError));
   }
   getPlayerSkill(accountId: number) {

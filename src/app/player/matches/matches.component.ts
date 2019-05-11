@@ -35,7 +35,7 @@ export class MatchesComponent implements OnInit {
 
   ngOnInit() {
     this.route.parent.params.subscribe(params => {
-      this.api.getPlayerMatches(params['nickname']).subscribe(res => {
+      this.api.getPlayerMatches(params.nickname).subscribe(res => {
         this.unfiltered = res.matches;
         const max = maxBy(this.matches, property('length')) || {};
         this.maxLength = max.length || 0;

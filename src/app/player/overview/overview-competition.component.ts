@@ -79,7 +79,7 @@ export class OverviewCompetitionComponent implements OnInit {
       this.loading = true;
       this.with = undefined;
       this.api
-        .getPlayerCompetition(params['nickname'])
+        .getPlayerCompetition(params.nickname)
         .subscribe(
           (res) => {
             this.with = res.with;

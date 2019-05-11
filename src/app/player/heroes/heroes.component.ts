@@ -44,7 +44,7 @@ export class HeroesComponent implements OnInit {
   ngOnInit() {
     this.loading = true;
     this.route.parent.params.subscribe(params => {
-      this.api.getPlayerMatches(params['nickname']).subscribe(
+      this.api.getPlayerMatches(params.nickname).subscribe(
         res => {
           this.unfiltered = res.matches;
           this.applyFilters();

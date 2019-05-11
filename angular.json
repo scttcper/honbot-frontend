@@ -4,11 +4,11 @@
   "newProjectRoot": "projects",
   "projects": {
     "honbot": {
+      "projectType": "application",
+      "schematics": {},
       "root": "",
       "sourceRoot": "src",
-      "projectType": "application",
       "prefix": "app",
-      "schematics": {},
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -17,9 +17,8 @@
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.app.json",
+            "tsConfig": "tsconfig.app.json",
             "assets": [
-              "src/assets",
               "src/favicon.ico",
               "src/manifest.json",
               "src/android-chrome-192x192.png",
@@ -30,6 +29,7 @@
               "src/favicon-32x32.png",
               "src/mstile-150x150.png",
               "src/safari-pinned-tab.svg",
+              "src/assets",
               "src/_redirects"
             ],
             "styles": [
@@ -61,7 +61,14 @@
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
             }
           }
         },
@@ -89,9 +96,8 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "format": "stylish",
-            "typeCheck": true,
             "tsConfig": [
-              "src/tsconfig.app.json"
+              "tsconfig.app.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -99,7 +105,6 @@
           }
         }
       }
-    }
-  },
+    }},
   "defaultProject": "honbot"
 }

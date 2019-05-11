@@ -55,7 +55,7 @@ export class MatchComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.matchError = false;
       this.loading = true;
-      this.matchId = params['matchId'];
+      this.matchId = params.matchId;
       this.title.setTitle(
         `Match: ${this.matchId} - honbot.com heroes of newerth match stats`,
       );

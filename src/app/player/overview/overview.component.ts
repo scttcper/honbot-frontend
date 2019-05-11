@@ -67,7 +67,7 @@ export class OverviewComponent implements OnInit {
 
   ngOnInit() {
     this.route.parent.params.subscribe(params => {
-      this.setup(params['nickname']);
+      this.setup(params.nickname);
     });
   }
   setup(nickname: string) {
