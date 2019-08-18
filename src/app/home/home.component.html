@@ -1,12 +1,21 @@
 <div class="container">
   <div class="row">
-
     <div class="col-12 col-md-6 mt-1 mt-md-2">
       <form class="mb-3" (ngSubmit)="goPlayer()">
         <label for="search">View Player</label>
         <div class="input-group">
-          <input [(ngModel)]="search" name="search" id="search" type="text" class="form-control" placeholder="Username"
-            autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+          <input
+            [(ngModel)]="search"
+            name="search"
+            id="search"
+            type="text"
+            class="form-control"
+            placeholder="Username"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
+          />
           <div class="input-group-append">
             <button class="btn btn-secondary" type="submit">Go</button>
           </div>
@@ -18,8 +27,18 @@
       <form class="mb-3" (ngSubmit)="goMatch()">
         <label for="match">View Match</label>
         <div class="input-group">
-          <input [(ngModel)]="match" name="match" id="match" type="text" class="form-control" placeholder="Match ID"
-            autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+          <input
+            [(ngModel)]="match"
+            name="match"
+            id="match"
+            type="text"
+            class="form-control"
+            placeholder="Match ID"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
+          />
           <div class="input-group-append">
             <button class="btn btn-secondary" type="submit">Go</button>
           </div>
@@ -32,22 +51,39 @@
     <div class="col-12 mb-3">
       <div class="d-flex">
         <div class="h6 mr-auto">Live on Twitch</div>
-        <div><small><a href="https://www.twitch.tv/directory/game/Heroes%20of%20Newerth" target="_blank">More</a></small></div>
+        <div>
+          <small
+            ><a
+              href="https://www.twitch.tv/directory/game/Heroes%20of%20Newerth"
+              target="_blank"
+              >More</a
+            ></small
+          >
+        </div>
       </div>
       <div class="card">
         <div class="card-body">
           <div class="row">
-            <div class="col-6 col-md-3"
-              *ngFor="let t of twitch; let idx = index;"
-              [class.d-none]="idx >= 2" [class.d-md-block]="idx >= 2">
-              <a [href]="t.channel.url" target="_blank">
-                <img [src]="t.preview.medium" class="img-fluid" [alt]="t.channel.display_name">
+            <div
+              class="col-6 col-md-3"
+              *ngFor="let t of twitch; let idx = index"
+              [class.d-none]="idx >= 2"
+              [class.d-md-block]="idx >= 2"
+            >
+              <a [href]="'https://www.twitch.tv/' + t.user_name" target="_blank">
+                <img
+                  [src]="t.thumbnail_url.replace('{width}', 620).replace('{height}', 349)"
+                  class="img-fluid"
+                  [alt]="t.title"
+                />
               </a>
               <h5 class="p-0 m-0 pt-1 text-truncate">
-                <a [href]="t.channel.url" target="_blank">{{ t.channel.status }}</a>
+                <a [href]="'https://www.twitch.tv/' + t.user_name" target="_blank">{{
+                  t.title
+                }}</a>
               </h5>
-              <span class="text-warning">{{ t.viewers }}</span> watching
-              <a [href]="t.channel._links.self">{{ t.channel.display_name }}</a>
+              <span class="text-warning">{{ t.viewer_count }}</span> watching
+              <a [href]="'https://www.twitch.tv/' + t.user_name">{{ t.user_name }}</a>
             </div>
           </div>
         </div>
@@ -70,23 +106,45 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngIf="latestMatchesLoading"><th colspan="6"><hb-loading></hb-loading></th></tr>
+          <tr *ngIf="latestMatchesLoading">
+            <th colspan="6"><hb-loading></hb-loading></th>
+          </tr>
           <tr *ngFor="let r of recent">
             <th class="text-nowrap">
-              <div style="height: 13px;line-height: 13px"><small><a class="mid" [routerLink]="['/match', r.id]">{{ r.id }}</a></small></div>
-              <div style="height: 13px;line-height: 13px"><small>{{ r.date | timeAgo }}</small></div>
+              <div style="height: 13px;line-height: 13px">
+                <small
+                  ><a class="mid" [routerLink]="['/match', r.id]">{{
+                    r.id
+                  }}</a></small
+                >
+              </div>
+              <div style="height: 13px;line-height: 13px">
+                <small>{{ r.date | timeAgo }}</small>
+              </div>
             </th>
             <td class="text-nowrap">{{ r.mode }}</td>
             <td [class]="teamNames[r.winner]">{{ teamNames[r.winner] }}</td>
             <td>
-              {{ r.length / 60 | number:'1.0-0' }} min
+              {{ r.length / 60 | number: '1.0-0' }} min
               <hb-bar [value]="r.length" [max]="maxLength"></hb-bar>
             </td>
             <td class="text-nowrap">
-              <img *ngFor="let p of r.team1" width="32" height="32" src="https://www.heroesofnewerth.com/images/heroes/{{ p.hero_id }}/icon_128.jpg">
+              <img
+                *ngFor="let p of r.team1"
+                width="32"
+                height="32"
+                alt="hero icon"
+                src="/assets/img/heroes/{{p.hero_id}}_icon_128.jpg"
+              />
             </td>
             <td class="text-nowrap">
-              <img *ngFor="let p of r.team2" width="32" height="32" src="https://www.heroesofnewerth.com/images/heroes/{{ p.hero_id }}/icon_128.jpg">
+              <img
+                *ngFor="let p of r.team2"
+                width="32"
+                height="32"
+                alt="hero icon"
+                src="/assets/img/heroes/{{p.hero_id}}_icon_128.jpg"
+              />
             </td>
           </tr>
         </tbody>
@@ -96,11 +154,10 @@
     <div class="col-12 col-lg-3">
       <h6>Match Stats</h6>
       <ul class="list-unstyled" *ngIf="matches">
+        <li><strong class="mr-1">Total:</strong> {{ matches }}m</li>
         <li>
-          <strong class="mr-1">Total:</strong> {{ matches }}m
-        </li>
-        <li>
-          <strong class="mr-1">Loaded 24 hrs:</strong> {{ loadedLastDay | number }}
+          <strong class="mr-1">Loaded 24 hrs:</strong>
+          {{ loadedLastDay | number }}
         </li>
       </ul>
     </div>
