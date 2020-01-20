@@ -30,7 +30,8 @@
               "src/mstile-150x150.png",
               "src/safari-pinned-tab.svg",
               "src/assets",
-              "src/_redirects"
+              "src/_redirects",
+              "src/ads.txt"
             ],
             "styles": [
               "src/styles.scss"

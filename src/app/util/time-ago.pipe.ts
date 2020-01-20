@@ -7,6 +7,6 @@ export class TimeAgoPipe implements PipeTransform {
     if (!value) {
       return '';
     }
-    return formatDistanceStrict(new Date(), value) + ' ago';
+    return formatDistanceStrict(new Date(), new Date(value)) + ' ago';
   }
 }
