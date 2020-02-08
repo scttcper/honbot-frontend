@@ -12,7 +12,7 @@ export function getSkillBracket(averageScore: number) {
 
 @Pipe({ name: 'skillBracket' })
 export class SkillBracketPipe implements PipeTransform {
-  transform(value: number) {
+  transform(value: number | string) {
     if (!value || typeof value !== 'number') {
       return '';
     }
