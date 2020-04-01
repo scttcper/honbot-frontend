@@ -12,11 +12,11 @@ import { Router } from '@angular/router';
           <input [(ngModel)]="search" name="search" class="form-control mr-sm-2" type="text" placeholder="Username">
           <button style="position: absolute;top: -1000px;" type="submit">Go</button>
         </form>
-        <ul class="navbar-nav">
+        <!-- <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link" routerLink="/hero">heroes</a>
           </li>
-        </ul>
+        </ul> -->
       </div>
     </div>
   </nav>
