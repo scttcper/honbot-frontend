@@ -13,7 +13,6 @@ import { Api } from '../api';
 export class HomeComponent implements OnInit {
   search = '';
   match = '';
-  twitch: any[];
   recent: any[];
   matches: any;
   loadedLastDay: any;
@@ -32,9 +31,6 @@ export class HomeComponent implements OnInit {
     this.api.getServerStats().subscribe((res) => {
       this.matches = (res.matches / 1000000).toFixed(2);
       this.loadedLastDay = res.loadedLastDay;
-    });
-    this.api.getTwitchStreams().subscribe((res) => {
-      this.twitch = res;
     });
     this.api.getLatestMatches().subscribe((res) => {
       this.latestMatchesLoading = false;
