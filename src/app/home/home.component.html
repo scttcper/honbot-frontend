@@ -49,50 +49,6 @@
     <ng-adsense class="mb-3 adsbygoogle"></ng-adsense>
 
     <div class="col-12 mb-3">
-      <div class="d-flex">
-        <div class="h6 mr-auto">Live on Twitch</div>
-        <div>
-          <small
-            ><a
-              href="https://www.twitch.tv/directory/game/Heroes%20of%20Newerth"
-              target="_blank"
-              >More</a
-            ></small
-          >
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <div class="row">
-            <div
-              class="col-6 col-md-3"
-              *ngFor="let t of twitch; let idx = index"
-              [class.d-none]="idx >= 2"
-              [class.d-md-block]="idx >= 2"
-            >
-              <a [href]="'https://www.twitch.tv/' + t.user_name" target="_blank">
-                <img
-                  [src]="t.thumbnail_url.replace('{width}', 620).replace('{height}', 349)"
-                  class="img-fluid"
-                  [alt]="t.title"
-                />
-              </a>
-              <h5 class="p-0 m-0 pt-1 text-truncate">
-                <a [href]="'https://www.twitch.tv/' + t.user_name" target="_blank">{{
-                  t.title
-                }}</a>
-              </h5>
-              <span class="text-warning">{{ t.viewer_count }}</span> watching
-              <a [href]="'https://www.twitch.tv/' + t.user_name">{{ t.user_name }}</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <ng-adsense></ng-adsense>
-
-    <div class="col-12 mb-3">
       <h6>Recent Matches</h6>
       <table class="table table-striped table-responsive-md">
         <thead>

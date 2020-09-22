@@ -27,7 +27,7 @@ import { maxBy, property } from 'lodash-es';
       </tr>
       <tr *ngFor="let m of matches | slice:0:15">
         <td>
-          <img width="45" height="45" alt="hero icon" src="https://www.heroesofnewerth.com/images/heroes/{{m.hero_id}}/icon_128.jpg">
+          <img width="45" height="45" alt="hero icon" src="/assets/img/heroes/{{m.hero_id}}_icon_128.jpg">
         </td>
         <td>
           <div>

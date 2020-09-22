@@ -34,7 +34,7 @@ const needsSum = [
       </tr>
       <tr *ngFor="let h of heroes">
         <td>
-          <img width="45" height="45" alt="hero icon" src="https://www.heroesofnewerth.com/images/heroes/{{h.hero_id}}/icon_128.jpg">
+          <img width="45" height="45" alt="hero icon" src="/assets/img/heroes/{{h.hero_id}}_icon_128.jpg">
           {{ h.lastMatch | timeAgo }}
         </td>
         <td class="p-1">
